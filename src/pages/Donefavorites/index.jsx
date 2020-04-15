@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
-import RecipeAppContext from '../context/Context';
+import RecipeAppContext from '../../context/Context';
 
-const Login = () => {
+const DoneFavorites = () => {
   const context = useContext(RecipeAppContext);
 
   console.log(context);
 
   return (
     <div>
-      <p>Login</p>
+      <p>DoneFavorites</p>
     </div>
   );
 };
 
-export default Login;
+export default DoneFavorites;

@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
-import RecipeAppContext from '../context/Context';
+import RecipeAppContext from '../../context/Context';
 
-const Profile = () => {
+const Login = () => {
   const context = useContext(RecipeAppContext);
 
   console.log(context);
 
   return (
     <div>
-      <p>Profile</p>
+      <p>Login</p>
     </div>
   );
 };
 
-export default Profile;
+export default Login;

@@ -1,17 +1,18 @@
 import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import RecipeAppContext from '../context/Context';
+import RecipeAppContext from '../../context/Context';
 
-const Recipe = () => {
+const ItemID = () => {
   const context = useContext(RecipeAppContext);
-  const { type } = useParams();
+  const { type, id } = useParams();
   console.log(context);
 
   return (
     <div>
-      <p>Recipe: {type}</p>
+      <p>itemID: {type}</p>
+      <p>itemID: {id}</p>
     </div>
   );
 };
 
-export default Recipe;
+export default ItemID;
