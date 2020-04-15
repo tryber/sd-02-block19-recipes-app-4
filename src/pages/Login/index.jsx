@@ -1,14 +1,55 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import RecipeAppContext from '../../context/Context';
+import { Link } from 'react-router-dom';
+import './style/style.css';
 
 const Login = () => {
   const context = useContext(RecipeAppContext);
+  const [email, setEmail] = useState(false);
+  const [pass, setPass] = useState(false);
+  const resultadoEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  console.log(context);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
+  const onChangeHandleEmail = (e) => {
+    if(resultadoEmail.test(e.value)) {
+      setEmail(true);
+      e.style.border = "1px solid green";
+    } else {
+      e.style.borderColor = "red";
+      setEmail(false);
+    }
+  };
+
+  const onChangeHandlePass = (e) => {
+    if(e.value.length >= 8) {
+      setPass(true);
+      e.style.border = "1px solid green";
+    } else {
+      e.style.borderColor = "red";
+      setPass(false);
+    }
+  };
 
   return (
-    <div>
-      <p>Login</p>
+    <div className="containerLogin">
+      <h1>Login</h1>
+      <form className="containerForm">
+        <input type="text" placeholder="EMAIL" name="email" required onChange={(e) => onChangeHandleEmail(e.target)}/>
+        <input
+          type="password"
+          placeholder="SENHA"
+          name="password"
+          required minLength="8"
+          onChange={(e) => onChangeHandlePass(e.target)}
+        />
+        {/* <Link to="/comidas"> */}
+        {email && pass ? <button onClick={(e) => handleSubmit(e)}>Entrar</button> : <button disabled>Entrar</button>}
+          
+        {/* </Link> */}
+      </form>
     </div>
   );
 };
