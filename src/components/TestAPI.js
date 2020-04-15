@@ -6,7 +6,7 @@ const Test = () => {
 
   const xablau = (response) => {
     setArrabiata(response);
-  }
+  };
 
   useEffect(() => {
     fetchRecipe('themealdb', 'search.php?s=Arrabiata', xablau);

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import RecipeAppContext from '../context/Context';
 
 const Login = () => {

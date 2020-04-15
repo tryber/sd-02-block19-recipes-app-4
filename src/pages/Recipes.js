@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import RecipeAppContext from '../context/Context';
 import { useParams } from 'react-router-dom';
+import RecipeAppContext from '../context/Context';
 
 const Recipe = () => {
   const context = useContext(RecipeAppContext);
