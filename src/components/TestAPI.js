@@ -9,7 +9,7 @@ const Test = () => {
   }
 
   useEffect(() => {
-    fetchRecipe('themealdb', 'search.php?s=Arrabiata', xablau)
+    fetchRecipe('themealdb', 'search.php?s=Arrabiata', xablau);
   }, []);
   return (
     <React.Fragment>
@@ -18,6 +18,6 @@ const Test = () => {
       </div>
     </React.Fragment>
   );
-}
+};
 
 export default Test;

@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import RecipeAppContext from '../context/Context';
 import { useParams } from 'react-router-dom';
+import RecipeAppContext from '../context/Context';
 
 const ItemID = () => {
   const context = useContext(RecipeAppContext);
   const { type, id } = useParams();
-  console.log(context)
+  console.log(context);
 
   return (
     <div>
@@ -13,6 +13,6 @@ const ItemID = () => {
       <p>itemID: {id}</p>
     </div>
   );
-}
+};
 
 export default ItemID;

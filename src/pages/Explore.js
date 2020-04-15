@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import RecipeAppContext from '../context/Context';
 import { useParams } from 'react-router-dom';
+import RecipeAppContext from '../context/Context';
 
 const Explore = () => {
   const context = useContext(RecipeAppContext);
@@ -14,6 +14,6 @@ const Explore = () => {
       <p>Explore: {kindOfRecipe}</p>
     </div>
   );
-}
+};
 
 export default Explore;

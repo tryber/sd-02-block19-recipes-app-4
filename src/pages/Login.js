@@ -4,13 +4,13 @@ import RecipeAppContext from '../context/Context';
 const Login = () => {
   const context = useContext(RecipeAppContext);
 
-  console.log(context)
+  console.log(context);
 
   return (
     <div>
       <p>Login</p>
     </div>
   );
-}
+};
 
 export default Login;
