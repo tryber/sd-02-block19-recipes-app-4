@@ -5,18 +5,18 @@
 }
 
 .footer-list-container > ul > a {
+  color: black;
   list-style: none;
-  color: black
 }
 
 .footer-container {
   background-color: grey;
   border-top: 1px solid #E7E7E7;
-  text-align: center;
+  bottom: 0;
+  left: 0;
   padding: 0;
   position: fixed;
-  left: 0;
-  bottom: 0;
+  text-align: center;
   width: 100%;
 }
 
