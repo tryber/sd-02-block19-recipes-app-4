@@ -18,7 +18,7 @@ const App = () => (
         <Route exact path="/explorar/:type" component={Explore} />
         <Route exact path="/explorar/:type/:kindOfRecipe" component={Explore} />
         <Route exact path="/perfil" component={Profile} />
-        <Route exact path="/receitas/:type" component={Recipes} />
+        <Route exact path="/:type" component={Recipes} />
         <Route exact path="/receitas/:type/:id" component={ItemID} />
         <Route exact path="/receitas-feitas" component={DoneFavorites} />
         <Route exact path="/receitas-favoritas" component={DoneFavorites} />
