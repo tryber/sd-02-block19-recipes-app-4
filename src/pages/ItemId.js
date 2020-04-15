@@ -9,7 +9,8 @@ const ItemID = () => {
 
   return (
     <div>
-      <p>itemID: {type, id}</p>
+      <p>itemID: {type}</p>
+      <p>itemID: {id}</p>
     </div>
   );
 }

@@ -7,6 +7,7 @@ import DoneFavorites from './pages/DoneFavorites';
 import Explore from './pages/Explore';
 import Recipes from './pages/Recipes';
 import ItemID from './pages/ItemId';
+import Loading from './components/Loading';
 
 const App = () => {
   return (
@@ -15,13 +16,14 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/explorar" component={Explore} />
-          <Route path="/explorar/:type" component={Explore} />
-          <Route path="/explorar/:type/:kindOfRecipe" component={Explore} />
-          <Route path="/perfil" component={Profile} />
-          <Route path="/receitas/:type" component={Recipes} />
-          <Route path="/receitas/:type/:id" component={ItemID} />
-          <Route path="/receitas-feitas" component={DoneFavorites} />
-          <Route path="/receitas-favoritas" component={DoneFavorites} />
+          <Route exact path="/explorar/:type" component={Explore} />
+          <Route exact path="/explorar/:type/:kindOfRecipe" component={Explore} />
+          <Route exact path="/perfil" component={Profile} />
+          <Route exact path="/receitas/:type" component={Recipes} />
+          <Route exact path="/receitas/:type/:id" component={ItemID} />
+          <Route exact path="/receitas-feitas" component={DoneFavorites} />
+          <Route exact path="/receitas-favoritas" component={DoneFavorites} />
+          <Route exact path="/loading" component={Loading} />
         </Switch>
       </Router>
     </RecipeAppProvider>

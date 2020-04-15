@@ -5,7 +5,6 @@ import recipeAPI from '../services/callAPI';
 
 const RecipeAppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [arrabiata, setArrabiata] = useState({ meals: ['oi', 'thcau'] })
 
   const fetchRecipe = (type, search, toDoFunction, toDoError) => {
     recipeAPI(type, search)
@@ -18,8 +17,6 @@ const RecipeAppProvider = ({ children }) => {
     isLoading,
     setIsLoading,
     fetchRecipe,
-    arrabiata,
-    setArrabiata,
   };
 
   return (

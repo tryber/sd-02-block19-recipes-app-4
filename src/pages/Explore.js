@@ -10,7 +10,8 @@ const Explore = () => {
 
   return (
     <div>
-      <p>Explore: {type, kindOfRecipe}</p>
+      <p>Explore: {type}</p>
+      <p>Explore: {kindOfRecipe}</p>
     </div>
   );
 }
