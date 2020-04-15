@@ -24,7 +24,7 @@ const Login = () => {
   };
 
   const onChangeHandlePass = (e) => {
-    if(e.value.length >= 8) {
+    if(e.value.length >= 6) {
       setPass(true);
       e.style.border = "1px solid green";
     } else {
@@ -50,7 +50,7 @@ const Login = () => {
           placeholder="SENHA"
           name="password"
           data-testid="password-input"
-          required minLength="8"
+          required minLength="6"
           onChange={(e) => onChangeHandlePass(e.target)}
         />
         {/* <Link to="/comidas"> */}
@@ -61,7 +61,6 @@ const Login = () => {
             Entrar
           </button>
         : <button data-testid="login-submit-btn" disabled>Entrar</button>}
-          
         {/* </Link> */}
       </form>
     </div>
