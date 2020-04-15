@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import RecipeAppContext from '../../context/Context';
+import Header from '../../components-global/Header';
 import Footer from '../../components-global/Footer';
 
 const Recipe = () => {
@@ -10,6 +11,8 @@ const Recipe = () => {
 
   return (
     <div>
+      {type === 'comidas' && <Header title='Comidas'/>}
+      {type === 'bebidas' && <Header title='Bebidas'/>}
       <p>Recipe: {type}</p>
       <Footer />
     </div>
