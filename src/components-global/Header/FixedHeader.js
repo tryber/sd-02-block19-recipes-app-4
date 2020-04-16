@@ -14,10 +14,15 @@ const FixedHeader = ({ title, hasSearchBar }) => {
   return (
     <div>
       <nav className="header-container">
-        <Link to="./profile"><li><span className="material-icons">account_box</span></li></Link>
-        <li>{title}</li>
+        <Link
+          to="./profile"
+          data-testid="profile-top-btn"
+        >
+          <li><span className="material-icons">account_box</span></li>
+        </Link>
+        <li data-testid="page-title">{title}</li>
         {hasSearchBar &&
-          <li><button onClick={() => toggleClick()}>
+          <li><button data-testid="search-top-btn" onClick={() => toggleClick()}>
             <span className="material-icons">search</span>
           </button></li>}
       </nav>

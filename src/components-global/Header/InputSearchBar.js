@@ -23,6 +23,7 @@ const inputDiv = (searchBarInput, setSearchBarInput) => (
       value={searchBarInput}
       placeholder="Digite aqui sua busca"
       className="input-search"
+      data-testid="search-input"
     />
   </div>
 );

@@ -16,15 +16,15 @@ const RadioBtnSearchBar = () => {
       className="form-header-flex"
     >
       <div className="option-container">
-        <input type="radio" name="gender" value="ingredients" />
+        <input type="radio" name="t" value="ingredients" data-testid="ingredient-search-radio" />
         <div>Ingredientes</div>
       </div>
       <div className="option-container">
-        <input type="radio" name="gender" value="name" />
+        <input type="radio" name="t" value="name" data-testid="name-search-radio" />
         <div>Nome</div>
       </div>
       <div className="option-container">
-        <input type="radio" name="gender" value="first" />
+        <input type="radio" name="t" value="first" data-testid="first-letter-search-radio" />
         <div>Primeira letra</div>
       </div>
     </form>
