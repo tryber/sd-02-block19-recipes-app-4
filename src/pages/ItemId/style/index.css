@@ -42,10 +42,9 @@
   font-size: 1.5em;
 }
 
-.page_itemid .ingredients > .box,
-.page_itemid .intructions > .box {
-  border-radius: 5px;
+.page_itemid .ingredients > .box , .page_itemid .intructions > .box {
   background-color: rgb(197, 190, 176);
+  border-radius: 5px;
   padding: 1%;
   word-wrap: break-word;
 }

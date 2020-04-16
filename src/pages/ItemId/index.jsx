@@ -5,36 +5,57 @@ import Meal from './components/Meal';
 import Drink from './components/Drink';
 import './style/index.css';
 
+const filterIngridient = (food) => {
+  const arr = [];
+  Object.keys(food).forEach((item) => {
+    if (/^strIngredient/.test(item) && food[item]) {
+      arr.push(food[item]);
+    }
+  });
+  return arr;
+};
 
-const filterX = (meal) => {
-  const ingridients = [...filterIngridient(meal)];
-  const measure = [...filterMeasure(meal)];
+const filterMeasure = (food) => {
+  const arr = [];
+  Object.keys(food).forEach((item) => {
+    if (/^strIngredient/.test(item) && food[item]) {
+      arr.push(food[item]);
+    }
+  });
+  return arr;
+};
+
+const filterX = (food) => {
+  const ingridients = [...filterIngridient(food)];
+  const measure = [...filterMeasure(food)];
   return ingridients.map((item, index) => [item, measure[index]]);
 };
 
-const filterIngridient = (meal) => {
-  const arr = [];
-  for (let item in meal) {
-    if (/^strIngredient/.test(item) && meal[item]) {
-      arr.push(meal[item]);
-    };
-  };
-  return arr;
-};
+const dataMeal = (andrey) => {
+  const strFood = andrey.meals[0].strMeal;
+  const strThumb = andrey.meals[0].strMealThumb;
+  const strCategory = andrey.meals[0].strCategory;
+  const strInstructions = andrey.meals[0].strInstructions;
+  const strYoutube = andrey.meals[0].strYoutube;
+  const ingridients = filterX(andrey.meals[0]);
 
-const filterMeasure = (meal) => {
-  const arr = [];
-  for (let item in meal) {
-    if (/^strMeasure/.test(item) && meal[item]) {
-      arr.push(meal[item]);
-    };
-  };
-  return arr;
-};
+  return { strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients };
+}
+
+const dataCocktail = (andrey) => {
+  const strFood = andrey.drinks[0].strDrink;
+  const strThumb = andrey.drinks[0].strDrinkThumb;
+  const strCategory = andrey.drinks[0].strCategory;
+  const strInstructions = andrey.drinks[0].strInstructions;
+  const strYoutube = andrey.drinks[0].strYoutube;
+  const ingridients = filterX(andrey.drinks[0]);
+
+  return { strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients };
+}
 
 const convertTypeToData = (type, andrey) => {
-  switch(type) {
-    case 'comida': 
+  switch (type) {
+    case 'comida':
       return dataMeal(andrey);
     case 'bebida':
       return dataCocktail(andrey);
@@ -42,28 +63,6 @@ const convertTypeToData = (type, andrey) => {
       return null;
   }
 };
-
-const dataMeal = (andrey) => {
-  const strFood = andrey['meals'][0]['strMeal'];
-  const strThumb = andrey['meals'][0]['strMealThumb'];
-  const strCategory = andrey['meals'][0]['strCategory'];
-  const strInstructions = andrey['meals'][0]['strInstructions'];
-  const strYoutube = andrey['meals'][0]['strYoutube'];
-  const ingridients = filterX(andrey['meals'][0]);
-
-  return { strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients };
-}
-
-const dataCocktail = (andrey) => {
-  const strFood = andrey['drinks'][0]['strDrink'];
-  const strThumb = andrey['drinks'][0]['strDrinkThumb'];
-  const strCategory = andrey['drinks'][0]['strCategory'];
-  const strInstructions = andrey['drinks'][0]['strInstructions'];
-  const strYoutube = andrey['drinks'][0]['strYoutube'];
-  const ingridients = filterX(andrey['drinks'][0]);
-
-  return { strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients };
-}
 
 const renderFood = (type, id) => {
   switch (type) {
