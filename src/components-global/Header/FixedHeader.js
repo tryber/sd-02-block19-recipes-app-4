@@ -17,10 +17,12 @@ const FixedHeader = ({ title, hasSearchBar }) => {
         <Link to="./profile"><li><span className="material-icons">account_box</span></li></Link>
         <li>{title}</li>
         {hasSearchBar &&
-          <li><a onClick={() => toggleClick()}><span className="material-icons">search</span></a></li>}
+          <li><button onClick={() => toggleClick()}>
+            <span className="material-icons">search</span>
+          </button></li>}
       </nav>
     </div>
-  )
+  );
 };
 
 export default FixedHeader;
