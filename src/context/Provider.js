@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 
 import RecipeAppContext from './Context';
 import recipeAPI from '../services/callAPI';
-import meals from '../services/params';
+import { meals, drinks } from '../services/params';
 
 const RecipeAppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [makeRecipe, setMakeRecipe] = useState(false);
   const [andrey, setAndrey] = useState(meals);
+  const [andrey2, setAndrey2] = useState(drinks);
 
   const fetchRecipe = (type, search, toDoFunction, toDoError) => {
     recipeAPI(type, search)
@@ -24,7 +25,9 @@ const RecipeAppProvider = ({ children }) => {
     makeRecipe,
     setMakeRecipe,
     andrey,
-    setAndrey
+    setAndrey,
+    andrey2,
+    setAndrey2,
   };
 
   return (
