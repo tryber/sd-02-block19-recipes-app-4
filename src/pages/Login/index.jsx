@@ -23,9 +23,8 @@ const Login = () => {
         {email && pass
         ? <button
           data-testid="login-submit-btn"
-          onClick={(e) => handleSubmit(e)}>
-          Entrar
-        </button>
+          onClick={(e) => handleSubmit(e)}
+        >Entrar</button>
         : <button data-testid="login-submit-btn" disabled>Entrar</button>}
         {/* </Link> */}
       </form>

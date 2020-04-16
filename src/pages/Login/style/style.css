@@ -1,15 +1,15 @@
-div.containerLogin {
+div > .containerLogin {
   align-items: center;
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
-  text-align: center;
   margin-top: 35%;
+  text-align: center;
   width: 100%;
 }
 
-form.containerForm {
+.containerForm {
   align-content: flex-start;
   display: flex;
   flex-direction: column;
@@ -18,13 +18,13 @@ form.containerForm {
   width: 75%;
 }
 
-form.containerForm > input {
+.containerForm > input {
   border: 1px solid black;
   height: 7vh;
   margin-top: 5%;
 }
 
-form.containerForm > button {
+.containerForm > button {
   height: 8vh;
   margin-top: 5%;
 }

@@ -4,13 +4,13 @@ import RecipeAppContext from '../../../context/Context';
 const InputPass = () => {
   const context = useContext(RecipeAppContext);
   const { setPass } = context;
-  
+
   const onChangeHandlePass = (e) => {
-    if(e.value.length >= 6) {
+    if (e.value.length >= 6) {
       setPass(true);
-      e.style.border = "1px solid green";
+      e.style.border = '1px solid green';
     } else {
-      e.style.borderColor = "red";
+      e.style.borderColor = 'red';
       setPass(false);
     }
   };
