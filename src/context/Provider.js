@@ -5,6 +5,8 @@ import recipeAPI from '../services/callAPI';
 
 const RecipeAppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [email, setEmail] = useState(false);
+  const [pass, setPass] = useState(false);
 
   const fetchRecipe = (type, search, toDoFunction, toDoError) => {
     recipeAPI(type, search)
@@ -17,6 +19,10 @@ const RecipeAppProvider = ({ children }) => {
     isLoading,
     setIsLoading,
     fetchRecipe,
+    email,
+    setEmail,
+    pass,
+    setPass,
   };
 
   return (
