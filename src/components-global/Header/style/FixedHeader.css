@@ -1,9 +1,9 @@
 .header-container {
+  align-items: center;
   background-color: grey;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;
   padding: 0.5vh;
 }
 
