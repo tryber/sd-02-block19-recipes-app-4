@@ -18,13 +18,13 @@ const RecipeAppProvider = ({ children }) => {
   };
 
   const submitLogin = () => {
-      localStorage.setItem("meals-token", 1);
-      localStorage.setItem("cocktails-token", 1);
-      setStorage((state) => {
-        const dados = {...state, email: emailUser};
-        localStorage.setItem('user', JSON.stringify(dados));
-        return dados;
-      });
+    localStorage.setItem('meals-token', 1);
+    localStorage.setItem('cocktails-token', 1);
+    setStorage((state) => {
+      const dados = { ...state, email: emailUser };
+      localStorage.setItem('user', JSON.stringify(dados));
+      return dados;
+    });
   };
 
   const context = {
