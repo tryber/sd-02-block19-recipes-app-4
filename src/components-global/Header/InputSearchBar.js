@@ -5,7 +5,7 @@ const InputSearchBar = () => {
   const { searchBarInput, setSearchBarInput } = useContext(RecipeAppContext);
 
   useEffect(() => {
-    console.log(searchBarInput)
+    console.log(searchBarInput);
   }, [searchBarInput]);
 
   return (

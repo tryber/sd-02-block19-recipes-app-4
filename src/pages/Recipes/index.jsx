@@ -11,8 +11,8 @@ const Recipe = () => {
 
   return (
     <div>
-      {type === "comidas" && <Header title='Comidas' hasSearchBar />}
-      {type === "bebidas" && <Header title='Bebidas' hasSearchBar />}
+      {type === 'comidas' && <Header title="Comidas" hasSearchBar />}
+      {type === 'bebidas' && <Header title="Bebidas" hasSearchBar />}
       <p>Recipe: {type}</p>
       <Footer />
     </div>
