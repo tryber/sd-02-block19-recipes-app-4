@@ -5,7 +5,7 @@ const RecipeCard = (recipe) => {
   console.log(recipe);
   return (
     <div>
-      <img src={strMealThumb} height="100px" alt={strMeal}/>
+      <img src={strMealThumb} height="100px" alt={strMeal} />
       <h3>{strCategory}</h3>
       <h1>{strMeal}</h1>
     </div>

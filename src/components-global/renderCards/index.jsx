@@ -3,8 +3,7 @@ import context from '../../context/Context';
 import RecipeCard from './recipeCard';
 
 const RenderCards = () => {
-
-  const { results: [data, setData] } = useContext(context);
+  const { results: [data] } = useContext(context);
   const adjustedData = data.meals || data.drinks;
 
   return (
