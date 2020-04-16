@@ -7,10 +7,11 @@ import './style/style.css';
 
 const Login = () => {
   const context = useContext(RecipeAppContext);
-  const { email, pass } = context;
-
+  const { emailBol, pass, submitLogin } = context;
+  // console.log(context);
   const handleSubmit = (e) => {
     e.preventDefault();
+    submitLogin();
   };
 
   return (
@@ -20,7 +21,7 @@ const Login = () => {
         <InputEmail />
         <InputPass />
         {/* <Link to="/comidas"> */}
-        {email && pass
+        {emailBol && pass
         ? <button
           data-testid="login-submit-btn"
           onClick={(e) => handleSubmit(e)}
