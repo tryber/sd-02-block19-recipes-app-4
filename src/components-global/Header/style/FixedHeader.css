@@ -1,0 +1,13 @@
+.header-container {
+  background-color: grey;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0.5vh;
+}
+
+.header-container > a, .header-container > li {
+  color: black;
+  list-style: none;
+  text-decoration: none;
+}
