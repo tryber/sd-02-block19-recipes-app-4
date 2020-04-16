@@ -6,14 +6,14 @@ const RadioBtnSearchBar = () => {
   const { radioButtonSearch, setRadioButtonSearch } = useContext(RecipeAppContext);
 
   useEffect(() => {
-    console.log(radioButtonSearch)
+    console.log(radioButtonSearch);
   }, [radioButtonSearch]);
 
   return (
     <form
       onChange={(e) => setRadioButtonSearch(e.target.value)}
       value={radioButtonSearch}
-      className='form-header-flex'
+      className="form-header-flex"
     >
       <div className="option-container">
         <input type="radio" name="gender" value="ingredients" />
@@ -28,7 +28,7 @@ const RadioBtnSearchBar = () => {
         <div>Primeira letra</div>
       </div>
     </form>
-  )
+  );
 };
 
 export default RadioBtnSearchBar;

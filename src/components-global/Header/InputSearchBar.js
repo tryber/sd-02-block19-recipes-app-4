@@ -9,14 +9,15 @@ const InputSearchBar = () => {
   }, [searchBarInput]);
 
   return (
-    <div className='input-search-container'>
+    <div className="input-search-container">
       <input
         onChange={(e) => setSearchBarInput(e.target.value)}
         value={searchBarInput}
         placeholder="Digite aqui sua busca"
-        className="input-search" />
+        className="input-search"
+      />
     </div>
-  )
+  );
 };
 
 export default InputSearchBar;

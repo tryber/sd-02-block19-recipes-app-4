@@ -9,7 +9,7 @@ const Profile = () => {
 
   return (
     <div>
-      <Header title={'Perfil'} hasSearchBar={false} />
+      <Header title={'Perfil'} />
       <p>Profile</p>
     </div>
   );

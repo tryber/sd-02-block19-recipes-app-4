@@ -14,5 +14,5 @@
 
 .search-bar-container .form-header-flex {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }

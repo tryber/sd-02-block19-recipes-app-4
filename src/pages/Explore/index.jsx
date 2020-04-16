@@ -12,7 +12,7 @@ const Explore = () => {
 
   return (
     <div>
-      <Header title={`Explorar ${type}`} hasSearchBar={true}/>
+      <Header title={`Explorar ${type}`} hasSearchBar />
       <p>Explore: {type}</p>
       <p>Explore: {kindOfRecipe}</p>
       <Footer />
