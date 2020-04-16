@@ -74,7 +74,7 @@ const not = () => (
 );
 
 const video = (strYoutube) => (
-  <div className="video"> 
+  <div className="video">
     <p className="subtitle">Video</p>
     {(strYoutube) ? renderVideo(strYoutube) : not()}
   </div>
@@ -106,7 +106,7 @@ function Generics(props) {
   const { obj } = props;
   const { makeRecipe, setMakeRecipe } = useContext(RecipeAppContext);
   const { strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients } = obj;
-  
+
   return (
     <React.Fragment>
       <img src={strThumb} data-testid="recipe-photo" alt="" />
@@ -123,12 +123,12 @@ function Generics(props) {
           data-testid="start-recipe-btn"
           onClick={() => handleClick(makeRecipe, setMakeRecipe)}
         >
-          {(makeRecipe) ? 'Finalize Recipe' : 'Init Recipe'} 
+          {(makeRecipe) ? 'Finalize Recipe' : 'Init Recipe'}
         </button>
       </div>
     </React.Fragment>
   );
-};
+}
 
 Generics.propTypes = {
   obj: propTypes.instanceOf(Object),

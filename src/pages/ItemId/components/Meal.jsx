@@ -11,9 +11,9 @@ function Meal(props) {
   const cb = (resp) => {
     setAndrey(resp);
   };
-  
+
   useEffect(() => { fetchRecipe('themealdb', `lookup.php?i=${id}`, cb); }, []);
-  
+
   return (
     <React.Fragment>
       <Generics obj={convertTypeToData('comida', andrey)} />
@@ -24,6 +24,6 @@ function Meal(props) {
 Meal.propTypes = {
   convertTypeToData: propTypes.func.isRequired,
   id: propTypes.string.isRequired,
-}
+};
 
 export default Meal;

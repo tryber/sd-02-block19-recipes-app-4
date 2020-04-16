@@ -40,7 +40,7 @@ const dataMeal = (andrey) => {
   const ingridients = filterX(andrey.meals[0]);
 
   return { strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients };
-}
+};
 
 const dataCocktail = (andrey) => {
   const strFood = andrey.drinks[0].strDrink;
@@ -51,7 +51,7 @@ const dataCocktail = (andrey) => {
   const ingridients = filterX(andrey.drinks[0]);
 
   return { strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients };
-}
+};
 
 const convertTypeToData = (type, andrey) => {
   switch (type) {
@@ -77,7 +77,7 @@ const renderFood = (type, id) => {
 
 const ItemId = () => {
   const { type, id } = useParams();
-  
+
   return (
     <div className="page_itemid">
       {renderFood(type, id)}

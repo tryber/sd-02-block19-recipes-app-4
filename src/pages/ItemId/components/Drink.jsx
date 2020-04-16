@@ -24,6 +24,6 @@ function Drink(props) {
 Drink.propTypes = {
   convertTypeToData: propTypes.func.isRequired,
   id: propTypes.string.isRequired,
-}
+};
 
 export default Drink;
