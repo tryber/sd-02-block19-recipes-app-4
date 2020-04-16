@@ -9,17 +9,20 @@ const Footer = () => (
       <ul className="flex-footer-container">
         <Link
           data-testid="drinks-bottom-btn"
-          to="/bebidas">
+          to="/bebidas"
+        >
           <li><span className="material-icons">local_bar</span></li>
         </Link>
         <Link
           to="/explorar"
-          data-testid="explore-bottom-btn">
+          data-testid="explore-bottom-btn"
+        >
           <li><span className="material-icons">explore</span></li>
         </Link>
         <Link
           data-testid="food-bottom-btn"
-          to="/comidas">
+          to="/comidas"
+        >
           <li><span className="material-icons">local_pizza</span></li>
         </Link>
       </ul>

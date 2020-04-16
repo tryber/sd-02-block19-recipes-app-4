@@ -12,9 +12,9 @@ const typeOfSearch = (typeState, searchBarInput) => {
       return `search.php?f=${searchBarInput[0]}`;
     case 'name':
       return `search.php?s=${searchBarInput}`;
-    default: return;
+    default: return 'error';
   }
-}
+};
 
 const inputDiv = (searchBarInput, setSearchBarInput) => (
   <div className="input-search-container">
@@ -29,9 +29,8 @@ const inputDiv = (searchBarInput, setSearchBarInput) => (
 );
 
 const InputSearchBar = () => {
-  const { searchBarInput, setSearchBarInput, setIsLoading, isLoading,
-    results: [data, setData], radioButtonSearch,
-    fetchRecipe, dataBase: [db, setDB],
+  const { searchBarInput, setSearchBarInput, setIsLoading, results: [, setData],
+    radioButtonSearch, fetchRecipe, dataBase: [db],
   } = useContext(RecipeAppContext);
 
   const debouncedSearchTerm = useDebounce(searchBarInput, 600);
@@ -39,17 +38,17 @@ const InputSearchBar = () => {
   const searchInputRadio = (response) => {
     setData(response);
     setIsLoading(false);
-  }
+  };
 
   useEffect(
     () => {
       if (debouncedSearchTerm && radioButtonSearch && searchBarInput) {
         setIsLoading('true');
-        fetchRecipe(db, typeOfSearch(radioButtonSearch, searchBarInput), searchInputRadio)
+        fetchRecipe(db, typeOfSearch(radioButtonSearch, searchBarInput), searchInputRadio);
       } else {
         setData([]);
       }
-    }, [debouncedSearchTerm]
+    }, [debouncedSearchTerm],
   );
 
   return inputDiv(searchBarInput, setSearchBarInput);

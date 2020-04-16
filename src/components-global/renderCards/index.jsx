@@ -9,15 +9,13 @@ const RenderCards = () => {
 
   return (
     <div>
-      {adjustedData.map((recipe) => {
-        return (
-          <div key={recipe.idMeal}>
-            <RecipeCard details={recipe} />
-          </div>
-        )
-      })}
+      {adjustedData.map((recipe) => (
+        <div key={recipe.idMeal}>
+          <RecipeCard details={recipe} />
+        </div>
+      ))}
     </div>
-  )
-}
+  );
+};
 
 export default RenderCards;

@@ -13,10 +13,10 @@ const RecipeAppProvider = ({ children }) => {
   const [db, setDB] = useState('themealdb');
   const [error, setError] = useState('');
 
-  const fetchRecipe = (type, search, toDoFunction, toDoError) => {
+  const fetchRecipe = (type, search, toDoFunction) => {
     recipeAPI(type, search)
       .then((response) => toDoFunction(response),
-        (error) => setError(error),
+        (respError) => setError(respError),
       );
   };
 
@@ -33,6 +33,7 @@ const RecipeAppProvider = ({ children }) => {
     debounceState: [debouncedValue, setDebouncedValue],
     results: [data, setData],
     dataBase: [db, setDB],
+    errorHandler: [error, setError],
   };
 
   return (
