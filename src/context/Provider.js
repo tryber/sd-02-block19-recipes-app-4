@@ -5,6 +5,9 @@ import recipeAPI from '../services/callAPI';
 
 const RecipeAppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [searchBarInput, setSearchBarInput] = useState();
+  const [isOnSearchBar, setIsOnSearchBar] = useState(false);
+  const [radioButtonSearch, setRadioButtonSearch] = useState(false);
 
   const fetchRecipe = (type, search, toDoFunction, toDoError) => {
     recipeAPI(type, search)
@@ -17,6 +20,12 @@ const RecipeAppProvider = ({ children }) => {
     isLoading,
     setIsLoading,
     fetchRecipe,
+    searchBarInput,
+    setSearchBarInput,
+    isOnSearchBar,
+    setIsOnSearchBar,
+    radioButtonSearch,
+    setRadioButtonSearch,
   };
 
   return (

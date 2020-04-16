@@ -6,9 +6,10 @@
   background-color: grey;
 }
 
-.header-container>li {
+.header-container > a, .header-container > li {
   list-style: none;
   text-decoration: none;
+  color: black;
 }
 
 .search-bar-container {
