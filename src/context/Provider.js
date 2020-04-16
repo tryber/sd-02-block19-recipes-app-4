@@ -8,11 +8,15 @@ const RecipeAppProvider = ({ children }) => {
   const [searchBarInput, setSearchBarInput] = useState('');
   const [isOnSearchBar, setIsOnSearchBar] = useState(false);
   const [radioButtonSearch, setRadioButtonSearch] = useState(false);
+  const [debouncedValue, setDebouncedValue] = useState('');
+  const [data, setData] = useState([]);
+  const [db, setDB] = useState('themealdb');
+  const [error, setError] = useState('');
 
   const fetchRecipe = (type, search, toDoFunction, toDoError) => {
     recipeAPI(type, search)
       .then((response) => toDoFunction(response),
-        (error) => toDoError(error),
+        (error) => setError(error),
       );
   };
 
@@ -26,6 +30,9 @@ const RecipeAppProvider = ({ children }) => {
     setIsOnSearchBar,
     radioButtonSearch,
     setRadioButtonSearch,
+    debounceState: [debouncedValue, setDebouncedValue],
+    results: [data, setData],
+    dataBase: [db, setDB],
   };
 
   return (

@@ -1,23 +1,57 @@
 import React, { useContext, useEffect } from 'react';
 import RecipeAppContext from '../../context/Context';
+import useDebounce from '../../customHooks/useDebounce';
+
+const typeOfSearch = (typeState, searchBarInput) => {
+  console.log(searchBarInput[0]);
+  console.log(searchBarInput);
+  switch (typeState) {
+    case 'ingredients':
+      return `filter.php?i=${searchBarInput}`;
+    case 'first':
+      return `search.php?f=${searchBarInput[0]}`;
+    case 'name':
+      return `search.php?s=${searchBarInput}`;
+    default: return;
+  }
+}
+
+const inputDiv = (searchBarInput, setSearchBarInput) => (
+  <div className="input-search-container">
+    <input
+      onChange={(e) => setSearchBarInput(e.target.value)}
+      value={searchBarInput}
+      placeholder="Digite aqui sua busca"
+      className="input-search"
+    />
+  </div>
+);
 
 const InputSearchBar = () => {
-  const { searchBarInput, setSearchBarInput } = useContext(RecipeAppContext);
+  const { searchBarInput, setSearchBarInput, setIsLoading, isLoading,
+    results: [data, setData], radioButtonSearch,
+    fetchRecipe, dataBase: [db, setDB],
+  } = useContext(RecipeAppContext);
 
-  useEffect(() => {
-    console.log(searchBarInput);
-  }, [searchBarInput]);
+  const debouncedSearchTerm = useDebounce(searchBarInput, 600);
 
-  return (
-    <div className="input-search-container">
-      <input
-        onChange={(e) => setSearchBarInput(e.target.value)}
-        value={searchBarInput}
-        placeholder="Digite aqui sua busca"
-        className="input-search"
-      />
-    </div>
+  const searchInputRadio = (response) => {
+    setData(response);
+    setIsLoading(false);
+  }
+
+  useEffect(
+    () => {
+      if (debouncedSearchTerm && radioButtonSearch && searchBarInput) {
+        setIsLoading('true');
+        fetchRecipe(db, typeOfSearch(radioButtonSearch, searchBarInput), searchInputRadio)
+      } else {
+        setData([]);
+      }
+    }, [debouncedSearchTerm]
   );
+
+  return inputDiv(searchBarInput, setSearchBarInput);
 };
 
 export default InputSearchBar;
