@@ -6,7 +6,7 @@ const RecipeCard = ({ details, dataBase }) => {
   console.log(dataBase);
 
   const { [`id${dataBase}`]: id, [`str${dataBase}`]: recipe, [`str${dataBase}Thumb`]: img, strCategory: category } = details;
-  console.log(id)
+  console.log(id);
 
   return (
     <div>
