@@ -5,8 +5,11 @@
 }
 
 .page_itemid > .main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   margin: 2%;
-  margin-bottom: 3%;
+  margin-bottom: 25%;
 }
 
 .page_itemid .header {
@@ -56,10 +59,12 @@
 .page_itemid .init {
   background-color: chartreuse;
   border-style: none;
+  bottom: 0;
   cursor: pointer;
   font-size: 1.5em;
-  margin: 10% 0;
+  left: 0;
   padding: 5%;
+  position: fixed;
   width: 100%;
 }
 

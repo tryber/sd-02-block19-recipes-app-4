@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
+import Loading from '../../components-global/Loading';
+import RecipeAppContext from '../../context/Context';
 import Meal from './components/Meal';
 import Drink from './components/Drink';
 import './style/index.css';
+
 
 const filterIngridient = (food) => {
   const arr = [];
@@ -18,7 +21,7 @@ const filterIngridient = (food) => {
 const filterMeasure = (food) => {
   const arr = [];
   Object.keys(food).forEach((item) => {
-    if (/^strIngredient/.test(item) && food[item]) {
+    if (/^strMeasure/.test(item) && food[item]) {
       arr.push(food[item]);
     }
   });
@@ -32,6 +35,7 @@ const filterX = (food) => {
 };
 
 const dataMeal = (andrey) => {
+  const id = andrey.meals[0].idMeal;
   const strFood = andrey.meals[0].strMeal;
   const strThumb = andrey.meals[0].strMealThumb;
   const strCategory = andrey.meals[0].strCategory;
@@ -39,18 +43,19 @@ const dataMeal = (andrey) => {
   const strYoutube = andrey.meals[0].strYoutube;
   const ingridients = filterX(andrey.meals[0]);
 
-  return { strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients };
+  return { id, strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients };
 };
 
 const dataCocktail = (andrey) => {
+  const id = andrey.drinks[0].idDrink;
   const strFood = andrey.drinks[0].strDrink;
   const strThumb = andrey.drinks[0].strDrinkThumb;
-  const strCategory = andrey.drinks[0].strCategory;
+  const strCategory = andrey.drinks[0].strAlcoholic;
   const strInstructions = andrey.drinks[0].strInstructions;
   const strYoutube = andrey.drinks[0].strYoutube;
   const ingridients = filterX(andrey.drinks[0]);
 
-  return { strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients };
+  return { id, strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients };
 };
 
 const convertTypeToData = (type, andrey) => {
@@ -64,26 +69,45 @@ const convertTypeToData = (type, andrey) => {
   }
 };
 
-const renderFood = (type, id) => {
+const renderFood = (type, data, making) => {
   switch (type) {
     case 'comida':
-      return <Meal convertTypeToData={convertTypeToData} id={id} />;
+      return <Meal convertTypeToData={convertTypeToData} data={data} making={making} />;
     case 'bebida':
-      return <Drink convertTypeToData={convertTypeToData} id={id} />;
+      return <Drink convertTypeToData={convertTypeToData} data={data} making={making} />;
     default:
       return null;
   }
 };
 
+const convertTypeToUrl = (type) => {
+  switch (type) {
+    case 'comida':
+      return 'themealdb';
+    case 'bebida':
+      return 'thecocktaildb';
+  }
+}
+
 const ItemId = () => {
-  const { type, id } = useParams();
+  const { fetchRecipe } = useContext(RecipeAppContext);
+  const { type, id, making } = useParams();
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState();
+  const cb = (resp) => {
+    setData(resp);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchRecipe(convertTypeToUrl(type), `lookup.php?i=${id}`, cb);
+  }, []);
 
   return (
     <div className="page_itemid">
-      {renderFood(type, id)}
+      {(loading) ? (<Loading />) : (renderFood(type, data, making))}
     </div>
   );
 };
-
 
 export default ItemId;

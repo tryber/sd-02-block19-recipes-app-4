@@ -1,29 +1,20 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import propTypes from 'prop-types';
 
-import Generics from './Generecs';
-import RecipeAppContext from '../../../context/Context';
+import Generics from './Generics';
 
 function Meal(props) {
-  const { convertTypeToData, id } = props;
-  const { andrey, setAndrey, fetchRecipe } = useContext(RecipeAppContext);
-
-  const cb = (resp) => {
-    setAndrey(resp);
-  };
-
-  useEffect(() => { fetchRecipe('themealdb', `lookup.php?i=${id}`, cb); }, []);
+  const { convertTypeToData, data, making } = props;
 
   return (
     <React.Fragment>
-      <Generics obj={convertTypeToData('comida', andrey)} />
+      <Generics data={convertTypeToData('comida', data)} making={making} />
     </React.Fragment>
   );
 }
 
 Meal.propTypes = {
   convertTypeToData: propTypes.func.isRequired,
-  id: propTypes.string.isRequired,
 };
 
 export default Meal;
