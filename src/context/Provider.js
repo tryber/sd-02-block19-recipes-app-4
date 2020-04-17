@@ -12,12 +12,26 @@ const RecipeAppProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [db, setDB] = useState('themealdb');
   const [error, setError] = useState('');
+  const [emailBool, setEmailBool] = useState(false);
+  const [emailUser, setEmailUser] = useState('');
+  const [pass, setPass] = useState(false);
+  const [storage, setStorage] = useState({});
 
   const fetchRecipe = (type, search, toDoFunction) => {
     recipeAPI(type, search)
       .then((response) => toDoFunction(response),
         (respError) => setError(respError),
       );
+  };
+
+  const submitLogin = () => {
+    localStorage.setItem('meals-token', 1);
+    localStorage.setItem('cocktails-token', 1);
+    setStorage(() => {
+      const dados = { email: emailUser };
+      localStorage.setItem('user', JSON.stringify(dados));
+      return dados;
+    });
   };
 
   const context = {
@@ -34,6 +48,15 @@ const RecipeAppProvider = ({ children }) => {
     results: [data, setData],
     dataBase: [db, setDB],
     errorHandler: [error, setError],
+    emailBool,
+    setEmailBool,
+    emailUser,
+    setEmailUser,
+    pass,
+    setPass,
+    submitLogin,
+    storage,
+    setStorage,
   };
 
   return (
