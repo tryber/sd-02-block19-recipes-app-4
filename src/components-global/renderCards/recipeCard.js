@@ -20,6 +20,6 @@ const RecipeCard = ({ details, dataBase }) => {
 export default RecipeCard;
 
 RecipeCard.propTypes = {
-  details: PropTypes.object.isRequired,
+  details: PropTypes.instanceOf(Object).isRequired,
   dataBase: PropTypes.string.isRequired,
 };
