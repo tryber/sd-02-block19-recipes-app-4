@@ -1,13 +1,20 @@
 import React from 'react';
 
-const RecipeCard = (recipe) => {
-  const { strMealThumb, strCategory, strMeal } = recipe.details;
-  console.log(recipe);
+const RecipeCard = ({ details, dataBase }) => {
+  console.log(details)
+  console.log(dataBase)
+
+  const { [`id${dataBase}`]: id, [`str${dataBase}`]: recipe, [`str${dataBase}Thumb`]: img, strCategory: category } = details
+  console.log(id)
+  console.log(recipe)
+  console.log(img)
+  console.log(category)
+
   return (
     <div>
-      <img src={strMealThumb} height="100px" alt={strMeal} />
-      <h3>{strCategory}</h3>
-      <h1>{strMeal}</h1>
+      <img src={img} height="100px" alt={recipe} />
+      <h3>{category}</h3>
+      <h1>{recipe}</h1>
     </div>
   );
 };
