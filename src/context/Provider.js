@@ -5,15 +5,22 @@ import recipeAPI from '../services/callAPI';
 
 const RecipeAppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [searchBarInput, setSearchBarInput] = useState('');
+  const [isOnSearchBar, setIsOnSearchBar] = useState(false);
+  const [radioButtonSearch, setRadioButtonSearch] = useState(false);
+  const [debouncedValue, setDebouncedValue] = useState('');
+  const [data, setData] = useState([]);
+  const [db, setDB] = useState('themealdb');
+  const [error, setError] = useState('');
   const [emailBool, setEmailBool] = useState(false);
   const [emailUser, setEmailUser] = useState('');
   const [pass, setPass] = useState(false);
   const [storage, setStorage] = useState({});
 
-  const fetchRecipe = (type, search, toDoFunction, toDoError) => {
+  const fetchRecipe = (type, search, toDoFunction) => {
     recipeAPI(type, search)
       .then((response) => toDoFunction(response),
-        (error) => toDoError(error),
+        (respError) => setError(respError),
       );
   };
 
@@ -31,6 +38,16 @@ const RecipeAppProvider = ({ children }) => {
     isLoading,
     setIsLoading,
     fetchRecipe,
+    searchBarInput,
+    setSearchBarInput,
+    isOnSearchBar,
+    setIsOnSearchBar,
+    radioButtonSearch,
+    setRadioButtonSearch,
+    debounceState: [debouncedValue, setDebouncedValue],
+    results: [data, setData],
+    dataBase: [db, setDB],
+    errorHandler: [error, setError],
     emailBool,
     setEmailBool,
     emailUser,

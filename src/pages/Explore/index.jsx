@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import RecipeAppContext from '../../context/Context';
+import Header from '../../components-global/Header';
 import Footer from '../../components-global/Footer';
 
 const Explore = () => {
@@ -11,6 +12,7 @@ const Explore = () => {
 
   return (
     <div>
+      <Header title={`Explorar ${type}`} hasSearchBar />
       <p>Explore: {type}</p>
       <p>Explore: {kindOfRecipe}</p>
       <Footer />
