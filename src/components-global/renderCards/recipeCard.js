@@ -1,14 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const RecipeCard = ({ details, dataBase }) => {
   console.log(details)
   console.log(dataBase)
 
-  const { [`id${dataBase}`]: id, [`str${dataBase}`]: recipe, [`str${dataBase}Thumb`]: img, strCategory: category } = details
+  const { [`id${dataBase}`]: id, [`str${dataBase}`]: recipe, [`str${dataBase}Thumb`]: img, strCategory: category } = details;
   console.log(id)
-  console.log(recipe)
-  console.log(img)
-  console.log(category)
 
   return (
     <div>
@@ -20,3 +18,8 @@ const RecipeCard = ({ details, dataBase }) => {
 };
 
 export default RecipeCard;
+
+RecipeCard.RecipeCard = {
+  details: PropTypes.object.isRequired,
+  dataBase: PropTypes.string.isRequired,
+};
