@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import propTypes from 'prop-types';
-
 import {
   favoriteLocal,
   initFavoriteParam,
@@ -112,46 +111,47 @@ const header = (strFood, data, favorite, setFavorite) => (
   </div>
 );
 
-const handleBtnMaking = () => {
-
+const handleBtnMaking = (history) => {
+  history.push('/receitas-feitas');
 };
 
-const handleBtnStart = (data) => {
+const handleBtnStart = (data, type, history) => {
   addProggress(data);
+  const id = data.id;
+  history.push(`/receitas/${type}/${id}/making`);
 };
 
-const btnMaking = () => (
+const btnMaking = (history) => (
   <button
     type="button"
     className="init"
     data-testid="start-recipe-btn"
-    onClick={() => handleBtnMaking()}
+    onClick={() => handleBtnMaking(history)}
   >
-    Making
+    Finalizar receita
   </button>
 );
 
-const btnStart = (data) => (
+const btnStart = (data, type, history) => (
   <button
     type="button"
     className="init"
     data-testid="start-recipe-btn"
-    onClick={() => handleBtnStart(data)}
+    onClick={() => handleBtnStart(data, type, history)}
   >
     {switchInit(proggressHasId(data))}
   </button>
 );
 
-const buttonSwitch = (making, data) => {
+const buttonSwitch = (making, data, type, history) => {
   if (making) {
-    return btnMaking();
+    return btnMaking(history);
   }
-  return btnStart(data);
+  return btnStart(data, type, history);
 };
 
-
 function Generics(props) {
-  const { data, making } = props;
+  const { data, making, type, history } = props;
   const [favorite, setFavorite] = useState(initFavoriteParam(data));
   const { strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients } = data;
   return (
@@ -164,7 +164,7 @@ function Generics(props) {
         {instruction(strInstructions)}
         {(making) ? <div /> : (video(strYoutube))}
         {(making) ? <div /> : recomended()}
-        {buttonSwitch(making, data)}
+        {buttonSwitch(making, data, type, history)}
       </div>
     </React.Fragment>
   );

@@ -69,12 +69,26 @@ const convertTypeToData = (type, andrey) => {
   }
 };
 
-const renderFood = (type, data, making) => {
+const renderFood = (type, data, making, history) => {
   switch (type) {
     case 'comida':
-      return <Meal convertTypeToData={convertTypeToData} data={data} making={making} />;
+      return (
+        <Meal
+          convertTypeToData={convertTypeToData}
+          data={data}
+          making={making}
+          type={type}
+          history={history}
+        />);
     case 'bebida':
-      return <Drink convertTypeToData={convertTypeToData} data={data} making={making} />;
+      return (
+        <Drink
+          convertTypeToData={convertTypeToData}
+          data={data}
+          making={making}
+          type={type}
+          history={history}
+        />);
     default:
       return null;
   }
@@ -89,7 +103,8 @@ const convertTypeToUrl = (type) => {
   }
 }
 
-const ItemId = () => {
+const ItemId = (props) => {
+  const { history } = props;
   const { fetchRecipe } = useContext(RecipeAppContext);
   const { type, id, making } = useParams();
   const [loading, setLoading] = useState(true);
@@ -105,7 +120,7 @@ const ItemId = () => {
 
   return (
     <div className="page_itemid">
-      {(loading) ? (<Loading />) : (renderFood(type, data, making))}
+      {(loading) ? (<Loading />) : (renderFood(type, data, making, history))}
     </div>
   );
 };

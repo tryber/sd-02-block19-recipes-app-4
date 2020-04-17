@@ -4,11 +4,16 @@ import propTypes from 'prop-types';
 import Generics from './Generics';
 
 function Drink(props) {
-  const { convertTypeToData, data, making } = props;
+  const { convertTypeToData, data, making, type, history } = props;
 
   return (
     <React.Fragment>
-      <Generics obj={convertTypeToData('bebida', data)} making={making} />
+      <Generics
+        data={convertTypeToData('bebida', data)}
+        making={making}
+        type={type}
+        history={history}
+      />
     </React.Fragment>
   );
 }
