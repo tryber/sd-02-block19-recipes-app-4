@@ -6,9 +6,7 @@ import RecipeAppContext from '../../context/Context';
 import './style/style.css';
 
 const Login = () => {
-  const context = useContext(RecipeAppContext);
-  const { emailBol, pass, submitLogin } = context;
-  // console.log(context);
+  const { emailBool, pass, submitLogin } = useContext(RecipeAppContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     submitLogin();
@@ -21,7 +19,7 @@ const Login = () => {
         <InputEmail />
         <InputPass />
         {/* <Link to="/comidas"> */}
-        {emailBol && pass
+        {emailBool && pass
         ? <button
           data-testid="login-submit-btn"
           onClick={(e) => handleSubmit(e)}

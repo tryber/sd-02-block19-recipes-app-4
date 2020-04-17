@@ -2,18 +2,17 @@ import React, { useContext } from 'react';
 import RecipeAppContext from '../../../context/Context';
 
 const InputEmail = () => {
-  const context = useContext(RecipeAppContext);
   const resultadoEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  const { setEmailBol, setEmail } = context;
+  const { setEmailBool, setEmailUser } = useContext(RecipeAppContext);
 
   const onChangeHandleEmail = (e) => {
     if (resultadoEmail.test(e.value)) {
-      setEmailBol(true);
-      setEmail(e.value);
+      setEmailBool(true);
+      setEmailUser(e.value);
       e.style.border = '1px solid green';
     } else {
       e.style.borderColor = 'red';
-      setEmailBol(false);
+      setEmailBool(false);
     }
   };
 

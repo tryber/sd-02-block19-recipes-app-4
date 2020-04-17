@@ -5,8 +5,8 @@ import recipeAPI from '../services/callAPI';
 
 const RecipeAppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [emailBol, setEmailBol] = useState(false);
-  const [emailUser, setEmail] = useState('');
+  const [emailBool, setEmailBool] = useState(false);
+  const [emailUser, setEmailUser] = useState('');
   const [pass, setPass] = useState(false);
   const [storage, setStorage] = useState({});
 
@@ -20,8 +20,8 @@ const RecipeAppProvider = ({ children }) => {
   const submitLogin = () => {
     localStorage.setItem('meals-token', 1);
     localStorage.setItem('cocktails-token', 1);
-    setStorage((state) => {
-      const dados = { ...state, email: emailUser };
+    setStorage(() => {
+      const dados = { email: emailUser };
       localStorage.setItem('user', JSON.stringify(dados));
       return dados;
     });
@@ -31,10 +31,10 @@ const RecipeAppProvider = ({ children }) => {
     isLoading,
     setIsLoading,
     fetchRecipe,
-    emailBol,
-    setEmailBol,
+    emailBool,
+    setEmailBool,
     emailUser,
-    setEmail,
+    setEmailUser,
     pass,
     setPass,
     submitLogin,

@@ -2,8 +2,7 @@ import React, { useContext } from 'react';
 import RecipeAppContext from '../../../context/Context';
 
 const InputPass = () => {
-  const context = useContext(RecipeAppContext);
-  const { setPass } = context;
+  const { setPass } = useContext(RecipeAppContext);
 
   const onChangeHandlePass = (e) => {
     if (e.value.length >= 6) {
