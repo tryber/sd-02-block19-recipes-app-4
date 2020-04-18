@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import context from '../../context/Context';
 import RecipeCard from './recipeCard';
+import './style/index.css';
 
 const RenderCards = () => {
   const { results: [data], dataBase: [db], selectedFilterContext: [selectedFilter] } = useContext(context);
@@ -18,7 +19,7 @@ const RenderCards = () => {
   if (!adjustedData) return <div>Sem resultados!</div>;
   console.log(adjustedData);
   return (
-    <div>
+    <div className="container-all-recipes">
       {adjustedData.map((recipe) => (
         <div key={JSON.stringify(recipe)}>
           <RecipeCard details={recipe} dataBase={prefix} />

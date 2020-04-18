@@ -1,0 +1,26 @@
+.recipe-card-container {
+  border: grey 1px solid;
+  border-radius: 1em;
+  box-shadow: 0.25em 0.25em grey;
+  margin: 0.5em;
+  width: 20em;
+  height: 20em;
+}
+
+.recipe-card-container .img-card {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.25em;
+  width: 75%;
+}
+
+.recipe-card-container .recipe-card {
+  color: black;
+  padding-left: 1vh;
+}
+
+.recipe-card-container .categorie-card {
+  color: grey;
+  padding-left: 1vh;
+}

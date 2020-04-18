@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './style/recipeCard.css';
 
 const RecipeCard = ({ details, dataBase }) => {
-  // console.log(details);
 
   const { [`id${dataBase}`]: id, [`str${dataBase}`]: recipe, [`str${dataBase}Thumb`]: img, strCategory: category } = details;
 
   return (
-    <div>
-      <img src={img} height="100px" alt={recipe} />
-      <h3>{category}</h3>
-      <h1>{recipe}</h1>
+    <div className="recipe-card-container">
+      <img className="img-card" src={img} alt={recipe} />
+      <div className="categorie-card">{category}</div>
+      <div className="recipe-card">{recipe}</div>
     </div>
   );
 };

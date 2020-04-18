@@ -36,7 +36,7 @@ const RecipeFilters = () => {
 
   return (
     <div>
-      {!isLoading && <div>{arrCategories.map((filter) => {
+      {!isLoading && <div className="btn-filter-container">{arrCategories.map((filter) => {
         return (
           <button
             key={filter}
