@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import context from '../../context/Context';
 import RecipeCard from './recipeCard';
+import Loading from '../Loading';
 import './style/index.css';
 
 const RenderCards = () => {
@@ -15,7 +16,7 @@ const RenderCards = () => {
     adjustedData = data.map(({ [minPrefix]: [returnedData] }) => returnedData);
     console.log(adjustedData);
   }
-  if (!adjustedData) return <div>Sem resultados!</div>;
+  if (!adjustedData) return <Loading />
   console.log(adjustedData);
   return (
     <div className="container-all-recipes">
