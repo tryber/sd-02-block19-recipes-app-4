@@ -11,9 +11,9 @@ const RenderCards = () => {
   let adjustedData = data.meals || data.drinks;
   console.log(data);
   console.log(selectedFilter);
-  if (selectedFilter === 'All' && data.length === 12) {
-    console.log(adjustedData);
+  if (data.length === 12) {
     adjustedData = data.map(({ [minPrefix]: [returnedData] }) => returnedData);
+    console.log(adjustedData);
   }
   if (!adjustedData) return <div>Sem resultados!</div>;
   console.log(adjustedData);
