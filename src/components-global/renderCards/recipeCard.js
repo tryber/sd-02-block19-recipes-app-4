@@ -2,11 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const RecipeCard = ({ details, dataBase }) => {
-  console.log(details);
-  console.log(dataBase);
+  // console.log(details);
 
   const { [`id${dataBase}`]: id, [`str${dataBase}`]: recipe, [`str${dataBase}Thumb`]: img, strCategory: category } = details;
-  console.log(id);
 
   return (
     <div>

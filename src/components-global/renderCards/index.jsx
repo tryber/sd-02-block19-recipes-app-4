@@ -3,10 +3,17 @@ import context from '../../context/Context';
 import RecipeCard from './recipeCard';
 
 const RenderCards = () => {
-  const { results: [data], dataBase: [db] } = useContext(context);
+  const { results: [data], dataBase: [db], selectedFilterContext: [selectedFilter] } = useContext(context);
   const prefix = db === 'themealdb' ? 'Meal' : 'Drink';
-  console.log(prefix);
-  const adjustedData = data.meals || data.drinks;
+  const minPrefix = db === 'themealdb' ? 'meals' : 'drinks';
+  let adjustedData = data.meals || data.drinks;
+  console.log(data);
+  if (selectedFilter === "All") {
+    console.log(adjustedData);
+    adjustedData = data.map(({ [minPrefix]: [returnedData]}) => {
+      return returnedData;
+    });
+  }
   if (!adjustedData) return <div>Sem resultados!</div>;
   console.log(adjustedData);
   return (

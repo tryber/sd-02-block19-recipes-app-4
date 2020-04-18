@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import context from '../../context/Context';
 import Header from '../../components-global/Header';
 import RenderCards from '../../components-global/renderCards';
+import RecipeFilters from './components/RecipeFilters';
+import Recipes from './components/Recipes';
 import Footer from '../../components-global/Footer';
 
 const Recipe = () => {
@@ -16,7 +18,8 @@ const Recipe = () => {
       {type === 'bebidas' && <Header title="Bebidas" hasSearchBar />}
       {isLoading && <ReactLoading type="spin" color="green" height={150} />}
       {!isLoading && <RenderCards />}
-      <p>Recipe: {type}</p>
+      <RecipeFilters />
+      <Recipes />
       <Footer />
     </div>
   );
