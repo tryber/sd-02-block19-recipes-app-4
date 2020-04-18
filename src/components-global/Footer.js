@@ -7,14 +7,14 @@ const setLinksProperly = (db, setDB, setSelectedFilter, setData) => {
   setDB(db);
   setSelectedFilter('All');
   setData([]);
-}
+};
 
 const linkToDrinks = (setDB, setSelectedFilter, setData) => (
   <Link
     data-testid="drinks-bottom-btn"
     to="/bebidas"
     onClick={() => {
-      setLinksProperly('thecocktaildb', setDB, setSelectedFilter, setData)
+      setLinksProperly('thecocktaildb', setDB, setSelectedFilter, setData);
     }}
   >
     <li><span className="material-icons">local_bar</span></li>
@@ -26,7 +26,7 @@ const linkToExplore = (setDB, setSelectedFilter, setData) => (
     to="/explorar"
     data-testid="explore-bottom-btn"
     onClick={() => {
-      setLinksProperly('themealdb', setDB, setSelectedFilter, setData)
+      setLinksProperly('themealdb', setDB, setSelectedFilter, setData);
     }}
 
   >
@@ -39,7 +39,7 @@ const linkToFood = (setDB, setSelectedFilter, setData) => (
     data-testid="food-bottom-btn"
     to="/comidas"
     onClick={() => {
-      setLinksProperly('themealdb', setDB, setSelectedFilter, setData)
+      setLinksProperly('themealdb', setDB, setSelectedFilter, setData);
     }}
   >
     <li><span className="material-icons">local_pizza</span></li>
@@ -48,7 +48,7 @@ const linkToFood = (setDB, setSelectedFilter, setData) => (
 
 const Footer = () => {
   const { dataBase: [, setDB], selectedFilterContext: [, setSelectedFilter],
-    results: [,setData]
+    results: [, setData]
   } = useContext(context);
   return (
     <div className="footer-container">

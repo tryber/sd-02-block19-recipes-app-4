@@ -14,7 +14,7 @@
 
 .btn-filter-container button {
   border-radius: 1em;
-  width: 25%;
-  margin: 1em 0.25em 0.1em 0.5em;
   font-size: 1em;
+  margin: 1em 0.25em 0.1em 0.5em;
+  width: 25%;
 }

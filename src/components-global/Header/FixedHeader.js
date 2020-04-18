@@ -5,15 +5,15 @@ import context from '../../context/Context';
 import './style/FixedHeader.css';
 
 const FixedHeader = ({ title, hasSearchBar }) => {
-  const { isOnSearchBar, setIsOnSearchBar, defaultSettings
-     } = useContext(context);
+  const { isOnSearchBar, setIsOnSearchBar, defaultSettings,
+  } = useContext(context);
 
   const toggleClick = () => {
     if (!isOnSearchBar) {
       defaultSettings();
-    };
+    }
     setIsOnSearchBar(!isOnSearchBar);
-  }
+  };
   return (
     <div>
       <nav className="header-container">

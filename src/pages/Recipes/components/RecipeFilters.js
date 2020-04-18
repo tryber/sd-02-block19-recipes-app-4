@@ -8,9 +8,9 @@ const selectedFilterClass = (filter, selectedFilter) => {
 };
 
 const selectFilterOnClick = (filter, selectedFilter, setSelectedFilter, setData) => {
-  if (filter === selectedFilter) { setSelectedFilter("All") }
+  if (filter === selectedFilter) setSelectedFilter('All');
   else setSelectedFilter(filter);
-  setData([])
+  setData([]);
 };
 
 const RecipeFilters = () => {
@@ -22,7 +22,7 @@ const RecipeFilters = () => {
   const getFilters = (response) => {
     setCategories(response);
     setIsLoading(false);
-  }
+  };
 
   const categoriesList = categories.meals || categories.drinks || [];
   const arrCategories = ['All', ...categoriesList.filter((categorie, index) => {
@@ -31,7 +31,7 @@ const RecipeFilters = () => {
 
   useEffect(() => {
     setIsLoading('true');
-    fetchRecipe(db, "list.php?c=list", getFilters);
+    fetchRecipe(db, 'list.php?c=list', getFilters);
   }, [db]);
 
   return (
@@ -44,10 +44,10 @@ const RecipeFilters = () => {
             onClick={() => selectFilterOnClick(filter, selectedFilter, setSelectedFilter, setData)}
             data-testid={`${filter}-category-filter`}
           >{filter}
-          </button>)
+          </button>);
       })}</div>}
     </div>
   );
-}
+};
 
 export default RecipeFilters;

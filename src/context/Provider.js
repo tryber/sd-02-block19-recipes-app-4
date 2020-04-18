@@ -27,10 +27,10 @@ const RecipeAppProvider = ({ children }) => {
 
   const defaultSettings = () => {
     setData([]);
-    setSearchBarInput("");
+    setSearchBarInput('');
     setRadioButtonSearch('');
-    setSelectedFilter("All");
-  };  
+    setSelectedFilter('All');
+  };
 
   const submitLogin = () => {
     localStorage.setItem('meals-token', 1);

@@ -1,7 +1,6 @@
 .container-all-recipes {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding: 1em;
+  flex-flow: row wrap;
   justify-content: center;
+  padding: 1em;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import FixedHeader from './FixedHeader';
 import HiddenableHeader from './HiddenableHeader';
