@@ -4,10 +4,9 @@ import RenderCards from '../../../components-global/renderCards';
 
 const Recipes = () => {
   const { dataBase: [db], fetchRecipe, selectedFilterContext: [selectedFilter],
-    results: [data, setData],
+    results: [, setData],
   } = useContext(context);
   const randomMeals = (response) => {
-    console.log(response.meals || response.drinks);
     setData((prevData) => [...prevData, response]);
   };
   useEffect(() => {
@@ -20,7 +19,6 @@ const Recipes = () => {
       }
     }
     return () => {
-      console.log('desmontou');
       setData([]);
     };
   }, [selectedFilter]);
