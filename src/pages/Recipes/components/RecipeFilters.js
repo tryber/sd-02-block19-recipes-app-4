@@ -25,9 +25,10 @@ const RecipeFilters = () => {
   };
 
   const categoriesList = categories.meals || categories.drinks || [];
-  const arrCategories = ['All', ...categoriesList.filter((categorie, index) => {
-    return (index < 5);
-  }).map(({ strCategory }) => strCategory)];
+  const arrCategories = ['All',
+    ...categoriesList
+      .filter((categorie, index) => index < 5)
+      .map(({ strCategory }) => strCategory)];
 
   useEffect(() => {
     setIsLoading('true');
@@ -36,16 +37,15 @@ const RecipeFilters = () => {
 
   return (
     <div>
-      {!isLoading && <div className="btn-filter-container">{arrCategories.map((filter) => {
-        return (
-          <button
-            key={filter}
-            className={selectedFilterClass(filter, selectedFilter)}
-            onClick={() => selectFilterOnClick(filter, selectedFilter, setSelectedFilter, setData)}
-            data-testid={`${filter}-category-filter`}
-          >{filter}
-          </button>);
-      })}</div>}
+      {!isLoading && <div className="btn-filter-container">{arrCategories.map((filter) => (
+        <button
+          key={filter}
+          className={selectedFilterClass(filter, selectedFilter)}
+          onClick={() => selectFilterOnClick(filter, selectedFilter, setSelectedFilter, setData)}
+          data-testid={`${filter}-category-filter`}
+        >{filter}
+        </button>
+      ))}</div>}
     </div>
   );
 };

@@ -7,9 +7,7 @@ const Recipes = () => {
     results: [, setData],
   } = useContext(context);
   const randomMeals = (response) => {
-    setData((prevData) => {
-      return [...prevData, response];
-    });
+    setData((prevData) => [...prevData, response]);
   };
   useEffect(() => {
     if (selectedFilter !== 'All') {
@@ -22,7 +20,7 @@ const Recipes = () => {
     }
     return () => {
       console.log('desmontou');
-      setData([])
+      setData([]);
     };
   }, [selectedFilter]);
 

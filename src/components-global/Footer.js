@@ -48,7 +48,7 @@ const linkToFood = (setDB, setSelectedFilter, setData) => (
 
 const Footer = () => {
   const { dataBase: [, setDB], selectedFilterContext: [, setSelectedFilter],
-    results: [, setData]
+    results: [, setData],
   } = useContext(context);
   return (
     <div className="footer-container">
