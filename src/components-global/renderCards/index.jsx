@@ -9,9 +9,9 @@ const RenderCards = () => {
   let adjustedData = data.meals || data.drinks;
   console.log(data);
   console.log(selectedFilter);
-  if (selectedFilter === "All") {
+  if (selectedFilter === 'All' && data.length === 12) {
     console.log(adjustedData);
-    adjustedData = data.map(({ [minPrefix]: [returnedData]}) => {
+    adjustedData = data.map(({ [minPrefix]: [returnedData] }) => {
       return returnedData;
     });
   }
@@ -20,7 +20,7 @@ const RenderCards = () => {
   return (
     <div>
       {adjustedData.map((recipe) => (
-        <div>
+        <div key={JSON.stringify(recipe)}>
           <RecipeCard details={recipe} dataBase={prefix} />
         </div>
       ))}

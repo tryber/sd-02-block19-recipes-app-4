@@ -8,7 +8,6 @@ const Recipes = () => {
   } = useContext(context);
   const randomMeals = (response) => {
     setData((prevData) => {
-      // console.log(prevData)
       return [...prevData, response]
     });
   }

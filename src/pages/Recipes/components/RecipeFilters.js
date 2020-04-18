@@ -15,9 +15,14 @@ const selectFilterOnClick = (filter, selectedFilter, setSelectedFilter, setData)
 
 const RecipeFilters = () => {
   const { dataBase: [db], fetchRecipe, selectedFilterContext: [selectedFilter, setSelectedFilter],
-    results: [, setData],
+    results: [, setData], setIsLoading, isLoading,
   } = useContext(context);
   const [categories, setCategories] = useState([]);
+
+  const getFilters = (response) => {
+    setCategories(response);
+    setIsLoading(false);
+  }
 
   const categoriesList = categories.meals || categories.drinks || [];
   const arrCategories = ['All', ...categoriesList.filter((categorie, index) => {
@@ -25,20 +30,23 @@ const RecipeFilters = () => {
   }).map(({ strCategory }) => strCategory)];
 
   useEffect(() => {
-    fetchRecipe(db, "list.php?c=list", setCategories);
+    setIsLoading('true');
+    fetchRecipe(db, "list.php?c=list", getFilters);
   }, [db]);
 
   return (
-    <div>{arrCategories.map((filter) => {
-      return (
-        <button
-          key={filter}
-          className={selectedFilterClass(filter, selectedFilter)}
-          onClick={() => selectFilterOnClick(filter, selectedFilter, setSelectedFilter, setData)}
-          data-testid={`${filter}-category-filter`}
-        >{filter}
-        </button>)
-    })}</div>
+    <div>
+      {!isLoading && <div>{arrCategories.map((filter) => {
+        return (
+          <button
+            key={filter}
+            className={selectedFilterClass(filter, selectedFilter)}
+            onClick={() => selectFilterOnClick(filter, selectedFilter, setSelectedFilter, setData)}
+            data-testid={`${filter}-category-filter`}
+          >{filter}
+          </button>)
+      })}</div>}
+    </div>
   );
 }
 

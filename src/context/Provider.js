@@ -16,7 +16,7 @@ const RecipeAppProvider = ({ children }) => {
   const [emailUser, setEmailUser] = useState('');
   const [pass, setPass] = useState(false);
   const [storage, setStorage] = useState({});
-  const [selectedFilter, setSelectedFilter] = useState('All')
+  const [selectedFilter, setSelectedFilter] = useState('All');
 
   const fetchRecipe = (type, search, toDoFunction) => {
     recipeAPI(type, search)
@@ -24,6 +24,13 @@ const RecipeAppProvider = ({ children }) => {
         (respError) => setError(respError),
       );
   };
+
+  const defaultSettings = () => {
+    setData([]);
+    setSearchBarInput("");
+    setRadioButtonSearch('');
+    setSelectedFilter("All");
+  };  
 
   const submitLogin = () => {
     localStorage.setItem('meals-token', 1);
@@ -59,6 +66,7 @@ const RecipeAppProvider = ({ children }) => {
     storage,
     setStorage,
     selectedFilterContext: [selectedFilter, setSelectedFilter],
+    defaultSettings,
   };
 
   return (
