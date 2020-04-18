@@ -7,13 +7,15 @@ const selectedFilterClass = (filter, selectedFilter) => {
   return 'not-selected-border';
 };
 
-const selectFilterOnClick = (filter, selectedFilter, setSelectedFilter) => {
+const selectFilterOnClick = (filter, selectedFilter, setSelectedFilter, setData) => {
   if (filter === selectedFilter) { setSelectedFilter("All") }
   else setSelectedFilter(filter);
+  setData([])
 };
 
 const RecipeFilters = () => {
   const { dataBase: [db], fetchRecipe, selectedFilterContext: [selectedFilter, setSelectedFilter],
+    results: [, setData],
   } = useContext(context);
   const [categories, setCategories] = useState([]);
 
@@ -32,13 +34,12 @@ const RecipeFilters = () => {
         <button
           key={filter}
           className={selectedFilterClass(filter, selectedFilter)}
-          onClick={() => selectFilterOnClick(filter, selectedFilter, setSelectedFilter)}
+          onClick={() => selectFilterOnClick(filter, selectedFilter, setSelectedFilter, setData)}
           data-testid={`${filter}-category-filter`}
         >{filter}
         </button>)
     })}</div>
-  )
-
+  );
 }
 
 export default RecipeFilters;

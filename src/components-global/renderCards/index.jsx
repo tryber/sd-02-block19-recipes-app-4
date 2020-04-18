@@ -8,6 +8,7 @@ const RenderCards = () => {
   const minPrefix = db === 'themealdb' ? 'meals' : 'drinks';
   let adjustedData = data.meals || data.drinks;
   console.log(data);
+  console.log(selectedFilter);
   if (selectedFilter === "All") {
     console.log(adjustedData);
     adjustedData = data.map(({ [minPrefix]: [returnedData]}) => {

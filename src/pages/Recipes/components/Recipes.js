@@ -21,7 +21,11 @@ const Recipes = () => {
         fetchRecipe(db, "random.php", randomMeals)
       }
     }
+    return () => {
+      console.log('desmontou')
+      setData([])};
   }, [selectedFilter]);
+  
   return (
     <div>
       <RenderCards />
