@@ -13,9 +13,18 @@ const selectFilterOnClick = (filter, selectedFilter, setSelectedFilter, setData)
   setData([]);
 };
 
+const disableFuncBtnFilter = (selectedFilter, data) => {
+  switch (selectedFilter) {
+    case ("All"):
+      return (data.length !== 12);
+    default:
+      return false;
+  }
+};
+
 const RecipeFilters = () => {
   const { dataBase: [db], fetchRecipe, selectedFilterContext: [selectedFilter, setSelectedFilter],
-    results: [, setData], setIsLoading, isLoading,
+    results: [data, setData], setIsLoading, isLoading,
   } = useContext(context);
   const [categories, setCategories] = useState([]);
 
@@ -43,6 +52,7 @@ const RecipeFilters = () => {
           className={selectedFilterClass(filter, selectedFilter)}
           onClick={() => selectFilterOnClick(filter, selectedFilter, setSelectedFilter, setData)}
           data-testid={`${filter}-category-filter`}
+          disabled={disableFuncBtnFilter(selectedFilter, data)}
         >{filter}
         </button>
       ))}</div>}

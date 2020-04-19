@@ -4,8 +4,7 @@ import RenderCards from '../../../components-global/renderCards';
 
 const Recipes = () => {
   const { dataBase: [db], fetchRecipe, selectedFilterContext: [selectedFilter],
-    results: [, setData],
-  } = useContext(context);
+    results: [, setData] } = useContext(context);
   const randomMeals = (response) => {
     setData((prevData) => [...prevData, response]);
   };
