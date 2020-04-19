@@ -15,7 +15,7 @@ const selectFilterOnClick = (filter, selectedFilter, setSelectedFilter, setData)
 
 const disableFuncBtnFilter = (selectedFilter, data) => {
   switch (selectedFilter) {
-    case ("All"):
+    case ('All'):
       return (data.length !== 12);
     default:
       return false;
@@ -24,8 +24,7 @@ const disableFuncBtnFilter = (selectedFilter, data) => {
 
 const RecipeFilters = () => {
   const { dataBase: [db], fetchRecipe, selectedFilterContext: [selectedFilter, setSelectedFilter],
-    results: [data, setData], setIsLoading, isLoading,
-  } = useContext(context);
+    results: [data, setData], setIsLoading, isLoading } = useContext(context);
   const [categories, setCategories] = useState([]);
 
   const getFilters = (response) => {

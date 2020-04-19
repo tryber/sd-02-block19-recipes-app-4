@@ -11,10 +11,14 @@ const RecipeCard = ({ details, dataBase }) => {
   const history = useHistory();
   const { [`id${dataBase}`]: id, [`str${dataBase}`]: recipe, [`str${dataBase}Thumb`]: img, strCategory: category } = details;
   return (
-    <div onClick={()=> goToId(id, history, dataBase)} className="recipe-card-container">
+    <div className="recipe-card-container">
       <img className="img-card" src={img} alt={recipe} />
       <div className="categorie-card">{category}</div>
       <div className="recipe-card">{recipe}</div>
+      <a
+        onClick={() => goToId(id, history, dataBase)}
+        className="btn-ver-mais"
+      >Visitar receita!</a>
     </div>
   );
 };

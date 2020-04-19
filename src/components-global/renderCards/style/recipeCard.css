@@ -24,3 +24,12 @@
   color: grey;
   padding-left: 1vh;
 }
+
+.recipe-card-container .btn-ver-mais {
+  padding-left: 1vh;
+  text-decoration: underline;  
+}
+
+.recipe-card-container .btn-ver-mais:hover {
+color: blue;
+}

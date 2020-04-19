@@ -17,7 +17,6 @@ const RecipeAppProvider = ({ children }) => {
   const [pass, setPass] = useState(false);
   const [storage, setStorage] = useState({});
   const [selectedFilter, setSelectedFilter] = useState('All');
-  const [disabledButton, setDisabledButton] = useState(true);
 
   const fetchRecipe = (type, search, toDoFunction) => {
     recipeAPI(type, search)
@@ -31,7 +30,6 @@ const RecipeAppProvider = ({ children }) => {
     setSearchBarInput('');
     setRadioButtonSearch('');
     setSelectedFilter('All');
-    setDisabledButton(true);
   };
 
   const submitLogin = () => {
