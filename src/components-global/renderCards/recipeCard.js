@@ -15,10 +15,10 @@ const RecipeCard = ({ details, dataBase }) => {
       <img className="img-card" src={img} alt={recipe} />
       <div className="categorie-card">{category}</div>
       <div className="recipe-card">{recipe}</div>
-      <a
+      <button
         onClick={() => goToId(id, history, dataBase)}
         className="btn-ver-mais"
-      >Visitar receita!</a>
+      >Visitar receita!</button>
     </div>
   );
 };

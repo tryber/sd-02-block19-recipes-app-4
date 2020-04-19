@@ -26,10 +26,12 @@
 }
 
 .recipe-card-container .btn-ver-mais {
+  background-color: white;
+  border: none;
   padding-left: 1vh;
-  text-decoration: underline;  
+  text-decoration: underline;
 }
 
 .recipe-card-container .btn-ver-mais:hover {
-color: blue;
+  color: blue;
 }
