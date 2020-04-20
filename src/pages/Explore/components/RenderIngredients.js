@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import context from '../../../context/Context';
 import '../style/renderIngredients.css';
 
@@ -11,18 +11,17 @@ const RenderIngredients = () => {
 
   return (
     <div className="render-ing-container">
-      {ingredientsArray.map(ing => {
-        return (
-          <div className="card-ing" key={ing[adjustedName]}>
-            <p>{ing[adjustedName]}</p>
-            <img
-              src={
-                `https://www.${adjustedDB}.com/images/ingredients/${ing[adjustedName]}-Small.png`
-              }
-              alt={ing[adjustedName]} />
-          </div>
-        )
-      })}
+      {ingredientsArray.map((ing) => (
+        <div className="card-ing" key={ing[adjustedName]}>
+          <p>{ing[adjustedName]}</p>
+          <img
+            src={
+              `https://www.${adjustedDB}.com/images/ingredients/${ing[adjustedName]}-Small.png`
+            }
+            alt={ing[adjustedName]}
+          />
+        </div>
+      ))}
     </div>
   )
 }

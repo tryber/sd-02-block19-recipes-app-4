@@ -14,8 +14,7 @@ const ByIngredient = () => {
   const getIngredients = (response) => {
     setIngredients(response);
     setSearchingIngredients(false);
-  }
-
+  };
 
   useEffect(() => {
     fetchRecipe(returnDB(type), 'list.php?i=list', getIngredients);
