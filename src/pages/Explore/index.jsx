@@ -1,20 +1,24 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import RecipeAppContext from '../../context/Context';
 import Header from '../../components-global/Header';
+import BtnExplore from './components/BtnExplore';
 import Footer from '../../components-global/Footer';
 
 const Explore = () => {
-  const context = useContext(RecipeAppContext);
-  const { type, kindOfRecipe } = useParams();
 
-  console.log(context);
+  const { type } = useParams();
+
+  console.log(type)
+
+  const { results: [data, setData] } = useContext(RecipeAppContext);
+
+  useEffect(() => { setData('themealdb') }, []);
 
   return (
     <div>
-      <Header title={`Explorar ${type}`} hasSearchBar />
-      <p>Explore: {type}</p>
-      <p>Explore: {kindOfRecipe}</p>
+      <Header title={`Explorar`} hasSearchBar />
+      {!type && <BtnExplore />}
       <Footer />
     </div>
   );
