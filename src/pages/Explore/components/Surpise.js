@@ -1,19 +1,18 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import context from '../../../context/Context';
 import Loading from '../../../components-global/Loading';
 
-const Surprise = () => {
+const returnDB = () => {
+  if (type === 'bebidas') return 'thecocktaildb';
+  return 'themealdb';
+};
 
+const Surprise = () => {
   const { fetchRecipe } = useContext(context);
 
   const history = useHistory();
   const { type } = useParams();
-
-  const returnDB = () => {
-    if (type === 'comidas') return 'themealdb'
-    if (type === 'bebidas') return 'thecocktaildb'
-  }
 
   const changeHistory = (response) => {
     console.log(response);
@@ -24,11 +23,10 @@ const Surprise = () => {
   }
 
   useEffect(() => {
-    fetchRecipe(returnDB(), 'random.php', changeHistory);
+    fetchRecipe(returnDB(type), 'random.php', changeHistory);
   }, []);
 
-
-  return <Loading />
+  return <Loading />;
 };
 
 export default Surprise;

@@ -10,13 +10,12 @@ import Surpise from './components/Surpise';
 import Footer from '../../components-global/Footer';
 
 const adjustTitle = (type, kindOfRecipe) => {
-  if (!type && !kindOfRecipe) return "Explorar";
+  if (!type && !kindOfRecipe) return 'Explorar';
   if (type && !kindOfRecipe) return `Explorar ${type}`;
   return `Explorar ${kindOfRecipe}`;
 };
 
 const Explore = () => {
-
   const { type, kindOfRecipe } = useParams();
 
   const { results: [, setData] } = useContext(RecipeAppContext);

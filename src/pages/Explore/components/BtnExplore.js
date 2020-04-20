@@ -10,8 +10,8 @@ const BtnExplore = () => {
 
   return (
     <div>
-      <button onClick={()=> changeRoute('comidas')}>Explorar Comidas</button>
-      <button onClick={()=> changeRoute('bebidas')}>Explorar Bebidas</button>
+      <button onClick={() => changeRoute('comidas')}>Explorar Comidas</button>
+      <button onClick={() => changeRoute('bebidas')}>Explorar Bebidas</button>
     </div>
   );
 };
