@@ -19,8 +19,6 @@ const Explore = () => {
 
   const { type, kindOfRecipe } = useParams();
 
-  console.log(type, kindOfRecipe);
-
   const { results: [, setData] } = useContext(RecipeAppContext);
 
   useEffect(() => { setData('themealdb') }, []);
