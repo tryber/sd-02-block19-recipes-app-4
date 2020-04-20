@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import context from '../../../context/Context';
+import Loading from '../../../components-global/Loading';
+import RenderIngredients from './RenderIngredients';
+import returnDB from '../../../services/returnDB';
 
 const ByIngredient = () => {
-  console.log('oi');
+  const [searchingIngredients, setSearchingIngredients] = useState(true);
+
+  const { fetchRecipe, ing: [, setIngredients] } = useContext(context);
+  const { type } = useParams();
+
+  const getIngredients = (response) => {
+    setIngredients(response);
+    setSearchingIngredients(false);
+  }
+
+
+  useEffect(() => {
+    fetchRecipe(returnDB(type), 'list.php?i=list', getIngredients);
+  }, []);
+
   return (
     <div>
-      <p>Ingredient</p>
+      {searchingIngredients && <Loading />}
+      {!searchingIngredients && <RenderIngredients />}
     </div>
   );
 };

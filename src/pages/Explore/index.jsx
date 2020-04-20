@@ -27,8 +27,8 @@ const Explore = () => {
       <Header title={adjustTitle(type, kindOfRecipe)} hasSearchBar />
       {!type && !kindOfRecipe && <BtnExplore />}
       {type && !kindOfRecipe && <BtnKindOfRecipe />}
-      {type && kindOfRecipe === 'by-ingredient' && <ByIngredient />}
-      {type && kindOfRecipe === 'by-orign' && <ByOrign />}
+      {type && kindOfRecipe === 'ingredientes' && <ByIngredient />}
+      {type && kindOfRecipe === 'area' && <ByOrign />}
       {type && kindOfRecipe === 'surprise-me' && <Surpise />}
       <Footer />
     </div>

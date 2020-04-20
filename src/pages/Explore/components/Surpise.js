@@ -2,11 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import context from '../../../context/Context';
 import Loading from '../../../components-global/Loading';
-
-const returnDB = (type) => {
-  if (type === 'bebidas') return 'thecocktaildb';
-  return 'themealdb';
-};
+import returnDB from '../../../services/returnDB';
 
 const Surprise = () => {
   const { fetchRecipe } = useContext(context);

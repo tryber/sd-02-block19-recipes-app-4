@@ -16,6 +16,7 @@ const RecipeAppProvider = ({ children }) => {
   const [emailUser, setEmailUser] = useState('');
   const [pass, setPass] = useState(false);
   const [storage, setStorage] = useState({});
+  const [ingredients, setIngredients] = useState([]);
 
   const fetchRecipe = (type, search, toDoFunction) => {
     recipeAPI(type, search)
@@ -57,6 +58,7 @@ const RecipeAppProvider = ({ children }) => {
     submitLogin,
     storage,
     setStorage,
+    ing: [ingredients, setIngredients],
   };
 
   return (

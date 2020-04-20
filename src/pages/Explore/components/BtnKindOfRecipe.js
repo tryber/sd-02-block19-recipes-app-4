@@ -11,9 +11,9 @@ const BtnKindOfRecipe = () => {
 
   return (
     <div>
-      <button onClick={() => changeRoute('by-ingredient')}>Por ingredientes</button>
+      <button onClick={() => changeRoute('ingredientes')}>Por ingredientes</button>
       {type !== 'bebidas' &&
-        <button onClick={() => changeRoute('by-orign')}>Por local de origem</button>}
+        <button onClick={() => changeRoute('area')}>Por local de origem</button>}
       <button onClick={() => changeRoute('surprise-me')}>Me surpreenda!</button>
     </div>
   );
