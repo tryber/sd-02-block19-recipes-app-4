@@ -3,22 +3,36 @@ import { useParams } from 'react-router-dom';
 import RecipeAppContext from '../../context/Context';
 import Header from '../../components-global/Header';
 import BtnExplore from './components/BtnExplore';
+import BtnKindOfRecipe from './components/BtnKindOfRecipe';
+import ByIngredient from './components/ByIngredient';
+import ByOrign from './components/ByOrign';
+import Surpise from './components/Surpise';
 import Footer from '../../components-global/Footer';
+
+const adjustTitle = (type, kindOfRecipe) => {
+  if (!type && !kindOfRecipe) return "Explorar";
+  if (type && !kindOfRecipe) return `Explorar ${type}`;
+  return `Explorar ${kindOfRecipe}`;
+};
 
 const Explore = () => {
 
-  const { type } = useParams();
+  const { type, kindOfRecipe } = useParams();
 
-  console.log(type)
+  console.log(type, kindOfRecipe);
 
-  const { results: [data, setData] } = useContext(RecipeAppContext);
+  const { results: [, setData] } = useContext(RecipeAppContext);
 
   useEffect(() => { setData('themealdb') }, []);
 
   return (
     <div>
-      <Header title={`Explorar`} hasSearchBar />
-      {!type && <BtnExplore />}
+      <Header title={adjustTitle(type, kindOfRecipe)} hasSearchBar />
+      {!type && !kindOfRecipe && <BtnExplore />}
+      {type && !kindOfRecipe && <BtnKindOfRecipe />}
+      {type && kindOfRecipe === 'by-ingredient' && <ByIngredient />}
+      {type && kindOfRecipe === 'by-orign' && <ByOrign />}
+      {type && kindOfRecipe === 'surprise-me' && <Surpise />}
       <Footer />
     </div>
   );
