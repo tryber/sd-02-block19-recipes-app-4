@@ -3,7 +3,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import context from '../../../context/Context';
 import Loading from '../../../components-global/Loading';
 
-const returnDB = () => {
+const returnDB = (type) => {
   if (type === 'bebidas') return 'thecocktaildb';
   return 'themealdb';
 };
@@ -20,7 +20,7 @@ const Surprise = () => {
     const { idDrink, idMeal } = route[0];
     const id = idDrink || idMeal;
     history.push(`/${type}/${id}`);
-  }
+  };
 
   useEffect(() => {
     fetchRecipe(returnDB(type), 'random.php', changeHistory);

@@ -20,7 +20,7 @@ const Explore = () => {
 
   const { results: [, setData] } = useContext(RecipeAppContext);
 
-  useEffect(() => { setData('themealdb') }, []);
+  useEffect(() => { setData('themealdb'); }, []);
 
   return (
     <div>
