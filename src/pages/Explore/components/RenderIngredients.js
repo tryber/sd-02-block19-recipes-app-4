@@ -23,7 +23,7 @@ const RenderIngredients = () => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
 export default RenderIngredients;
