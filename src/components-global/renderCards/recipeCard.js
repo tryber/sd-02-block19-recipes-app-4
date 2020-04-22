@@ -1,18 +1,24 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import './style/recipeCard.css';
+
+const goToId = (id, history, db) => {
+  history.push(`/receitas/${db === 'themealdb' ? 'meals' : 'drinks'}/${id}`);
+};
 
 const RecipeCard = ({ details, dataBase }) => {
-  console.log(details);
-  console.log(dataBase);
-
+  const history = useHistory();
   const { [`id${dataBase}`]: id, [`str${dataBase}`]: recipe, [`str${dataBase}Thumb`]: img, strCategory: category } = details;
-  console.log(id);
-
   return (
-    <div>
-      <img src={img} height="100px" alt={recipe} />
-      <h3>{category}</h3>
-      <h1>{recipe}</h1>
+    <div className="recipe-card-container">
+      <img className="img-card" src={img} alt={recipe} />
+      <div className="categorie-card">{category}</div>
+      <div className="recipe-card">{recipe}</div>
+      <button
+        onClick={() => goToId(id, history, dataBase)}
+        className="btn-ver-mais"
+      >Visitar receita!</button>
     </div>
   );
 };
