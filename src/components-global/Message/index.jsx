@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import propTypes from 'prop-types';
+
 import './style.css';
 
 function render(message) {
@@ -21,6 +23,12 @@ const Message = (props) => {
       {show ? render(message) : <div />}
     </React.Fragment>
   );
+};
+
+Message.propTypes = {
+  message: propTypes.string.isRequired,
+  show: propTypes.bool.isRequired,
+  setShow: propTypes.func.isRequired,
 };
 
 export default Message;

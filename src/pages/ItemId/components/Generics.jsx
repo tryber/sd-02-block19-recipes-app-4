@@ -224,6 +224,6 @@ Generics.propTypes = {
 
 Generics.defaultProps = {
   making: undefined,
-}
+};
 
 export default Generics;

@@ -26,6 +26,6 @@ Meal.propTypes = {
 
 Meal.defaultProps = {
   making: undefined,
-}
+};
 
 export default Meal;

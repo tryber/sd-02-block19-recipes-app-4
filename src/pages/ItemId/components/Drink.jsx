@@ -26,6 +26,6 @@ Drink.propTypes = {
 
 Drink.defaultProps = {
   making: undefined,
-}
+};
 
 export default Drink;
