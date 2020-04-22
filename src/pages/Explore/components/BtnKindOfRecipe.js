@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import '../style/BtnExplore.css';
 
 const BtnKindOfRecipe = () => {
   const history = useHistory();
@@ -10,7 +11,7 @@ const BtnKindOfRecipe = () => {
   };
 
   return (
-    <div>
+    <div className="btn-explore-container">
       <button onClick={() => changeRoute('ingredientes')}>Por ingredientes</button>
       {type !== 'bebidas' &&
         <button onClick={() => changeRoute('area')}>Por local de origem</button>}
