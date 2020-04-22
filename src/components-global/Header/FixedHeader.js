@@ -1,16 +1,19 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import RecipeAppContext from '../../context/Context';
+import context from '../../context/Context';
 import './style/FixedHeader.css';
 
 const FixedHeader = ({ title, hasSearchBar }) => {
-  const { isOnSearchBar, setIsOnSearchBar } = useContext(RecipeAppContext);
+  const { isOnSearchBar, setIsOnSearchBar, defaultSettings,
+  } = useContext(context);
 
   const toggleClick = () => {
+    if (!isOnSearchBar) {
+      defaultSettings();
+    }
     setIsOnSearchBar(!isOnSearchBar);
   };
-
   return (
     <div>
       <nav className="header-container">

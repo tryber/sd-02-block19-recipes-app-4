@@ -17,12 +17,21 @@ const RecipeAppProvider = ({ children }) => {
   const [pass, setPass] = useState(false);
   const [storage, setStorage] = useState({});
   const [ingredients, setIngredients] = useState([]);
+  const [selectedFilter, setSelectedFilter] = useState('All');
+
 
   const fetchRecipe = (type, search, toDoFunction) => {
     recipeAPI(type, search)
       .then((response) => toDoFunction(response),
         (respError) => setError(respError),
       );
+  };
+
+  const defaultSettings = () => {
+    setData([]);
+    setSearchBarInput('');
+    setRadioButtonSearch('');
+    setSelectedFilter('All');
   };
 
   const submitLogin = () => {
@@ -59,6 +68,8 @@ const RecipeAppProvider = ({ children }) => {
     storage,
     setStorage,
     ing: [ingredients, setIngredients],
+    selectedFilterContext: [selectedFilter, setSelectedFilter],
+    defaultSettings,
   };
 
   return (
