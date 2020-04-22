@@ -26,7 +26,7 @@
   background: white;
 }
 
-.r {
+#r1 , #r2 , #r3 {
   position: absolute;
   visibility: hidden;
 }
@@ -47,14 +47,14 @@
   width: 100%;
 }
 
-.r1:checked ~ .s1 {
+#r1:checked ~ .s1 {
   margin-left: 0;
 }
 
-.r2:checked ~ .s1 {
+#r2:checked ~ .s1 {
   margin-left: -20%;
 }
 
-.r3:checked ~ .s1 {
+#r3:checked ~ .s1 {
   margin-left: -40%;
 }

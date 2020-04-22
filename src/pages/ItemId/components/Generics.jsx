@@ -6,6 +6,7 @@ import {
 } from '../services/favorite';
 import { proggressHasId, addProggress } from '../services/proggress';
 import Carousel from './Carousel';
+import Message from '../../../components-global/Message';
 
 const recomended = () => (
   <div className="recomended">
@@ -111,11 +112,16 @@ const btnFavorite = (data, setFavorite) => {
   favoriteLocal(data, setFavorite);
 };
 
-const header = (strFood, data, favorite, setFavorite) => (
+const btnShare = (setShow) => {
+  setShow(true);
+  window.navigator.clipboard.writeText(window.location.href);
+};
+
+const header = (strFood, data, favorite, setFavorite, setShow) => (
   <div className="header">
     <p className="title" data-testid="recipe-title">{strFood}</p>
     <div>
-      <button type="button" data-testid="share-btn">
+      <button type="button" data-testid="share-btn" onClick={() => btnShare(setShow)}>
         <span className="material-icons">
           share
         </span>
@@ -190,12 +196,13 @@ function Generics(props) {
   const [checks, setChecks] = useState(initChecks(ingridients));
   const [allChecked, setAllChecked] = useState(true);
   const [favorite, setFavorite] = useState(initFavoriteParam(data));
+  const [show, setShow] = useState(false);
 
   return (
     <React.Fragment>
       <img src={strThumb} data-testid="recipe-photo" alt="" />
       <div className="main">
-        {header(strFood, data, favorite, setFavorite)}
+        {header(strFood, data, favorite, setFavorite, setShow)}
         <p className="type">{strCategory}</p>
         {ingredients(checks, making, setChecks, setAllChecked)}
         {instruction(strInstructions)}
@@ -203,15 +210,20 @@ function Generics(props) {
         {(making) ? <div /> : recomended()}
         {buttonSwitch(making, data, type, history, allChecked)}
       </div>
+      <Message message="Cliped!" show={show} setShow={setShow} />
     </React.Fragment>
   );
 }
 
 Generics.propTypes = {
-  data: propTypes.func.isRequired,
-  making: propTypes.string.isRequired,
+  data: propTypes.instanceOf(Object).isRequired,
+  making: propTypes.string,
   type: propTypes.string.isRequired,
-  history: propTypes.func.isRequired,
+  history: propTypes.instanceOf(Object).isRequired,
 };
+
+Generics.defaultProps = {
+  making: undefined,
+}
 
 export default Generics;

@@ -129,7 +129,7 @@ const ItemId = (props) => {
 };
 
 ItemId.propTypes = {
-  history: propTypes.func.isRequired,
+  history: propTypes.instanceOf(Object).isRequired,
 };
 
 export default ItemId;

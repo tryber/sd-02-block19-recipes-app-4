@@ -18,10 +18,14 @@ function Drink(props) {
 
 Drink.propTypes = {
   convertTypeToData: propTypes.func.isRequired,
-  data: propTypes.func.isRequired,
-  making: propTypes.string.isRequired,
+  data: propTypes.instanceOf(Object).isRequired,
+  making: propTypes.string,
   type: propTypes.string.isRequired,
-  history: propTypes.func.isRequired,
+  history: propTypes.instanceOf(Object).isRequired,
 };
+
+Drink.defaultProps = {
+  making: undefined,
+}
 
 export default Drink;
