@@ -1,0 +1,25 @@
+import React from 'react';
+import propTypes from 'prop-types';
+
+import Generics from './Generics';
+
+function Drink(props) {
+  const { convertTypeToData, data, making, type, history } = props;
+
+  return (
+    <React.Fragment>
+      <Generics
+        data={convertTypeToData('bebida', data)}
+        making={making}
+        type={type}
+        history={history}
+      />
+    </React.Fragment>
+  );
+}
+
+Drink.propTypes = {
+  convertTypeToData: propTypes.func.isRequired,
+};
+
+export default Drink;

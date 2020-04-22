@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
 import RecipeAppContext from './Context';
 import recipeAPI from '../services/callAPI';
 
@@ -16,6 +17,7 @@ const RecipeAppProvider = ({ children }) => {
   const [emailUser, setEmailUser] = useState('');
   const [pass, setPass] = useState(false);
   const [storage, setStorage] = useState({});
+  const [makeRecipe, setMakeRecipe] = useState(false);
 
   const fetchRecipe = (type, search, toDoFunction) => {
     recipeAPI(type, search)
@@ -57,6 +59,8 @@ const RecipeAppProvider = ({ children }) => {
     submitLogin,
     storage,
     setStorage,
+    makeRecipe,
+    setMakeRecipe,
   };
 
   return (
