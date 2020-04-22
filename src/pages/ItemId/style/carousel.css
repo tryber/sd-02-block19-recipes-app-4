@@ -14,8 +14,8 @@
 }
 
 .bar {
+  border: 2px solid white;
   cursor: pointer;
-  border: 2px solid #fff;
   height: 1.5vh;
   margin: 2%;
   transition: 0.4s;
@@ -23,10 +23,10 @@
 }
 
 .bar:hover {
-  background: #fff;
+  background: white;
 }
 
-input[name="r"] {
+input[ name = "r" ] {
   position: absolute;
   visibility: hidden;
 }

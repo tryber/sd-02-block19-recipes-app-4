@@ -16,11 +16,11 @@ export const favoriteById = (data) => {
 };
 
 export const favoriteAdd = (data) => {
-  let arr = convertStringToArrayObj(localStorage.getItem('favoriteRecipes')) || [];
+  const arr = convertStringToArrayObj(localStorage.getItem('favoriteRecipes')) || [];
   const { id, strCategory: category, strThumb: image } = data;
   arr.push({ id, category, image });
   localStorage.setItem('favoriteRecipes', convertArrayObjToString(arr));
-}
+};
 
 export const initFavoriteParam = (data) => {
   if (favoriteById(data)) {
@@ -38,4 +38,4 @@ export const favoriteLocal = (data, setFavorite) => {
     localStorage.setItem('favoriteRecipes', convertArrayObjToString(arr));
   }
   setFavorite((currFavorite) => !currFavorite);
-}
+};

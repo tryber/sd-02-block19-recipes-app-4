@@ -25,17 +25,16 @@ const ingredientsList = (checks) => (
   </ul>
 );
 
-const allChecked = (checks) => {
-  return !checks.every((obj) => obj.check);
-};
+const allCheckedFunc = (checks) => (!checks.every((obj) => obj.check));
 
 const changeHandle = (e, checks, setChecks, item, setAllChecked) => {
   const { name, checked } = e.target;
-  document.querySelector(`#${item.ingridient}${item.measure}`.replace(/\s/g, ''))
+  document.querySelector(`.${item.ingridient}${item.measure}`.replace(/\s/g, ''))
     .style.textDecoration = (checked) ? 'line-through' : 'none';
-  checks[name].check = checked;
-  setChecks(() => checks);
-  setAllChecked(allChecked(checks));
+  const obj = checks;
+  obj[name].check = checked;
+  setChecks(() => obj);
+  setAllChecked(allCheckedFunc(obj));
 };
 
 const ingredientsCheckbox = (checks, setChecks, setAllChecked) => (
@@ -47,10 +46,10 @@ const ingredientsCheckbox = (checks, setChecks, setAllChecked) => (
           name={index}
           onChange={(e) => changeHandle(e, checks, setChecks, item, setAllChecked)}
         />
-        <label id={`${item.ingridient}${item.measure}`.replace(/\s/g, '')}>
+        <div className={`${item.ingridient}${item.measure}`.replace(/\s/g, '')}>
           <span data-testid={`${index}-ingredient-name`}>{item.ingridient}</span>
           <span data-testid={`${index}-ingredient-measure`}> - {item.measure}</span>
-        </label>
+        </div>
       </div>
     ))}
   </div>
@@ -143,13 +142,13 @@ const handleBtnStart = (data, type, history) => {
   history.push(`/receitas/${type}/${id}/making`);
 };
 
-const btnMaking = (history, allChecked) => (
+const btnMaking = (history, allChecked2) => (
   <button
     type="button"
     className="init"
     data-testid="start-recipe-btn"
     onClick={() => handleBtnMaking(history)}
-    disabled={allChecked}
+    disabled={allChecked2}
   >
     Finalizar receita
   </button>
@@ -177,9 +176,9 @@ const initChecks = (ingridients) => {
   const arr = [];
   ingridients.forEach((item) => {
     const obj = {};
-    obj['ingridient'] = item[0];
-    obj['measure'] = item[1];
-    obj['check'] = false;
+    obj.ingridient = item[0];
+    obj.measure = item[1];
+    obj.check = false;
     arr.push(obj);
   });
   return arr;
@@ -209,7 +208,10 @@ function Generics(props) {
 }
 
 Generics.propTypes = {
-  obj: propTypes.instanceOf(Object),
+  data: propTypes.func.isRequired,
+  making: propTypes.string.isRequired,
+  type: propTypes.string.isRequired,
+  history: propTypes.func.isRequired,
 };
 
 export default Generics;

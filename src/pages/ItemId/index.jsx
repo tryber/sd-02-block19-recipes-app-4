@@ -94,14 +94,16 @@ const renderFood = (type, data, making, history) => {
   }
 };
 
-const convertTypeToUrl = (type) => {
+function convertTypeToUrl(type) {
   switch (type) {
     case 'comida':
       return 'themealdb';
     case 'bebida':
       return 'thecocktaildb';
+    default:
+      return null;
   }
-}
+};
 
 const ItemId = (props) => {
   const { history } = props;

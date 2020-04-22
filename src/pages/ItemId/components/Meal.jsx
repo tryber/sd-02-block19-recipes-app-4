@@ -20,6 +20,10 @@ function Meal(props) {
 
 Meal.propTypes = {
   convertTypeToData: propTypes.func.isRequired,
+  data: propTypes.func.isRequired,
+  making: propTypes.string.isRequired,
+  type: propTypes.string.isRequired,
+  history: propTypes.func.isRequired,
 };
 
 export default Meal;
