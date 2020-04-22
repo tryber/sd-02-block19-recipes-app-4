@@ -3,45 +3,61 @@ import { Link } from 'react-router-dom';
 import context from '../context/Context';
 import './Footer.css';
 
-const linkToDrinks = (setDB) => (
+const setLinksProperly = (db, setDB, setSelectedFilter, setData) => {
+  setDB(db);
+  setSelectedFilter('All');
+  setData([]);
+};
+
+const linkToDrinks = (setDB, setSelectedFilter, setData) => (
   <Link
     data-testid="drinks-bottom-btn"
     to="/bebidas"
-    onClick={() => setDB('thecocktaildb')}
+    onClick={() => {
+      setLinksProperly('thecocktaildb', setDB, setSelectedFilter, setData);
+    }}
   >
     <li><span className="material-icons">local_bar</span></li>
   </Link>
 );
 
-const linkToExplore = () => (
+const linkToExplore = (setDB, setSelectedFilter, setData) => (
   <Link
     to="/explorar"
     data-testid="explore-bottom-btn"
+    onClick={() => {
+      setLinksProperly('themealdb', setDB, setSelectedFilter, setData);
+    }}
+
   >
     <li><span className="material-icons">explore</span></li>
   </Link>
 );
 
-const linkToFood = (setDB) => (
+const linkToFood = (setDB, setSelectedFilter, setData) => (
   <Link
     data-testid="food-bottom-btn"
     to="/comidas"
-    onClick={() => setDB('themealdb')}
+    onClick={() => {
+      setLinksProperly('themealdb', setDB, setSelectedFilter, setData);
+    }}
   >
     <li><span className="material-icons">local_pizza</span></li>
   </Link>
 );
 
 const Footer = () => {
-  const { dataBase: [, setDB] } = useContext(context);
+  const { dataBase: [, setDB], selectedFilterContext: [, setSelectedFilter],
+    results: [, setData],
+  } = useContext(context);
   return (
     <div className="footer-container">
       <div className="phantom-footer" />
       <div className="footer-list-container">
         <ul className="flex-footer-container">
-          {linkToDrinks(setDB)}
-          {linkToExplore()}
-          {linkToFood(setDB)}
+          {linkToDrinks(setDB, setSelectedFilter, setData)}
+          {linkToExplore(setDB, setSelectedFilter, setData)}
+          {linkToFood(setDB, setSelectedFilter, setData)}
         </ul>
       </div>
     </div >
