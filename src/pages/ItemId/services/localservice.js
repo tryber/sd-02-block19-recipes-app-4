@@ -3,11 +3,12 @@ export const convertArrayObjToString = (arrObj) => {
   return `${arr.toString()}`;
 };
 
-export const convertStringToArrayObj = (string) => {
-  if (string) {
-    return func1(string);
+const func2 = (i, arr, newArr) => {
+  if (i < arr.length - 1) {
+    newArr.push(JSON.parse(`${arr[i]}`));
+  } else {
+    newArr.push(JSON.parse(arr[i]));
   }
-  return null;
 };
 
 const func1 = (string) => {
@@ -25,16 +26,20 @@ const func1 = (string) => {
   }
   const newArr = [];
   for (let i = 0; i < arr.length; i += 1) {
-    if (i < arr.length - 1) {
-      newArr.push(JSON.parse(`${arr[i]}`));
-    } else {
-      newArr.push(JSON.parse(arr[i]));
-    }
+    func2(i, arr, newArr);
   }
   return newArr;
 };
 
-export const stringToArray = (str) => {
+export const convertStringToArrayObj = (string) => {
+  if (string) {
+    return func1(string);
+  }
+  return null;
+};
+
+export const stringToArray = (string) => {
+  let str = string;
   if (str) {
     str = str.replace(/\[/g, '');
     str = str.replace(/\]/g, '');

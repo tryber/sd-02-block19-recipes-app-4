@@ -11,9 +11,8 @@ export const proggressHasId = (data) => {
 
 export const delProggress = (data) => {
   const id = data.id;
-  let arr = stringToArray(localStorage.getItem('in-proggress'));
-  arr = arr.filter((item) => item.id !== id);
-  return arr;
+  const arr = stringToArray(localStorage.getItem('in-proggress'));
+  return arr.filter((item) => item.id !== id);
 };
 
 export const addProggress = (data) => {

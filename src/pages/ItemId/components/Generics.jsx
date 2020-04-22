@@ -121,12 +121,12 @@ const header = (strFood, data, favorite, setFavorite) => (
         </span>
       </button>
       <button type="button" data-testid="favorite-btn">
-        <span
+        <div
           className="material-icons"
           onClick={() => btnFavorite(data, setFavorite)}
         >
           {(favorite) ? 'favorite' : 'favorite_border'}
-        </span>
+        </div>
       </button>
     </div>
   </div>

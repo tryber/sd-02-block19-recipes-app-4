@@ -26,7 +26,7 @@
   background: white;
 }
 
-input[ name = "r" ] {
+input[ name = 'r' ] {
   position: absolute;
   visibility: hidden;
 }

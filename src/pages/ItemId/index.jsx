@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import propTypes from 'prop-types';
 
 import Loading from '../../components-global/Loading';
 import RecipeAppContext from '../../context/Context';
@@ -103,7 +104,7 @@ function convertTypeToUrl(type) {
     default:
       return null;
   }
-};
+}
 
 const ItemId = (props) => {
   const { history } = props;
@@ -125,6 +126,10 @@ const ItemId = (props) => {
       {(loading) ? (<Loading />) : (renderFood(type, data, making, history))}
     </div>
   );
+};
+
+ItemId.propTypes = {
+  history: propTypes.func.isRequired,
 };
 
 export default ItemId;
