@@ -120,13 +120,13 @@ const header = (strFood, data, favorite, setFavorite) => (
           share
         </span>
       </button>
-      <button type="button" data-testid="favorite-btn">
-        <div
-          className="material-icons"
-          onClick={() => btnFavorite(data, setFavorite)}
-        >
-          {(favorite) ? 'favorite' : 'favorite_border'}
-        </div>
+      <button
+        type="button"
+        data-testid="favorite-btn"
+        className="material-icons"
+        onClick={() => btnFavorite(data, setFavorite)}
+      >
+        {(favorite) ? 'favorite' : 'favorite_border'}
       </button>
     </div>
   </div>

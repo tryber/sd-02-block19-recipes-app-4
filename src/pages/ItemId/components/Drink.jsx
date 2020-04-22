@@ -7,14 +7,12 @@ function Drink(props) {
   const { convertTypeToData, data, making, type, history } = props;
 
   return (
-    <React.Fragment>
-      <Generics
-        data={convertTypeToData('bebida', data)}
-        making={making}
-        type={type}
-        history={history}
-      />
-    </React.Fragment>
+    <Generics
+      data={convertTypeToData('bebida', data)}
+      making={making}
+      type={type}
+      history={history}
+    />
   );
 }
 
