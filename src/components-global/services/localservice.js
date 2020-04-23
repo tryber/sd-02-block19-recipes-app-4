@@ -50,3 +50,15 @@ export const stringToArray = (string) => {
 };
 
 export const arrayToString = (arr) => (`${arr.toString()}`);
+
+export const stringToObj = (str) => {
+  const newObj = {};
+  if (str) {
+    return JSON.parse(str);
+  }
+  return newObj;
+};
+
+export const objToString = (obj) => {
+  return JSON.stringify(obj);
+};

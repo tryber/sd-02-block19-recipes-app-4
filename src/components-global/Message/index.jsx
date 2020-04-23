@@ -15,7 +15,7 @@ const Message = (props) => {
   const { message, show, setShow } = props;
 
   useEffect(() => {
-    setInterval(() => setShow(false), 2000);
+    setInterval(() => setShow(false), 3000);
   }, [show]);
 
   return (

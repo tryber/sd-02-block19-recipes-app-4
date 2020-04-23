@@ -1,25 +1,22 @@
 import {
-  stringToArray,
-  arrayToString,
-} from './localservice';
+  stringToObj,
+  objToString,
+} from '../../../components-global/services/localservice';
 
-export const proggressHasId = (data) => {
-  const id = data.id;
-  const arr = stringToArray(localStorage.getItem('in-proggress')) || [];
-  return arr.find((item) => item === id);
-};
-
-export const delProggress = (data) => {
-  const id = data.id;
-  const arr = stringToArray(localStorage.getItem('in-proggress'));
-  return arr.filter((item) => item.id !== id);
-};
-
-export const addProggress = (data) => {
-  const id = data.id;
-  const arr = stringToArray(localStorage.getItem('in-proggress')) || [];
-  if (!proggressHasId(data)) {
-    arr.push(id);
+export const addProggress = (data, name) => {
+  const { id } = data;
+  let obj = stringToObj(localStorage.getItem('proggress'));
+  if (obj[id]) {
+    obj[id].push(name);
+  } else {
+    obj = {...obj, [id]: [name] };
   }
-  localStorage.setItem('in-proggress', arrayToString(arr));
+  localStorage.setItem('proggress', objToString(obj));
 };
+
+export const deleteProggress = (data, name) => {
+  const { id } = data;
+  let obj = stringToObj(localStorage.getItem('proggress'));
+  obj[id].splice(obj[id].indexOf(name),1) ;
+  localStorage.setItem('proggress', objToString(obj));
+}

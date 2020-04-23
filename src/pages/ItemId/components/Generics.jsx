@@ -1,71 +1,27 @@
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
-import {
-  favoriteLocal,
-  initFavoriteParam,
-} from '../services/favorite';
-import { proggressHasId, addProggress } from '../services/proggress';
+
+import { convertArrayObjToString } from '../../../components-global/services/localservice';
+import { inProggressHasId, addInProggress } from '../services/inProggress';
 import Carousel from './Carousel';
+import CardRecomended from './CardRecomended';
 import Message from '../../../components-global/Message';
+import Favorite from '../../../components-global/Favorite';
+import Share from '../../../components-global/Share';
+import Ingridients from './Ingridients';
 
-const recomended = () => (
-  <div className="recomended">
-    <p className="subtitle">Recomended</p>
-    <Carousel />
-  </div>
-);
 
-const ingredientsList = (checks) => (
-  <ul>
-    {checks.map((item, index) => (
-      <li key={`${item.ingridient}${item.measure}`}>
-        <span data-testid={`${index}-ingredient-name`}>{item.ingridient}</span>
-        <span data-testid={`${index}-ingredient-measure`}> - {item.measure}</span>
-      </li>
-    ))}
-  </ul>
-);
-
-const allCheckedFunc = (checks) => (!checks.every((obj) => obj.check));
-
-const changeHandle = (e, checks, setChecks, item, setAllChecked) => {
-  const { name, checked } = e.target;
-  document.querySelector(`.${item.ingridient}${item.measure}`.replace(/\s/g, ''))
-    .style.textDecoration = (checked) ? 'line-through' : 'none';
-  const obj = checks;
-  obj[name].check = checked;
-  setChecks(() => obj);
-  setAllChecked(allCheckedFunc(obj));
-};
-
-const ingredientsCheckbox = (checks, setChecks, setAllChecked) => (
-  <div>
-    {checks.map((item, index) => (
-      <div className="checkbox" key={`${item.ingridient}${item.measure}`}>
-        <input
-          type="checkbox"
-          name={index}
-          onChange={(e) => changeHandle(e, checks, setChecks, item, setAllChecked)}
-        />
-        <div className={`${item.ingridient}${item.measure}`.replace(/\s/g, '')}>
-          <span data-testid={`${index}-ingredient-name`}>{item.ingridient}</span>
-          <span data-testid={`${index}-ingredient-measure`}> - {item.measure}</span>
-        </div>
-      </div>
-    ))}
-  </div>
-);
-
-const ingredients = (checks, making, setChecks, setAllChecked) => (
-  <div className="ingredients">
-    <p className="subtitle">Ingredients</p>
-    <div className="box">
-      {(making) ?
-        ingredientsCheckbox(checks, setChecks, setAllChecked) :
-        ingredientsList(checks)}
+const recomended = (type) => {
+  return (
+    <div className="recomended">
+      <p className="subtitle">Recomended</p>
+      <Carousel>
+        <CardRecomended type={type} />
+        <p>tr</p><p>tr</p>
+      </Carousel>
     </div>
-  </div>
-);
+  );
+};
 
 const instruction = (strInstructions) => (
   <div className="intructions">
@@ -108,52 +64,36 @@ const switchInit = (bool) => {
   return 'Iniciar receita';
 };
 
-const btnFavorite = (data, setFavorite) => {
-  favoriteLocal(data, setFavorite);
-};
-
-const btnShare = (setShow) => {
-  setShow(true);
-  window.navigator.clipboard.writeText(window.location.href);
-};
-
-const header = (strFood, data, favorite, setFavorite, setShow) => (
+const header = (strFood, data, setShow) => (
   <div className="header">
     <p className="title" data-testid="recipe-title">{strFood}</p>
     <div>
-      <button type="button" data-testid="share-btn" onClick={() => btnShare(setShow)}>
-        <span className="material-icons">
-          share
-        </span>
-      </button>
-      <button
-        type="button"
-        data-testid="favorite-btn"
-        className="material-icons"
-        onClick={() => btnFavorite(data, setFavorite)}
-      >
-        {(favorite) ? 'favorite' : 'favorite_border'}
-      </button>
+      <Share setShow={setShow} />
+      <Favorite data={data} />
     </div>
   </div>
 );
 
-const handleBtnMaking = (history) => {
+const handleBtnMaking = (history, data) => {
+  const { strCategory: category, id, strFood: title, strThumb: image } = data;
+  const arr = localStorage.getItem('done-recipes') || [];
+  arr.push({ id, category, title, image });
+  localStorage.setItem('done-recipes', convertArrayObjToString(arr));
   history.push('/receitas-feitas');
 };
 
 const handleBtnStart = (data, type, history) => {
-  addProggress(data);
+  addInProggress(data);
   const id = data.id;
   history.push(`/receitas/${type}/${id}/making`);
 };
 
-const btnMaking = (history, allChecked2) => (
+const btnMaking = (history, allChecked2, data) => (
   <button
     type="button"
     className="init"
     data-testid="start-recipe-btn"
-    onClick={() => handleBtnMaking(history)}
+    onClick={() => handleBtnMaking(history, data)}
     disabled={allChecked2}
   >
     Finalizar receita
@@ -167,47 +107,33 @@ const btnStart = (data, type, history) => (
     data-testid="start-recipe-btn"
     onClick={() => handleBtnStart(data, type, history)}
   >
-    {switchInit(proggressHasId(data))}
+    {switchInit(inProggressHasId(data))}
   </button>
 );
 
 const buttonSwitch = (making, data, type, history, checks) => {
   if (making) {
-    return btnMaking(history, checks);
+    return btnMaking(history, checks, data);
   }
   return btnStart(data, type, history);
-};
-
-const initChecks = (ingridients) => {
-  const arr = [];
-  ingridients.forEach((item) => {
-    const obj = {};
-    obj.ingridient = item[0];
-    obj.measure = item[1];
-    obj.check = false;
-    arr.push(obj);
-  });
-  return arr;
 };
 
 function Generics(props) {
   const { data, making, type, history } = props;
   const { strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients } = data;
-  const [checks, setChecks] = useState(initChecks(ingridients));
-  const [allChecked, setAllChecked] = useState(true);
-  const [favorite, setFavorite] = useState(initFavoriteParam(data));
   const [show, setShow] = useState(false);
+  const [allChecked, setAllChecked] = useState(true);
 
   return (
     <React.Fragment>
       <img src={strThumb} data-testid="recipe-photo" alt="" />
       <div className="main">
-        {header(strFood, data, favorite, setFavorite, setShow)}
+        {header(strFood, data, setShow)}
         <p className="type">{strCategory}</p>
-        {ingredients(checks, making, setChecks, setAllChecked)}
+        <Ingridients ingridients={ingridients} setAllChecked={setAllChecked} making={making} data={data} />
         {instruction(strInstructions)}
         {(making) ? <div /> : (video(strYoutube))}
-        {(making) ? <div /> : recomended()}
+        {(making) ? <div /> : recomended(type)}
         {buttonSwitch(making, data, type, history, allChecked)}
       </div>
       <Message message="Cliped!" show={show} setShow={setShow} />

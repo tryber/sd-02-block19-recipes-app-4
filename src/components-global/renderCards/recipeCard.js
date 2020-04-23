@@ -9,6 +9,7 @@ const goToId = (id, history, db) => {
 
 const RecipeCard = ({ details, dataBase }) => {
   const history = useHistory();
+  console.log(details)
   const { [`id${dataBase}`]: id, [`str${dataBase}`]: recipe, [`str${dataBase}Thumb`]: img, strCategory: category } = details;
   return (
     <div className="recipe-card-container">
