@@ -41,7 +41,7 @@ const changeHandle = (e, checks, setChecks, setAllChecked, data) => {
   if (checked) {
     addProggress(data, name);
   } else {
-    deleteProggress(data, name); 
+    deleteProggress(data, name);
   }
 };
 
