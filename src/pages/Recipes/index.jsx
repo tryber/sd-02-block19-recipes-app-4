@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-// import Loading from '../../components-global/Loading';
 import context from '../../context/Context';
 import Header from '../../components-global/Header';
 import RecipeFilters from './components/RecipeFilters';
