@@ -21,20 +21,20 @@ const initChecked = (data, arr) => {
   const { id } = data;
   const obj = stringToObj(localStorage.getItem('proggress'));
   const checks2 = arr;
-  obj[id].forEach((item) => {
-    checks2[item].check = true;
-  });
+  if (obj[id]) {
+    obj[id].forEach((item) => {
+      checks2[item].check = true;
+    });
+  }
 };
 
 const allCheckedFunc = (checks) => (!checks.every((obj) => obj.check));
 
-const changeHandle = (e, checks, setChecks, item, setAllChecked, data) => {
+const changeHandle = (e, checks, setChecks, setAllChecked, data) => {
   const { name, checked } = e.target;
-  // document.querySelector(`.${item.ingridient}${item.measure}`.replace(/\s/g, ''))
-  //   .style.textDecoration = (checked) ? 'line-through' : 'none';
-  const obj = checks;
+  const obj = [...checks];
   obj[name].check = checked;
-  setChecks(() => obj);
+  setChecks(obj);
   setAllChecked(allCheckedFunc(obj));
   (checked) ? addProggress(data, name) : deleteProggress(data, name);
 };
@@ -57,8 +57,8 @@ const ingredientsCheckbox = (checks, setChecks, setAllChecked, data) => (
         <input
           type="checkbox"
           name={index}
-          onChange={(e) => changeHandle(e, checks, setChecks, item, setAllChecked, data)}
-          checked={checks[index].check}
+          onChange={(e) => changeHandle(e, checks, setChecks, setAllChecked, data)}
+          defaultChecked={checks[index].check}
         />
         <div style={(checks[index].check) ? {textDecoration: 'line-through'} : {textDecoration: 'none'}}>
           <span data-testid={`${index}-ingredient-name`}>{item.ingridient}</span>
@@ -69,10 +69,9 @@ const ingredientsCheckbox = (checks, setChecks, setAllChecked, data) => (
   </React.Fragment>
 );
 
-const IngridientsCheckbox = (props) => {
+const Ingridients = (props) => {
   const { ingridients, setAllChecked, making, data } = props;
   const [checks, setChecks] = useState(initChecks(data, ingridients));
-
   return (
     <div className="ingredients">
       <p className="subtitle">Ingredients</p>
@@ -85,4 +84,4 @@ const IngridientsCheckbox = (props) => {
   );
 };
 
-export default IngridientsCheckbox;
+export default Ingridients;
