@@ -59,6 +59,4 @@ export const stringToObj = (str) => {
   return newObj;
 };
 
-export const objToString = (obj) => {
-  return JSON.stringify(obj);
-};
+export const objToString = (obj) => JSON.stringify(obj);

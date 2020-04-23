@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 import '../style/carousel.css';
 
@@ -29,5 +30,9 @@ function Carousel(props) {
     </div>
   );
 }
+
+Carousel.propTypes = {
+  children: propTypes.element.isRequired
+};
 
 export default Carousel;

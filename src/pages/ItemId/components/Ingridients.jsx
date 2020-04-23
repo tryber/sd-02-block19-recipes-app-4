@@ -1,21 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import propTypes from 'prop-types';
+
 import { addProggress, deleteProggress } from '../services/proggress';
 import {
   stringToObj,
 } from '../../../components-global/services/localservice';
-
-const initChecks = (data, ingridients) => {
-  const arr = [];
-  ingridients.forEach((item) => {
-    const obj = {};
-    obj.ingridient = item[0];
-    obj.measure = item[1];
-    obj.check = false;
-    arr.push(obj);
-  });
-  initChecked(data, arr)
-  return arr;
-};
 
 const initChecked = (data, arr) => {
   const { id } = data;
@@ -28,6 +17,19 @@ const initChecked = (data, arr) => {
   }
 };
 
+const initChecks = (data, ingridients) => {
+  const arr = [];
+  ingridients.forEach((item) => {
+    const obj = {};
+    obj.ingridient = item[0];
+    obj.measure = item[1];
+    obj.check = false;
+    arr.push(obj);
+  });
+  initChecked(data, arr);
+  return arr;
+};
+
 const allCheckedFunc = (checks) => (!checks.every((obj) => obj.check));
 
 const changeHandle = (e, checks, setChecks, setAllChecked, data) => {
@@ -36,7 +38,11 @@ const changeHandle = (e, checks, setChecks, setAllChecked, data) => {
   obj[name].check = checked;
   setChecks(obj);
   setAllChecked(allCheckedFunc(obj));
-  (checked) ? addProggress(data, name) : deleteProggress(data, name);
+  if (checked) {
+    addProggress(data, name);
+  } else {
+    deleteProggress(data, name); 
+  }
 };
 
 const ingredientsList = (checks) => (
@@ -60,7 +66,7 @@ const ingredientsCheckbox = (checks, setChecks, setAllChecked, data) => (
           onChange={(e) => changeHandle(e, checks, setChecks, setAllChecked, data)}
           defaultChecked={checks[index].check}
         />
-        <div style={(checks[index].check) ? {textDecoration: 'line-through'} : {textDecoration: 'none'}}>
+        <div style={(checks[index].check) ? { textDecoration: 'line-through' } : { textDecoration: 'none' }}>
           <span data-testid={`${index}-ingredient-name`}>{item.ingridient}</span>
           <span data-testid={`${index}-ingredient-measure`}> - {item.measure}</span>
         </div>
@@ -82,6 +88,13 @@ const Ingridients = (props) => {
       </div>
     </div>
   );
+};
+
+Ingridients.propTypes = {
+  data: propTypes.instanceOf(Object).isRequired,
+  making: propTypes.string,
+  ingridients: propTypes.instanceOf(Array).isRequired,,
+  setAllChecked: propTypes.func.isRequired,
 };
 
 export default Ingridients;

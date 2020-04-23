@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import propTypes from 'prop-types';
+
 import {
   favoriteLocal,
   initFavoriteParam,
@@ -21,6 +23,10 @@ const Favorite = (props) => {
       {(favorite) ? 'favorite' : 'favorite_border'}
     </button>
   );
+};
+
+Favorite.propTypes = {
+  data: propTypes.instanceOf(Object).isRequired,
 };
 
 export default Favorite;

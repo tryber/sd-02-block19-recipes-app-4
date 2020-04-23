@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 const btnShare = (setShow) => {
   setShow(true);
@@ -14,6 +15,10 @@ const Share = (props) => {
       </span>
     </button>
   );
+};
+
+Share.propTypes = {
+  setShow: propTypes.func.isRequired,
 };
 
 export default Share;

@@ -11,17 +11,15 @@ import Share from '../../../components-global/Share';
 import Ingridients from './Ingridients';
 
 
-const recomended = (type) => {
-  return (
-    <div className="recomended">
-      <p className="subtitle">Recomended</p>
-      <Carousel>
-        <CardRecomended type={type} />
-        <p>tr</p><p>tr</p>
-      </Carousel>
-    </div>
-  );
-};
+const recomended = (type) => (
+  <div className="recomended">
+    <p className="subtitle">Recomended</p>
+    <Carousel>
+      <CardRecomended type={type} />
+      <p>tr</p><p>tr</p>
+    </Carousel>
+  </div>
+);
 
 const instruction = (strInstructions) => (
   <div className="intructions">
@@ -130,7 +128,12 @@ function Generics(props) {
       <div className="main">
         {header(strFood, data, setShow)}
         <p className="type">{strCategory}</p>
-        <Ingridients ingridients={ingridients} setAllChecked={setAllChecked} making={making} data={data} />
+        <Ingridients
+          ingridients={ingridients}
+          setAllChecked={setAllChecked}
+          making={making}
+          data={data}
+        />
         {instruction(strInstructions)}
         {(making) ? <div /> : (video(strYoutube))}
         {(making) ? <div /> : recomended(type)}

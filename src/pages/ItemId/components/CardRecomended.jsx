@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import propTypes from 'prop-types';
 
 import '../style/cardRecomended.css';
 import RecipeAppContext from '../../../context/Context';
@@ -72,6 +73,10 @@ function CardRecomended(props) {
       <Card details={randomResults} dataBase={switchDataBase(type)} />
     </div>
   );
-}
+};
+
+CardRecomended.propTypes = {
+  type: propTypes.string.isRequired,
+};
 
 export default CardRecomended;
