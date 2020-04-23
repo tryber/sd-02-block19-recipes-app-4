@@ -10,7 +10,8 @@ const useRamdomCard = (setResultsAll, n, db, fetchRecipe) => {
     for (let i = 0; i < n; i += 1) {
       fetchRecipe(db, 'random.php', randomMeals);
     }
-  }, []);
+  return () => setResultsAll([]);
+  }, [db]);
 }
 
 export default useRamdomCard;

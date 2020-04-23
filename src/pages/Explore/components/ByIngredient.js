@@ -8,7 +8,7 @@ import returnDB from '../../../services/returnDB';
 const ByIngredient = () => {
   const [searchingIngredients, setSearchingIngredients] = useState(true);
 
-  const { fetchRecipe, ing: [, setIngredients] } = useContext(context);
+  const { fetchRecipe, ing: [, setIngredients], dataBase: [, setDB] } = useContext(context);
   const { type } = useParams();
 
   const getIngredients = (response) => {
@@ -18,6 +18,9 @@ const ByIngredient = () => {
 
   useEffect(() => {
     fetchRecipe(returnDB(type), 'list.php?i=list', getIngredients);
+    const dataBase = type === 'comidas' ? 'themealdb' : 'thecocktaildb';
+    setDB(dataBase);
+    return () => setIngredients([]);
   }, []);
 
   return (

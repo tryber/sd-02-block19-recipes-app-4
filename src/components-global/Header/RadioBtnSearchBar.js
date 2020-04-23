@@ -1,13 +1,9 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import RecipeAppContext from '../../context/Context';
 import './style/RadioBtnSearchBar.css';
 
 const RadioBtnSearchBar = () => {
   const { radioButtonSearch, setRadioButtonSearch } = useContext(RecipeAppContext);
-
-  useEffect(() => {
-    console.log(radioButtonSearch);
-  }, [radioButtonSearch]);
 
   return (
     <form
@@ -16,7 +12,12 @@ const RadioBtnSearchBar = () => {
       className="form-header-flex"
     >
       <div className="option-container">
-        <input type="radio" name="t" value="ingredients" data-testid="ingredient-search-radio" />
+        <input
+          type="radio"
+          name="t"
+          value="ingredients"
+          checked={radioButtonSearch === 'ingredients'}
+          data-testid="ingredient-search-radio" />
         <div>Ingredientes</div>
       </div>
       <div className="option-container">

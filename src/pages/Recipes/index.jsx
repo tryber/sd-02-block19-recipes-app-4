@@ -15,7 +15,6 @@ const Recipe = () => {
     <div>
       {type === 'comidas' && <Header title="Comidas" hasSearchBar />}
       {type === 'bebidas' && <Header title="Bebidas" hasSearchBar />}
-      {/* {isLoading && <Loading />} */}
       {!isOnSearchBar && <RecipeFilters />}
       {!isOnSearchBar && <Recipes />}
       <Footer />

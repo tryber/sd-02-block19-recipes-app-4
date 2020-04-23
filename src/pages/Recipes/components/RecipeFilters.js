@@ -29,13 +29,13 @@ const RecipeFilters = () => {
       .map(({ strCategory }) => strCategory)];
 
   useEffect(() => {
-    setIsLoading('true');
+    setIsLoading(true);
     fetchRecipe(db, 'list.php?c=list', getFilters);
   }, [db]);
 
   return (
     <div>
-      <div className="btn-filter-container">{arrCategories.map((filter) => (
+      {arrCategories.length === 6 && <div className="btn-filter-container">{arrCategories.map((filter) => (
         <button
           key={filter}
           className={selectedFilterClass(filter, selectedFilter)}
@@ -45,7 +45,7 @@ const RecipeFilters = () => {
         >{filter}
         </button>
       ))}
-      </div>
+      </div>}
     </div>
   );
 };

@@ -5,19 +5,17 @@ import useRamdomCard from '../customHooks/useRamdomCard';
 import RecipeCard from './renderCards/recipeCard';
 
 const RenderAllCards = () => {
-  const { dataBase: [db], fetchRecipe, setIsLoading, isLoading } = useContext(context);
+  const { dataBase: [db], fetchRecipe, setIsLoading } = useContext(context);
   const [resultsAll, setResultsAll] = useState([]);
 
   useRamdomCard(setResultsAll, 12, db, fetchRecipe);
 
   useEffect(() => {
-    if(resultsAll.length === 12) setIsLoading(false);
-  }, [resultsAll]);
+    setIsLoading(true);
+    if (resultsAll.length === 12) setIsLoading(false);
+  }, [resultsAll, db]);
 
   const prefix = db === 'themealdb' ? 'Meal' : 'Drink';
-
-  console.log(resultsAll)
-  console.log(isLoading)
 
   return (
     <div>
