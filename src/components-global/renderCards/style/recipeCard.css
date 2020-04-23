@@ -1,35 +1,36 @@
 .recipe-card-container {
   border: grey 1px solid;
-  border-radius: 1em;
-  box-shadow: 0.25em 0.25em grey;
-  height: 20em;
-  margin: 0.5em;
-  width: 20em;
+  border-radius: 10px;
+  box-shadow: 2px 2px grey;
+  height: 70%;
+  margin: 2%;
+  width: 50%;
 }
-
 
 .recipe-card-container .img-card {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding: 0.25em;
-  width: 75%;
+  width: 100%;
+  height: 60%;
+  border-radius: 10px;
 }
 
 .recipe-card-container .recipe-card {
   color: black;
-  padding-left: 1vh;
+  padding-left: 5%;
+  margin: 2% 0;
 }
 
 .recipe-card-container .categorie-card {
   color: grey;
-  padding-left: 1vh;
+  padding-left: 5%;
 }
 
 .recipe-card-container .btn-ver-mais {
   background-color: white;
   border: none;
-  padding-left: 1vh;
+  padding-left: 5%;
   text-decoration: underline;
 }
 

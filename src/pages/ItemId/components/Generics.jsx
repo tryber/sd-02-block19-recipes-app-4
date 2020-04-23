@@ -16,7 +16,8 @@ const recomended = (type) => (
     <p className="subtitle">Recomended</p>
     <Carousel>
       <CardRecomended type={type} />
-      <p>tr</p><p>tr</p>
+      <CardRecomended type={type} />
+      <CardRecomended type={type} />
     </Carousel>
   </div>
 );
