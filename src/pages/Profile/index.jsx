@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
 import RecipeAppContext from '../../context/Context';
 import Header from '../../components-global/Header';
+import Test from '../../components-global/RenderAllCards';
 
 const Profile = () => {
-  const context = useContext(RecipeAppContext);
 
-  console.log(context);
 
   return (
     <div>
-      <Header title={'Perfil'} />
-      <p>Profile</p>
+      {/* {//quem for mexer aqui no profile pode apagar abaixo dessa linha} */}
+      <Test />
+      {/* {//quem for mexer aqui no profile pode apagar acima dessa linha} */}
     </div>
   );
 };

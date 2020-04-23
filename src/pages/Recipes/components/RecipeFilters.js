@@ -13,15 +13,6 @@ const selectFilterOnClick = (filter, selectedFilter, setSelectedFilter, setData)
   setData([]);
 };
 
-const disableFuncBtnFilter = (selectedFilter, data) => {
-  switch (selectedFilter) {
-    case ('All'):
-      return (data.length !== 12);
-    default:
-      return false;
-  }
-};
-
 const RecipeFilters = () => {
   const { dataBase: [db], fetchRecipe, selectedFilterContext: [selectedFilter, setSelectedFilter],
     results: [data, setData], setIsLoading, isLoading } = useContext(context);
@@ -29,7 +20,6 @@ const RecipeFilters = () => {
 
   const getFilters = (response) => {
     setCategories(response);
-    setIsLoading(false);
   };
 
   const categoriesList = categories.meals || categories.drinks || [];
@@ -45,16 +35,17 @@ const RecipeFilters = () => {
 
   return (
     <div>
-      {!isLoading && <div className="btn-filter-container">{arrCategories.map((filter) => (
+      <div className="btn-filter-container">{arrCategories.map((filter) => (
         <button
           key={filter}
           className={selectedFilterClass(filter, selectedFilter)}
           onClick={() => selectFilterOnClick(filter, selectedFilter, setSelectedFilter, setData)}
           data-testid={`${filter}-category-filter`}
-          disabled={disableFuncBtnFilter(selectedFilter, data)}
+          disabled={isLoading}
         >{filter}
         </button>
-      ))}</div>}
+      ))}
+      </div>
     </div>
   );
 };
