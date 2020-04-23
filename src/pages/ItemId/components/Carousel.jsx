@@ -21,7 +21,6 @@ function Carousel(props) {
           {children[2]}
         </div>
       </div>
-
       <div className="navigation">
         <label htmlFor="r1" className="bar" />
         <label htmlFor="r2" className="bar" />

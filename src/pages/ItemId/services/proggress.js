@@ -3,6 +3,7 @@ import {
   objToString,
 } from '../../../components-global/services/localservice';
 
+
 export const addProggress = (data, name) => {
   const { id } = data;
   let obj = stringToObj(localStorage.getItem('proggress'));
