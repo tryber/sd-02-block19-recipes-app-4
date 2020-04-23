@@ -36,7 +36,7 @@ function switcType(type) {
     default:
       return null;
   }
-};
+}
 
 function switchObj(type) {
   switch (type) {
@@ -51,7 +51,7 @@ function switchObj(type) {
 
 const cb = (setRandomResults, type) => (resp) => {
   setRandomResults(resp[`${switchObj(type)}`][0]);
-}
+};
 
 const randomRecomended = (fetchRecipe, type, setRandomResults) => {
   const type2 = switcType(type);
@@ -73,7 +73,7 @@ function CardRecomended(props) {
       <Card details={randomResults} dataBase={switchDataBase(type)} />
     </div>
   );
-};
+}
 
 CardRecomended.propTypes = {
   type: propTypes.string.isRequired,

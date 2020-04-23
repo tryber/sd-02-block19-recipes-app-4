@@ -93,7 +93,7 @@ const Ingridients = (props) => {
 Ingridients.propTypes = {
   data: propTypes.instanceOf(Object).isRequired,
   making: propTypes.string,
-  ingridients: propTypes.instanceOf(Array).isRequired,,
+  ingridients: propTypes.instanceOf(Array).isRequired,
   setAllChecked: propTypes.func.isRequired,
 };
 

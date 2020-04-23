@@ -17,6 +17,6 @@ export const addProggress = (data, name) => {
 export const deleteProggress = (data, name) => {
   const { id } = data;
   const obj = stringToObj(localStorage.getItem('proggress'));
-  obj[id].splice(obj[id].indexOf(name), 1) ;
+  obj[id].splice(obj[id].indexOf(name), 1);
   localStorage.setItem('proggress', objToString(obj));
-}
+};
