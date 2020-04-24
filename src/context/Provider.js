@@ -40,6 +40,8 @@ const RecipeAppProvider = ({ children }) => {
       localStorage.setItem('user', JSON.stringify(dados));
       return dados;
     });
+    setEmailBool(true);
+    
   };
 
   const context = {

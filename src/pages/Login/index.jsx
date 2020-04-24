@@ -2,13 +2,16 @@ import React, { useContext } from 'react';
 import InputEmail from './components/InputEmail.jsx';
 import InputPass from './components/InputPass';
 import RecipeAppContext from '../../context/Context';
-// import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './style/style.css';
 
 const Login = () => {
   const { emailBool, pass, submitLogin } = useContext(RecipeAppContext);
-  const handleSubmit = (e) => {
+  const hist = useHistory();
+
+  const handleSubmit = (e, hist) => {
     e.preventDefault();
+    hist.push('/comidas');
     submitLogin();
   };
 
@@ -18,14 +21,13 @@ const Login = () => {
       <form className="containerForm">
         <InputEmail />
         <InputPass />
-        {/* <Link to="/comidas"> */}
+        
         {emailBool && pass
         ? <button
-          data-testid="login-submit-btn"
-          onClick={(e) => handleSubmit(e)}
-        >Entrar</button>
+            data-testid="login-submit-btn"
+            onClick={(e) => handleSubmit(e, hist)}
+            >Entrar</button>
         : <button data-testid="login-submit-btn" disabled>Entrar</button>}
-        {/* </Link> */}
       </form>
     </div>
   );
