@@ -11,8 +11,8 @@ import './icons.css';
 
 const btnFavorite = (data, setItems) => {
   const arr = favoriteDeletebyId(data);
-  localStorage.setItem('favoriteRecipes', convertArrayObjToString(arr));
-  const str = convertStringToArrayObj(localStorage.getItem('favoriteRecipes'));
+  localStorage.setItem('favorite-recipes', convertArrayObjToString(arr));
+  const str = convertStringToArrayObj(localStorage.getItem('favorite-recipes'));
   setItems(str);
 };
 

@@ -5,21 +5,21 @@ import {
 
 export const favoriteDeletebyId = (data) => {
   const id = data.id;
-  const arr = convertStringToArrayObj(localStorage.getItem('favoriteRecipes')) || [];
+  const arr = convertStringToArrayObj(localStorage.getItem('favorite-recipes')) || [];
   return arr.filter((item) => item.id !== id);
 };
 
 export const favoriteById = (data) => {
   const id = data.id;
-  const arr = convertStringToArrayObj(localStorage.getItem('favoriteRecipes')) || [];
+  const arr = convertStringToArrayObj(localStorage.getItem('favorite-recipes')) || [];
   return arr.find((item) => item.id === id);
 };
 
 export const favoriteAdd = (data, type) => {
-  const arr = convertStringToArrayObj(localStorage.getItem('favoriteRecipes')) || [];
+  const arr = convertStringToArrayObj(localStorage.getItem('favorite-recipes')) || [];
   const { id, strCategory: category, strThumb: image } = data;
   arr.push({ id, category, image, type });
-  localStorage.setItem('favoriteRecipes', convertArrayObjToString(arr));
+  localStorage.setItem('favorite-recipes', convertArrayObjToString(arr));
 };
 
 export const initFavoriteParam = (data) => {
@@ -30,12 +30,12 @@ export const initFavoriteParam = (data) => {
 };
 
 export const favoriteLocal = (data, setFavorite, type) => {
-  let arr = convertStringToArrayObj(localStorage.getItem('favoriteRecipes')) || [];
+  let arr = convertStringToArrayObj(localStorage.getItem('favorite-recipes')) || [];
   if (!favoriteById(data)) {
     favoriteAdd(data, type);
   } else {
     arr = favoriteDeletebyId(data);
-    localStorage.setItem('favoriteRecipes', convertArrayObjToString(arr));
+    localStorage.setItem('favorite-recipes', convertArrayObjToString(arr));
   }
   setFavorite((currFavorite) => !currFavorite);
 };
