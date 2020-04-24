@@ -2,17 +2,18 @@
   border: grey 1px solid;
   border-radius: 1em;
   box-shadow: 0.25em 0.25em grey;
-  height: 20em;
-  margin: 0.5em;
-  width: 20em;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
 }
 
 .recipe-card-container .img-card {
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding: 0.25em;
-  width: 75%;
+  width: 100%;
 }
 
 .recipe-card-container .recipe-card {
@@ -34,4 +35,21 @@
 
 .recipe-card-container .btn-ver-mais:hover {
   color: blue;
+}
+
+.container-imgR {
+  width: 100%;
+}
+
+.container-infos {
+  display: flex;
+  flex-direction: column;
+  height: 30%;
+  justify-content: space-evenly;
+  padding: 3% 0 3%;
+  width: 100%;
+}
+
+.linkDt {
+  text-decoration: none;
 }

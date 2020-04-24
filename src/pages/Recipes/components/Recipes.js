@@ -9,7 +9,7 @@ const Recipes = () => {
   useEffect(() => { }, [db]);
 
   return (
-    <div>
+    <div className="container-allCards">
       {selectedFilter === 'All' && <RenderAllCards />}
       {selectedFilter !== 'All' && <RenderByFilter />}
     </div>
