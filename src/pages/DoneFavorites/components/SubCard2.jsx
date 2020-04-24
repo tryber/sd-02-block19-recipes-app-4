@@ -55,12 +55,10 @@ const SubCard2 = (props) => {
 };
 
 SubCard2.propTypes = {
-  category: propTypes.string.isRequired,
   setShow: propTypes.func.isRequired,
   doneDate: propTypes.string.isRequired,
   id: propTypes.string.isRequired,
   type: propTypes.string.isRequired,
-  image: propTypes.string.isRequired,
   history: propTypes.instanceOf(Object).isRequired,
 };
 

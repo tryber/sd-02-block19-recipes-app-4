@@ -19,6 +19,7 @@ const Message = (props) => {
       const timeout = setTimeout(() => setShow(false), 2000);
       return (() => clearTimeout(timeout));
     }
+    return;
   }, [show]);
 
   return (

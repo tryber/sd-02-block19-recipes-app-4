@@ -32,7 +32,7 @@ function render(data, setShow, setItems, history, type) {
 }
 
 const SubCard = (props) => {
-  const { image, category, setShow, setItems, id, type, history } = props;
+  const { setShow, setItems, id, type, history } = props;
   const { fetchRecipe } = useContext(RecipeAppContext);
   const [data, setData] = useState();
   const cb = (resp) => {
@@ -51,12 +51,10 @@ const SubCard = (props) => {
 };
 
 SubCard.propTypes = {
-  category: propTypes.string.isRequired,
   setShow: propTypes.func.isRequired,
   setItems: propTypes.func.isRequired,
   id: propTypes.string.isRequired,
   type: propTypes.string.isRequired,
-  image: propTypes.string.isRequired,
   history: propTypes.instanceOf(Object).isRequired,
 };
 
