@@ -43,7 +43,6 @@ const RecipeAppProvider = ({ children }) => {
       return dados;
     });
     setEmailBool(true);
-    
   };
 
   const context = {
