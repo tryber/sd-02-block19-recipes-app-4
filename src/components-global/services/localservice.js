@@ -47,7 +47,7 @@ export const stringToArray = (string) => {
   return [];
 };
 
-export const arrayToString = (arr) => (`${arr.toString()}`);
+export const arrayToString = (arr) => (`[${arr.toString()}]`);
 
 export const stringToObj = (str) => {
   const newObj = {};

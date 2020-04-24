@@ -33,8 +33,9 @@ const dataMeal = (andrey) => {
   const strYoutube = andrey.meals[0].strYoutube;
   const strTags = andrey.meals[0].strTags;
   const ingridients = filterX(andrey.meals[0]);
+  const strArea = andrey.meals[0].strArea;
 
-  return { id, strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients, strTags };
+  return { id, strArea, strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients, strTags };
 };
 
 const dataCocktail = (andrey) => {
@@ -46,8 +47,9 @@ const dataCocktail = (andrey) => {
   const strYoutube = andrey.drinks[0].strYoutube;
   const strTags = andrey.drinks[0].strTags;
   const ingridients = filterX(andrey.drinks[0]);
+  const strArea = andrey.drinks[0].strArea;
 
-  return { id, strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients, strTags };
+  return { id, strArea, strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients, strTags };
 };
 
 export const convertTypeToData = (type, andrey) => {

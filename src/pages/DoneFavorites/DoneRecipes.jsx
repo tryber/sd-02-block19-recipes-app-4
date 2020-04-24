@@ -5,7 +5,6 @@ import Filters from './components/Filters';
 import Header2 from '../../components-global/Header2';
 import SubCard2 from './components/SubCard2';
 import Message from '../../components-global/Message';
-import Card2 from '../../components-global/Card2';
 import { convertStringToArrayObj } from '../../components-global/services/localservice';
 import './style/style.css';
 
@@ -25,15 +24,16 @@ const DoneRecipes = (props) => {
       {items.map((item) => {
         const { category, id, image, type, doneDate } = item;
         return (
-          <Card2 image={image} key={id}>
-            <SubCard2
-              category={category}
-              id={id}
-              setShow={setShow}
-              type={type}
-              doneDate={doneDate}
-            />
-          </Card2>
+          <SubCard2
+            key={id}
+            category={category}
+            id={id}
+            setShow={setShow}
+            type={type}
+            doneDate={doneDate}
+            history={history}
+            image={image}
+          />
         );
       })}
       <Message message="Cliped!" show={show} setShow={setShow} />

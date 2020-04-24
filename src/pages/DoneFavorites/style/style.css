@@ -10,7 +10,7 @@
   display: flex;
 }
 
-.comp_subcard2 .subtitle {
+.comp_subcard2 .subtitle , .comp_subcard .subtitle  {
   color: gray;
 }
 
