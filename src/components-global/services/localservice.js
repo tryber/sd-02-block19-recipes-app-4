@@ -1,11 +1,11 @@
 export const convertArrayObjToString = (arrObj) => {
   const arr = arrObj.map((obj) => JSON.stringify(obj));
-  return `${arr.toString()}`;
+  return `[${arr.toString()}]`;
 };
 
 const func2 = (i, arr, newArr) => {
-  if (i < arr.length - 1) {
-    newArr.push(JSON.parse(`${arr[i]}`));
+  if (i < 0) {
+    newArr.push(JSON.parse(`${arr[i]}}`));
   } else {
     newArr.push(JSON.parse(arr[i]));
   }
@@ -19,14 +19,16 @@ const func1 = (string) => {
     return [];
   }
   let arr = [];
-  if (arr.length > 1) {
+  if (str.length > 1) {
     arr = str.split('},');
-  } else {
-    arr = [str];
   }
   const newArr = [];
-  for (let i = 0; i < arr.length; i += 1) {
-    func2(i, arr, newArr);
+  for (let i = 0; i < arr.length; i++) {
+    if (i < arr.length - 1) {
+      newArr.push(JSON.parse(`${arr[i]}}`));
+    } else {
+      newArr.push(JSON.parse(arr[i]));
+    }
   }
   return newArr;
 };

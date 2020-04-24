@@ -31,7 +31,7 @@ function Carousel(props) {
 }
 
 Carousel.propTypes = {
-  children: propTypes.element.isRequired,
+  children: propTypes.instanceOf(Array).isRequired,
 };
 
 export default Carousel;

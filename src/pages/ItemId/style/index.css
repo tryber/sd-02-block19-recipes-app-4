@@ -28,13 +28,6 @@
   margin: 0 2%;
 }
 
-.page_itemid .header > div > button {
-  background-color: white;
-  border-style: none;
-  cursor: pointer;
-  font-size: 2em;
-}
-
 .page_itemid .type {
   color: rgb(197, 190, 176);
   font-size: 1.2em;
