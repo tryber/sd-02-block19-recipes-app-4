@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import context from '../../../context/Context';
 import { useHistory } from 'react-router-dom';
+import context from '../../../context/Context';
 import '../style/renderIngredients.css';
 
 const RenderIngredients = () => {
@@ -18,7 +18,7 @@ const RenderIngredients = () => {
     setSearchBarInput(ing);
     setRadioButtonSearch('ingredients');
     history.push(`/${db === 'themealdb' ? 'comidas' : 'bebidas'}`);
-  }
+  };
 
   return (
     <div className="render-ing-container">

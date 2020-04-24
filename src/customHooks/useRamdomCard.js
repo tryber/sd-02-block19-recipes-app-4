@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useEffect } from 'react';
 
 const useRamdomCard = (setResultsAll, n, db, fetchRecipe) => {
   const randomMeals = (response) => {
@@ -10,8 +10,8 @@ const useRamdomCard = (setResultsAll, n, db, fetchRecipe) => {
     for (let i = 0; i < n; i += 1) {
       fetchRecipe(db, 'random.php', randomMeals);
     }
-  return () => setResultsAll([]);
+    return () => setResultsAll([]);
   }, [db]);
-}
+};
 
 export default useRamdomCard;

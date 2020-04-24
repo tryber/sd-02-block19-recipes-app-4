@@ -17,7 +17,8 @@ const RadioBtnSearchBar = () => {
           name="t"
           value="ingredients"
           checked={radioButtonSearch === 'ingredients'}
-          data-testid="ingredient-search-radio" />
+          data-testid="ingredient-search-radio"
+        />
         <div>Ingredientes</div>
       </div>
       <div className="option-container">

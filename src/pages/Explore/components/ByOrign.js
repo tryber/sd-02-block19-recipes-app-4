@@ -35,8 +35,9 @@ const ByOrign = () => {
     fetchRecipe('themealdb', 'list.php?a=list', adjustSelectorArea);
   }, []);
   useEffect(() => {
-    if (selectedArea !== 'All areas')
-      fetchRecipe('themealdb', `filter.php?a=${selectedArea}`, setRecipesByContry);
+    if (selectedArea !== 'All areas') {
+      fetchRecipe('themealdb', `filter.php?a=${selectedArea}`, setRecipesByContry)
+    }
   }, [selectedArea]);
   return (
     <div className="by-orign-container">

@@ -11,7 +11,7 @@ const RenderByFilter = () => {
   const resultsSucces = (response) => {
     setResultsAll(response);
     setIsLoading(false);
-  }
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -25,7 +25,7 @@ const RenderByFilter = () => {
     <div>
       {isLoading && <Loading />}
       {!isLoading &&
-        resultsAdjusted.map(recipe => (
+        resultsAdjusted.map((recipe) => (
           <div key={recipe[`id${prefix}`]}>
             <RecipeCard details={recipe} dataBase={prefix} />
           </div>
