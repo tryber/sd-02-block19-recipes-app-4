@@ -11,14 +11,16 @@ import '../style/style.css';
 const btnSubCard = (history, type, data) => {
   const { id } = data;
   history.push(`/receitas/${type}/${id}`);
-}
+};
 
 function render({ image, id, data, category, setShow, setItems, history, type }) {
   return (
     <Card2 image={image} key={id} history={history} type={type} data={data} >
       <React.Fragment>
         <p className="subtitle">{category}</p>
-        <p className="title" onClick={() => btnSubCard(history, type, data)}>{data.strFood}</p>
+        <button type="button" onClick={() => btnSubCard(history, type, data)}>
+          <p className="title">{data.strFood}</p>
+        </button>
         {(type === 'comida') ? <p>{data.strArea}</p> : <div />}
         <div className="icons">
           <Favorite data={data} setItems={setItems} />
@@ -41,9 +43,11 @@ const SubCard = (props) => {
     fetchRecipe(switchType(type), `lookup.php?i=${id}`, cb);
   }, []);
 
+  const obj = { image, id, data, category, setShow, setItems, history, type };
+
   return (
     <div className="comp_subcard">
-      {(data) ? render({ image, id, data, category, setShow, setItems, history, type }) : <div />}
+      {(data) ? render(obj) : <div />}
     </div>
   );
 };

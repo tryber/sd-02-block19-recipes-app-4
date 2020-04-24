@@ -9,7 +9,7 @@ import '../style/style.css';
 
 const btnSubCard2 = (history, type, { id }) => {
   history.push(`/receitas/${type}/${id}`);
-}
+};
 
 function render({ image, data, category, setShow, doneDate, type, history }) {
   return (
@@ -28,7 +28,7 @@ function render({ image, data, category, setShow, doneDate, type, history }) {
             {data.strTags.split(',').slice(0, 2).map((tag) => (
               <p key={tag}>{tag}</p>
             ))}
-          </div> :
+        </div> :
         <div />}
       </React.Fragment>
     </Card2>
@@ -47,9 +47,11 @@ const SubCard2 = (props) => {
     fetchRecipe(switchType(type), `lookup.php?i=${id}`, cb);
   }, []);
 
+  const obj = { image, id, data, category, setShow, setItems, history, type };
+
   return (
     <div className="comp_subcard2">
-      {(data) ? render({ image, data, category, setShow, doneDate, type, history }) : <div />}
+      {(data) ? render(obj) : <div />}
     </div>
   );
 };
