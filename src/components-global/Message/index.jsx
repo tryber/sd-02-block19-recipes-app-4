@@ -15,7 +15,10 @@ const Message = (props) => {
   const { message, show, setShow } = props;
 
   useEffect(() => {
-    show && setTimeout(() => setShow(false), 5000);
+    if (show) {
+      const timeout = setTimeout(() => setShow(false), 2000);
+      return (() => clearTimeout(timeout));
+    }
   }, [show]);
 
   return (
