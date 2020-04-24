@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
 import RecipeAppContext from './Context';
 import recipeAPI from '../services/callAPI';
 
@@ -42,6 +43,7 @@ const RecipeAppProvider = ({ children }) => {
       localStorage.setItem('user', JSON.stringify(dados));
       return dados;
     });
+    setEmailBool(true);
   };
 
   const context = {

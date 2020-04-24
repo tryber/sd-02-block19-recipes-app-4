@@ -9,4 +9,5 @@ const getEndPointRecipesAPI = (type, search) => (
                 : Promise.reject(json)))
     ))
 );
+
 export default getEndPointRecipesAPI;
