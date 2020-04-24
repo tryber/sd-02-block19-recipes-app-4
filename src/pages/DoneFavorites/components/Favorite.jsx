@@ -32,6 +32,7 @@ const Favorite = (props) => {
 
 Favorite.propTypes = {
   data: propTypes.instanceOf(Object).isRequired,
+  setItems: propTypes.func.isRequired,
 };
 
 export default Favorite;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import propTypes from 'prop-types';
 
 import Filters from './components/Filters';
 import Header2 from '../../components-global/Header2';
@@ -38,6 +39,10 @@ const DoneRecipes = (props) => {
       <Message message="Cliped!" show={show} setShow={setShow} />
     </div>
   );
+};
+
+DoneRecipes.propTypes = {
+  history: propTypes.instanceOf(Object).isRequired,
 };
 
 export default DoneRecipes;

@@ -29,4 +29,9 @@ const Filters = (props) => {
   );
 };
 
+Filters.propTypes = {
+  setItems: propTypes.func.isRequired,
+  local: propTypes.string.isRequired,
+};
+
 export default Filters;

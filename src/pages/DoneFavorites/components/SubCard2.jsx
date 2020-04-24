@@ -4,7 +4,6 @@ import propTypes from 'prop-types';
 import { convertTypeToData, switchType } from '../../../services/convertDataType';
 import RecipeAppContext from '../../../context/Context';
 import Share from '../../../components-global/Share';
-import Favorite from './Favorite';
 import '../style/style.css';
 
 function render(data, category, setShow, doneDate) {
@@ -42,6 +41,14 @@ const SubCard2 = (props) => {
       {(data) ? render(data, category, setShow, doneDate) : <div />}
     </div>
   );
+};
+
+SubCard2.propTypes = {
+  category: propTypes.string.isRequired,
+  setShow: propTypes.func.isRequired,
+  doneDate: propTypes.string.isRequired,
+  id: propTypes.string.isRequired,
+  type: propTypes.string.isRequired,
 };
 
 export default SubCard2;

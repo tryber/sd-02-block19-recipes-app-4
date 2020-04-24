@@ -1,5 +1,5 @@
 import React from 'react';
-
+import propTypes from 'prop-types';
 import DoneRecipes from './DoneRecipes';
 import FavoritesRecipes from './FavoritesRecipes';
 
@@ -19,6 +19,10 @@ const DoneFavorites = (props) => {
       {switchDoneFavorite(history)}
     </div>
   );
+};
+
+DoneFavorites.propTypes = {
+  history: propTypes.instanceOf(Object).isRequired,
 };
 
 export default DoneFavorites;

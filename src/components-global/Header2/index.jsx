@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 import './style.css';
 
@@ -23,5 +23,9 @@ const Header2 = (props) => {
   );
 };
 
-export default Header2;
+Header2.propTypes = {
+  title: propTypes.string.isRequired,
+  history: propTypes.instanceOf(Object).isRequired,
+};
 
+export default Header2;

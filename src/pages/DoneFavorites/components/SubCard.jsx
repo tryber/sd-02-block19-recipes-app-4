@@ -40,4 +40,10 @@ const SubCard = (props) => {
   );
 };
 
+SubCard.propTypes = {
+  category: propTypes.string.isRequired,
+  setShow: propTypes.func.isRequired,
+  setItems: propTypes.func.isRequired,
+};
+
 export default SubCard;
