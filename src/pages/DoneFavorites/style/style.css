@@ -2,13 +2,11 @@
   margin-left: 5%;
 }
 
-.comp_subcard > button , .comp_subcard2 > button {
+.comp_subcard .title , .comp_subcard2 .title {
   background-color: transparent;
   border: none;
-  height: 100%;
   margin: 0;
   padding: 0;
-  width: 100%;
 }
 
 .comp_subcard2 {

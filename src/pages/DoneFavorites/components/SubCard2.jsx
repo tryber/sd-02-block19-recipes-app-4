@@ -19,8 +19,8 @@ function render({ image, data, category, setShow, doneDate, type, history }) {
           <p className="subtitle">{category}</p>
           <Share setShow={setShow} />
         </div>
-        <button type="button" onClick={() => btnSubCard2(history, type, data)}>
-          <p className="title">{data.strFood}</p>
+        <button type="button" className="title" onClick={() => btnSubCard2(history, type, data)}>
+          {data.strFood}
         </button>
         <p className="date">Feita em: {doneDate}</p>
         {(type === 'comida') ?
@@ -47,7 +47,7 @@ const SubCard2 = (props) => {
     fetchRecipe(switchType(type), `lookup.php?i=${id}`, cb);
   }, []);
 
-  const obj = { image, id, data, category, setShow, setItems, history, type };
+  const obj = { image, data, category, setShow, doneDate, type, history };
 
   return (
     <div className="comp_subcard2">

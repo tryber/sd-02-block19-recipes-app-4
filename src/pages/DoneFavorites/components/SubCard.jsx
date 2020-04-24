@@ -18,8 +18,8 @@ function render({ image, id, data, category, setShow, setItems, history, type })
     <Card2 image={image} key={id} history={history} type={type} data={data} >
       <React.Fragment>
         <p className="subtitle">{category}</p>
-        <button type="button" onClick={() => btnSubCard(history, type, data)}>
-          <p className="title">{data.strFood}</p>
+        <button type="button" className="title" onClick={() => btnSubCard(history, type, data)}>
+          {data.strFood}
         </button>
         {(type === 'comida') ? <p>{data.strArea}</p> : <div />}
         <div className="icons">
