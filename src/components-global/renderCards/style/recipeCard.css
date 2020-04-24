@@ -8,8 +8,8 @@
 }
 
 .recipe-card-container .img-card {
-  display: block;
   border-radius: 10px;
+  display: block;
   height: 55%;
   margin-left: auto;
   margin-right: auto;
