@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import propTypes from 'prop-types';
 
 import {
@@ -17,7 +17,7 @@ const btnFavorite = (data, setItems) => {
 };
 
 const Favorite = (props) => {
-  const { data, setItems } = props
+  const { data, setItems } = props;
   return (
     <button
       type="button"

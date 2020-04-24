@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import propTypes from 'prop-types';
 
-import { convertStringToArrayObj } from '../../../components-global/services/localservice'
+import { convertStringToArrayObj } from '../../../components-global/services/localservice';
 import './filters.css';
 
 const btnAll = (setItems, local) => {
   setItems(convertStringToArrayObj(localStorage.getItem(local)));
-}
+};
 
 const btnFood = (setItems, local) => {
   const items = convertStringToArrayObj(localStorage.getItem(local));
   setItems(items.filter((obj) => obj.type === 'comida'));
-}
+};
 
 const btnDrinks = (setItems, local) => {
   const items = convertStringToArrayObj(localStorage.getItem(local));
   setItems(items.filter((obj) => obj.type === 'bebida'));
-}
+};
 
 const Filters = (props) => {
   const { setItems, local } = props;

@@ -14,7 +14,7 @@
 }
 
 .bar {
-  border: 2px solid rgb(0, 0, 0);
+  border: 2px solid black;
   cursor: pointer;
   height: 1.5vh;
   margin: 2%;

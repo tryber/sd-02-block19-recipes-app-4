@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import propTypes from 'prop-types';
 
 import './style.css';
@@ -12,12 +12,12 @@ const Header2 = (props) => {
   return (
     <div className="comp_header2">
       <button
-      type="button"
-      onClick={() => btnPerson(history)}
-      className="material-icons"
-    >
-      person
-    </button>
+        type="button"
+        onClick={() => btnPerson(history)}
+        className="material-icons"
+      >
+        person
+      </button>
       <p className="title">{title}</p>
     </div>
   );

@@ -1,7 +1,7 @@
 .comp_filters {
   display: flex;
-  justify-content: space-between;
   height: 5vh;
+  justify-content: space-between;
   margin: 2%;
   width: 95%;
 }

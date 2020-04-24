@@ -10,6 +10,7 @@ function switchDoneFavorite(history) {
   if (window.location.href === 'http://localhost:3000/receitas-feitas') {
     return <DoneRecipes history={history} />;
   }
+  return;
 }
 
 const DoneFavorites = (props) => {
