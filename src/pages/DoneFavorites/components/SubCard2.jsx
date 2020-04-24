@@ -7,12 +7,11 @@ import RecipeAppContext from '../../../context/Context';
 import Share from '../../../components-global/Share';
 import '../style/style.css';
 
-const btn = (history, type, data) => {
-  const { id } = data;
+const btnSubCard2 = (history, type, { id }) => {
   history.push(`/receitas/${type}/${id}`);
 }
 
-function render(image, data, category, setShow, doneDate, type, history) {
+function render({ image, data, category, setShow, doneDate, type, history }) {
   return (
     <Card2 image={image} key={data.id} data={data} history={history} type={type} >
       <React.Fragment>
@@ -20,14 +19,16 @@ function render(image, data, category, setShow, doneDate, type, history) {
           <p className="subtitle">{category}</p>
           <Share setShow={setShow} />
         </div>
-        <p className="title" onClick={() => btn(history, type, data)}>{data.strFood}</p>
+        <button type="button" onClick={() => btnSubCard2(history, type, data)}>
+          <p className="title">{data.strFood}</p>
+        </button>
         <p className="date">Feita em: {doneDate}</p>
-        {(type === 'comida') ? 
-        <div className="tags">
-          {data.strTags.split(',').slice(0, 2).map((tag) => (
-            <p key={tag}>{tag}</p>
-          ))}
-        </div> :
+        {(type === 'comida') ?
+          <div className="tags">
+            {data.strTags.split(',').slice(0, 2).map((tag) => (
+              <p key={tag}>{tag}</p>
+            ))}
+          </div> :
         <div />}
       </React.Fragment>
     </Card2>
@@ -48,7 +49,7 @@ const SubCard2 = (props) => {
 
   return (
     <div className="comp_subcard2">
-      {(data) ? render(image, data, category, setShow, doneDate, type, history) : <div />}
+      {(data) ? render({ image, data, category, setShow, doneDate, type, history }) : <div />}
     </div>
   );
 };
@@ -61,7 +62,6 @@ SubCard2.propTypes = {
   type: propTypes.string.isRequired,
   image: propTypes.string.isRequired,
   history: propTypes.instanceOf(Object).isRequired,
-  data: propTypes.instanceOf(Object).isRequired,
 };
 
 export default SubCard2;

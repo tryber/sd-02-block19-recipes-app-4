@@ -35,7 +35,9 @@ const dataMeal = (andrey) => {
   const ingridients = filterX(andrey.meals[0]);
   const strArea = andrey.meals[0].strArea;
 
-  return { id, strArea, strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients, strTags };
+  return {
+    id, strArea, strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients, strTags,
+  };
 };
 
 const dataCocktail = (andrey) => {
@@ -49,7 +51,9 @@ const dataCocktail = (andrey) => {
   const ingridients = filterX(andrey.drinks[0]);
   const strArea = andrey.drinks[0].strArea;
 
-  return { id, strArea, strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients, strTags };
+  return {
+    id, strArea, strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients, strTags,
+  };
 };
 
 export const convertTypeToData = (type, andrey) => {

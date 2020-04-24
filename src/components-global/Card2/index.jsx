@@ -6,13 +6,15 @@ import './style.css';
 const btn = (history, type, data) => {
   const { id } = data;
   history.push(`/receitas/${type}/${id}`);
-}
+};
 
 const Card2 = (props) => {
   const { image, children, data, history, type } = props;
   return (
     <div className="comp_card2">
-      <img src={image} alt="" onClick={() => btn(history, type, data)} />
+      <button type="button" onClick={() => btn(history, type, data)}>
+        <img src={image} alt="" />
+      </button>
       <div className="container">
         {children}
       </div>
