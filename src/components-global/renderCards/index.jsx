@@ -20,7 +20,7 @@ const renderCardsFunction = (adjustedData, prefix) => (
 );
 
 const RenderCards = () => {
-  const { results: [data], dataBase: [db], isOnSearchBar } = useContext(context);
+  const { results: [data], dataBase: [db], isOnSearchBar, isLoading } = useContext(context);
   const history = useHistory();
   const prefix = db === 'themealdb' ? 'Meal' : 'Drink';
   const minPrefix = db === 'themealdb' ? 'meals' : 'drinks';
@@ -30,7 +30,8 @@ const RenderCards = () => {
   }
   return (
     <div className="container-all-recipes">
-      {!adjustedData && <Loading />}
+      {isLoading && <Loading />}
+      {!adjustedData && !isLoading && <div>Faça sua pesquisa</div>}
       {isOnSearchBar && adjustedData && adjustedData.length === 1
         && changeRoute(history, minPrefix, adjustedData[0][`id${prefix}`])}
       {adjustedData && renderCardsFunction(adjustedData, prefix)}

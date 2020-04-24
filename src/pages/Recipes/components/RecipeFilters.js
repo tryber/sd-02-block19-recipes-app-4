@@ -13,48 +13,34 @@ const selectFilterOnClick = (filter, selectedFilter, setSelectedFilter, setData)
   setData([]);
 };
 
-const disableFuncBtnFilter = (selectedFilter, data) => {
-  switch (selectedFilter) {
-    case ('All'):
-      return (data.length !== 12);
-    default:
-      return false;
-  }
-};
-
 const RecipeFilters = () => {
   const { dataBase: [db], fetchRecipe, selectedFilterContext: [selectedFilter, setSelectedFilter],
-    results: [data, setData], setIsLoading, isLoading } = useContext(context);
+    results: [, setData], setIsLoading, isLoading } = useContext(context);
   const [categories, setCategories] = useState([]);
-
-  const getFilters = (response) => {
-    setCategories(response);
-    setIsLoading(false);
-  };
-
+  const getFilters = (response) => setCategories(response);
   const categoriesList = categories.meals || categories.drinks || [];
   const arrCategories = ['All',
     ...categoriesList
       .filter((categorie, index) => index < 5)
       .map(({ strCategory }) => strCategory)];
-
   useEffect(() => {
-    setIsLoading('true');
+    setIsLoading(true);
     fetchRecipe(db, 'list.php?c=list', getFilters);
   }, [db]);
-
   return (
     <div>
-      {!isLoading && <div className="btn-filter-container">{arrCategories.map((filter) => (
-        <button
-          key={filter}
-          className={selectedFilterClass(filter, selectedFilter)}
-          onClick={() => selectFilterOnClick(filter, selectedFilter, setSelectedFilter, setData)}
-          data-testid={`${filter}-category-filter`}
-          disabled={disableFuncBtnFilter(selectedFilter, data)}
-        >{filter}
-        </button>
-      ))}</div>}
+      {arrCategories.length === 6 &&
+        <div className="btn-filter-container">{arrCategories.map((filter) => (
+          <button
+            key={filter}
+            className={selectedFilterClass(filter, selectedFilter)}
+            onClick={() => selectFilterOnClick(filter, selectedFilter, setSelectedFilter, setData)}
+            data-testid={`${filter}-category-filter`}
+            disabled={isLoading}
+          >{filter}
+          </button>
+        ))}
+        </div>}
     </div>
   );
 };
