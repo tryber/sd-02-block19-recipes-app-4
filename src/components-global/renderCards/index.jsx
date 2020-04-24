@@ -12,7 +12,7 @@ const changeRoute = (history, minPrefix, id) => {
 const renderCardsFunction = (adjustedData, prefix) => (
   <div>
     {adjustedData.map((recipe) => (
-      <div key={JSON.stringify(recipe)}>
+      <div className="container-cardsF" key={JSON.stringify(recipe)}>
         <RecipeCard details={recipe} dataBase={prefix} />
       </div>
     ))}
