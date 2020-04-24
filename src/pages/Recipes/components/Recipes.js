@@ -1,30 +1,17 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import context from '../../../context/Context';
-import RenderCards from '../../../components-global/renderCards';
+import RenderAllCards from '../../../components-global/RenderAllCards';
+import RenderByFilter from '../components/RenderByFilter';
 
 const Recipes = () => {
-  const { dataBase: [db], fetchRecipe, selectedFilterContext: [selectedFilter],
-    results: [, setData] } = useContext(context);
-  const randomMeals = (response) => {
-    setData((prevData) => [...prevData, response]);
-  };
-  useEffect(() => {
-    if (selectedFilter !== 'All') {
-      fetchRecipe(db, `filter.php?c=${selectedFilter}`, setData);
-    } else {
-      setData([]);
-      for (let i = 0; i < 12; i += 1) {
-        fetchRecipe(db, 'random.php', randomMeals);
-      }
-    }
-    return () => {
-      setData([]);
-    };
-  }, [selectedFilter]);
+  const { selectedFilterContext: [selectedFilter], dataBase: [db] } = useContext(context);
+
+  useEffect(() => { }, [db]);
 
   return (
     <div>
-      <RenderCards />
+      {selectedFilter === 'All' && <RenderAllCards />}
+      {selectedFilter !== 'All' && <RenderByFilter />}
     </div>
   );
 };

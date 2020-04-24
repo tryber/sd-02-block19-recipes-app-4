@@ -21,12 +21,13 @@ const linkToDrinks = (setDB, setSelectedFilter, setData) => (
   </Link>
 );
 
-const linkToExplore = (setDB, setSelectedFilter, setData) => (
+const linkToExplore = (setDB, setSelectedFilter, setData, setIsOnSearchBar) => (
   <Link
     to="/explorar"
     data-testid="explore-bottom-btn"
     onClick={() => {
       setLinksProperly('themealdb', setDB, setSelectedFilter, setData);
+      setIsOnSearchBar(false);
     }}
 
   >
@@ -47,7 +48,7 @@ const linkToFood = (setDB, setSelectedFilter, setData) => (
 );
 
 const Footer = () => {
-  const { dataBase: [, setDB], selectedFilterContext: [, setSelectedFilter],
+  const { dataBase: [, setDB], selectedFilterContext: [, setSelectedFilter], setIsOnSearchBar,
     results: [, setData],
   } = useContext(context);
   return (
@@ -56,7 +57,7 @@ const Footer = () => {
       <div className="footer-list-container">
         <ul className="flex-footer-container">
           {linkToDrinks(setDB, setSelectedFilter, setData)}
-          {linkToExplore(setDB, setSelectedFilter, setData)}
+          {linkToExplore(setDB, setSelectedFilter, setData, setIsOnSearchBar)}
           {linkToFood(setDB, setSelectedFilter, setData)}
         </ul>
       </div>
