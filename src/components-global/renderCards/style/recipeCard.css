@@ -1,6 +1,5 @@
 .recipe-card-container {
   border: grey 1px solid;
-<<<<<<< HEAD
   border-radius: 1em;
   box-shadow: 0.25em 0.25em grey;
   box-sizing: border-box;
@@ -11,22 +10,11 @@
 .recipe-card-container .img-card {
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
-=======
   border-radius: 10px;
   box-shadow: 2px 2px grey;
   height: 80%;
   margin: 2%;
   width: 50%;
-}
-
-.recipe-card-container .img-card {
-  border-radius: 10px;
->>>>>>> master
-  display: block;
-  height: 55%;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
 }
 
 .recipe-card-container .recipe-card {
