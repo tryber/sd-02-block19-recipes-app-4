@@ -44,7 +44,7 @@ const dataCocktail = (andrey) => {
   const strCategory = andrey.drinks[0].strAlcoholic;
   const strInstructions = andrey.drinks[0].strInstructions;
   const strYoutube = andrey.drinks[0].strYoutube;
-  const strTags = andrey.meals[0].strTags;
+  const strTags = andrey.drinks[0].strTags;
   const ingridients = filterX(andrey.drinks[0]);
 
   return { id, strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients, strTags };
