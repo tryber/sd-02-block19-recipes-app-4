@@ -25,7 +25,7 @@ const Login = () => {
         ? <button
           data-testid="login-submit-btn"
           onClick={(e) => handleSubmit(e)}
-          >Entrar
+        >Entrar
         </button>
         : <button data-testid="login-submit-btn" disabled>Entrar</button>}
       </form>
