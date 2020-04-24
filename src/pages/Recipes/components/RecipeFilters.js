@@ -17,9 +17,7 @@ const RecipeFilters = () => {
   const { dataBase: [db], fetchRecipe, selectedFilterContext: [selectedFilter, setSelectedFilter],
     results: [, setData], setIsLoading, isLoading } = useContext(context);
   const [categories, setCategories] = useState([]);
-  const getFilters = (response) => {
-    setCategories(response);
-  };
+  const getFilters = (response) =>  setCategories(response);
   const categoriesList = categories.meals || categories.drinks || [];
   const arrCategories = ['All',
     ...categoriesList
