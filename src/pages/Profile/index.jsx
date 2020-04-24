@@ -6,7 +6,6 @@ const Profile = () => {
   const context = useContext(RecipeAppContext);
 
   console.log(context);
-
   return (
     <div>
       <Header title={'Perfil'} />

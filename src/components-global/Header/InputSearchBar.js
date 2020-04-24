@@ -43,7 +43,7 @@ const InputSearchBar = () => {
   useEffect(
     () => {
       if (debouncedSearchTerm && radioButtonSearch && searchBarInput) {
-        setIsLoading('true');
+        setIsLoading(true);
         fetchRecipe(db, typeOfSearch(radioButtonSearch, searchBarInput), searchInputRadio);
       } else {
         setData([]);
