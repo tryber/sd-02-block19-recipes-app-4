@@ -1,0 +1,52 @@
+export const meals = {
+  meals: [
+    {
+      idMeal: '',
+      strMeal: '',
+      strDrinkAlternate: null,
+      strCategory: '',
+      strArea: '',
+      strInstructions: '',
+      strMealThumb: '',
+      strYoutube: '',
+      strIngredient1: '',
+      strIngredient2: '',
+      strIngredient3: '',
+      strIngredient4: '',
+      strIngredient5: '',
+      strIngredient6: '',
+      strIngredient7: '',
+      strIngredient8: '',
+      strMeasure1: '',
+      strMeasure2: '',
+      strMeasure3: '',
+      strMeasure4: '',
+      strMeasure5: '',
+      strMeasure6: '',
+      strMeasure7: '',
+      strMeasure8: '',
+    },
+  ],
+};
+
+export const drinks = {
+  drinks: [
+    {
+      idDrink: 11007,
+      strDrink: 'Margarita',
+      strCategory: 'Ordinary Drink',
+      strArea: '',
+      strInstructions: 'Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass.',
+      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/wpxpvu1439905379.jpg',
+      strYoutube: null,
+      strIngredient1: 'Tequila',
+      strIngredient2: 'Triple sec',
+      strIngredient3: 'Lime juice',
+      strIngredient4: 'Salt',
+      strMeasure1: '1 1/2 oz',
+      strMeasure2: '1/2 oz ',
+      strMeasure3: '1 oz',
+      strMeasure4: null,
+    },
+  ],
+};
