@@ -15,13 +15,11 @@ const Message = (props) => {
   const { message, show, setShow } = props;
 
   useEffect(() => {
-    setInterval(() => setShow(false), 3000);
+    show && setTimeout(() => setShow(false), 5000);
   }, [show]);
 
   return (
-    <React.Fragment>
-      {show ? render(message) : <div />}
-    </React.Fragment>
+    show && render(message)
   );
 };
 

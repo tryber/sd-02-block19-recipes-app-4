@@ -13,11 +13,11 @@ const btnSubCard = (history, type, data) => {
   history.push(`/receitas/${type}/${id}`);
 };
 
-function render({ image, id, data, category, setShow, setItems, history, type }) {
+function render(data, setShow, setItems, history, type) {
   return (
-    <Card2 image={image} key={id} history={history} type={type} data={data} >
+    <Card2 image={data.strThumb} key={data.id} history={history} type={type} data={data} >
       <React.Fragment>
-        <p className="subtitle">{category}</p>
+        <p className="subtitle">{data.strCategory}</p>
         <button type="button" className="title" onClick={() => btnSubCard(history, type, data)}>
           {data.strFood}
         </button>
@@ -43,11 +43,9 @@ const SubCard = (props) => {
     fetchRecipe(switchType(type), `lookup.php?i=${id}`, cb);
   }, []);
 
-  const obj = { image, id, data, category, setShow, setItems, history, type };
-
   return (
     <div className="comp_subcard">
-      {(data) ? render(obj) : <div />}
+      {(data) ? render(data, setShow, setItems, history, type) : <div />}
     </div>
   );
 };

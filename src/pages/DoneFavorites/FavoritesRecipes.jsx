@@ -25,6 +25,7 @@ const FavoritesRecipes = (props) => {
         const { category, id, image, type } = item;
         return (
           <SubCard
+            key={id}
             category={category}
             id={id}
             setShow={setShow}
