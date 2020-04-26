@@ -1,12 +1,10 @@
 import React from 'react';
 import renderWithRouter from './services/renderWithRouter';
 import { fireEvent } from '@testing-library/react';
-import { createMemoryHistory } from 'history';
 import App from './App';
 
 describe('Testing login page', () => {
   test('Testing all inputs', () => {
-    const history = createMemoryHistory();
     const route = '/';
     const { getByText, getByTestId } = renderWithRouter(<App />, { route });
     const login = getByText(/login/i);
@@ -34,5 +32,5 @@ describe('Testing login page', () => {
     expect(lsDrinks).toBe("1");
     expect(user).toBe( "{\"email\":\"teste@test.com\"}");
     expect(location.pathname).toBe('/comidas');
-  })
-})
+  });
+});
