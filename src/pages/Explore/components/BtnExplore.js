@@ -11,8 +11,16 @@ const BtnExplore = () => {
 
   return (
     <div className="btn-explore-container">
-      <button onClick={() => changeRoute('comidas')}>Explorar Comidas</button>
-      <button onClick={() => changeRoute('bebidas')}>Explorar Bebidas</button>
+      <button
+        onClick={() => changeRoute('comidas')}
+        data-testid="explore-food"
+      >Explorar Comidas
+      </button>
+      <button
+        onClick={() => changeRoute('bebidas')}
+        data-testid="explore-drinks"
+      >Explorar Bebidas
+      </button>
     </div>
   );
 };

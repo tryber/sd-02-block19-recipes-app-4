@@ -23,11 +23,8 @@ const ByOrign = () => {
   const [areas, setAreas] = useState([]);
   const [selectedArea, setSelectedArea] = useState([]);
   const [recipesByContry, setRecipesByContry] = useState([]);
-
   const { fetchRecipe } = useContext(context);
-
   const hist = useHistory();
-
   const adjustSelectorArea = (response) => {
     setAreas(() => [{ strArea: 'All areas' }, ...response.meals]);
   };
@@ -41,8 +38,11 @@ const ByOrign = () => {
   }, [selectedArea]);
   return (
     <div className="by-orign-container">
-      <select onChange={(e) => setSelectedArea(e.target.value)}>
-        {areas.map(({ strArea }) => <option value={strArea} key={strArea}>{strArea}</option>)}
+      <select
+        data-testid="explore-by-area-dropdown"
+        onChange={(e) => setSelectedArea(e.target.value)}>
+        {areas.map(({ strArea: place }) =>
+          <option data-testid={`${place}-option`} value={place} key={place}>{place}</option>)}
       </select>
       {!recipesByContry.meals && <div>Nenhum resultado</div>}
       {recipesByContry.meals && selectedArea !== 'All areas' && byCountrie(recipesByContry, hist)}

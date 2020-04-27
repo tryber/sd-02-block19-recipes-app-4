@@ -12,10 +12,19 @@ const BtnKindOfRecipe = () => {
 
   return (
     <div className="btn-explore-container">
-      <button onClick={() => changeRoute('ingredientes')}>Por ingredientes</button>
+      <button
+        data-testid="explore-by-ingredient"
+        onClick={() => changeRoute('ingredientes')}
+      >Por ingredientes</button>
       {type !== 'bebidas' &&
-        <button onClick={() => changeRoute('area')}>Por local de origem</button>}
-      <button onClick={() => changeRoute('surprise-me')}>Me surpreenda!</button>
+        <button
+          onClick={() => changeRoute('area')}
+          data-testid="explore-by-area"
+        >Por local de origem</button>}
+      <button
+        onClick={() => changeRoute('surprise-me')}
+        data-testid="explore-surprise"
+      >Me surpreenda!</button>
     </div>
   );
 };
