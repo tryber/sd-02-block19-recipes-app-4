@@ -34,13 +34,13 @@ const ByOrign = () => {
   useEffect(() => {
     if (selectedArea !== 'All areas') {
       fetchRecipe('themealdb', `filter.php?a=${selectedArea}`, setRecipesByContry);
-    }
-  }, [selectedArea]);
+    }}, [selectedArea]);
   return (
     <div className="by-orign-container">
       <select
         data-testid="explore-by-area-dropdown"
-        onChange={(e) => setSelectedArea(e.target.value)}>
+        onChange={(e) => setSelectedArea(e.target.value)}
+      >
         {areas.map(({ strArea: place }) =>
           <option data-testid={`${place}-option`} value={place} key={place}>{place}</option>)}
       </select>

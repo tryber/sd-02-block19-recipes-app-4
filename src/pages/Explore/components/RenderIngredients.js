@@ -30,7 +30,7 @@ const RenderIngredients = () => {
               `https://www.${adjustedDB}.com/images/ingredients/${ing[adjustedName]}-Small.png`
             }
             alt={ing[adjustedName]}
-            data-testid={`${ing[adjustedName]}-card-img`} 
+            data-testid={`${ing[adjustedName]}-card-img`}
           />
           <button onClick={() => listByIng(ing[adjustedName])}>Ver receitas!</button>
         </div>
