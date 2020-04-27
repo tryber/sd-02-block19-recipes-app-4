@@ -19,6 +19,7 @@ const RecipeAppProvider = ({ children }) => {
   const [storage, setStorage] = useState({});
   const [ingredients, setIngredients] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState('All');
+  const [renderID, setRenderID] = useState(false);
 
 
   const fetchRecipe = (type, search, toDoFunction) => {
@@ -72,6 +73,8 @@ const RecipeAppProvider = ({ children }) => {
     ing: [ingredients, setIngredients],
     selectedFilterContext: [selectedFilter, setSelectedFilter],
     defaultSettings,
+    renderID,
+    setRenderID,
   };
 
   return (
