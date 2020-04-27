@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import context from '../../context/Context';
 import RecipeCard from './recipeCard';
 import Loading from '../Loading';
 import './style/index.css';
 
-const changeRoute = (history, minPrefix, id) => {
-  history.push(`/receitas/${minPrefix}/${id}`);
+const cRoute = (minPrefix, id) => {
+  return <Redirect to={`/receitas/${minPrefix === 'meals' ? 'comida' : 'bebida'}/${id}`} />
 };
 
 const renderCardsFunction = (adjustedData, prefix) => (
@@ -20,8 +20,8 @@ const renderCardsFunction = (adjustedData, prefix) => (
 );
 
 const RenderCards = () => {
-  const { results: [data], dataBase: [db], isOnSearchBar, isLoading } = useContext(context);
-  const history = useHistory();
+  const { results: [data], dataBase: [db], isOnSearchBar, isLoading,
+    setIsLoading, setRenderID } = useContext(context);
   const prefix = db === 'themealdb' ? 'Meal' : 'Drink';
   const minPrefix = db === 'themealdb' ? 'meals' : 'drinks';
   let adjustedData = data.meals || data.drinks;
@@ -33,7 +33,7 @@ const RenderCards = () => {
       {isLoading && <Loading />}
       {!adjustedData && !isLoading && <div>Faça sua pesquisa</div>}
       {isOnSearchBar && adjustedData && adjustedData.length === 1
-        && changeRoute(history, minPrefix, adjustedData[0][`id${prefix}`])}
+        && cRoute(minPrefix, adjustedData[0][`id${prefix}`], setIsLoading, setRenderID)}
       {adjustedData && renderCardsFunction(adjustedData, prefix)}
     </div>
   );
