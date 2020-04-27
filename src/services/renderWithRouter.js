@@ -11,17 +11,10 @@ function renderWithRouter(
     history = createMemoryHistory({ initialEntries: [route] }),
   } = {},
 ) {
-  const Wrapper = ({ children }) => (
-    <Router history={history}>{children}</Router>
-  );
   return {
-    ...render(ui, { wrapper: Wrapper }),
+    ...render(<Router history={history}>{ui}</Router>),
     history,
   };
 }
 
 export default renderWithRouter;
-
-renderWithRouter.propTypes = {
-  children: PropTypes.node.isRequired,
-};
