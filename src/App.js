@@ -11,7 +11,6 @@ import Loading from './components-global/Loading';
 
 const App = () => (
   <RecipeAppProvider>
-    <Router>
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/loading" component={Loading} />
@@ -25,7 +24,6 @@ const App = () => (
         <Route exact path="/perfil" component={Profile} />
         <Route exact path="/:type" component={Recipes} />
       </Switch>
-    </Router>
   </RecipeAppProvider>
 );
 

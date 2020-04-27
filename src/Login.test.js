@@ -31,6 +31,6 @@ describe('Testing login page', () => {
     expect(lsMeals).toBe("1");
     expect(lsDrinks).toBe("1");
     expect(user).toBe( "{\"email\":\"teste@test.com\"}");
-    expect(location.pathname).toBe('/comidas');
+    expect(getByText("Comidas")).toBeInTheDocument();
   });
 });

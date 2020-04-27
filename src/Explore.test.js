@@ -1,8 +1,6 @@
 import React from 'react';
 import { fireEvent, cleanup } from '@testing-library/react';
 import renderWithRouter from './services/renderWithRouter';
-import Provider from './context/Provider';
-import Explore from './pages/Explore';
 import App from './App';
 
 afterEach(cleanup);
@@ -10,12 +8,9 @@ afterEach(cleanup);
 describe('Testing explore page', () => {
   test('Testing first page of explore', () => {
     const { getByText, getByTestId } = renderWithRouter(
-      <Provider><Explore /></Provider>, {
+      <App />, {
       route: '/explorar',
     });
-
-    // const history = createMemoryHistory();
-    // history.push('/wrong/location');
 
     const btnExploreMeal = getByTestId("explore-food");
     const btnExploreDrink = getByTestId("explore-drinks");
@@ -24,13 +19,21 @@ describe('Testing explore page', () => {
     expect(btnExploreDrink).toBeInTheDocument();
 
     fireEvent.click(btnExploreMeal);
-    expect(getByText("Por ingredientes")).toBeInTheDocument()
-    // expect(getByText("Por local de origem")).toBeInTheDocument()
-    // expect(getByText("Me surpreenda!")).toBeInTheDocument()
-    // expect(getByText("Explorar comidas")).toBeInTheDocument();
-    // location.pathname = "/explorar";
-    // expect(btnExploreMeal).toBeInTheDocument();
-    // expect(btnExploreDrink).toBeInTheDocument();
+    expect(getByText("Por local de origem")).toBeInTheDocument();
+    expect(getByText("Me surpreenda!")).toBeInTheDocument();
+    expect(getByText("Explorar comidas")).toBeInTheDocument();
+    expect(getByText("Por ingredientes")).toBeInTheDocument();
+  });
 
+  test('Testing drink page of explore', () => {
+    const { getByText, queryByText } = renderWithRouter(
+      <App />, {
+      route: '/explorar/bebidas',
+    });
+
+    expect(queryByText("Por local de origem")).toBeNull()
+    expect(getByText("Me surpreenda!")).toBeInTheDocument();
+    expect(getByText("Explorar bebidas")).toBeInTheDocument();
+    expect(getByText("Por ingredientes")).toBeInTheDocument();
   });
 });
