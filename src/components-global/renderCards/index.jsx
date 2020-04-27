@@ -5,9 +5,9 @@ import RecipeCard from './recipeCard';
 import Loading from '../Loading';
 import './style/index.css';
 
-const cRoute = (minPrefix, id) => {
-  return <Redirect to={`/receitas/${minPrefix === 'meals' ? 'comida' : 'bebida'}/${id}`} />
-};
+const cRoute = (minPrefix, id) => (
+  <Redirect to={`/receitas/${minPrefix === 'meals' ? 'comida' : 'bebida'}/${id}`} />
+);
 
 const renderCardsFunction = (adjustedData, prefix) => (
   <div>

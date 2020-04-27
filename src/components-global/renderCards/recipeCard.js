@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
-import context from '../../context/Context';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import context from '../../context/Context';
 import './style/recipeCard.css';
 
 const goToId = (id, history, db, setIsLoading, setRenderID) => {
@@ -14,7 +14,7 @@ const RecipeCard = ({ details, dataBase }) => {
   const history = useHistory();
   const { setIsLoading, setRenderID } = useContext(context);
   const { [`id${dataBase}`]: id, [`str${dataBase}`]: recipe, [`str${dataBase}Thumb`]: img, strCategory: category } = details;
-  useEffect(()=> ()=> setRenderID(false), [])
+  useEffect(() => () => setRenderID(false), []);
   return (
     <div className="recipe-card-container">
       <img className="img-card" src={img} alt={recipe} />
