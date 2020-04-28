@@ -9,7 +9,7 @@ import Drink from './components/Drink';
 import './style/index.css';
 import { convertTypeToData, switchType } from '../../services/convertDataType';
 
-const renderFood = (type, data, making, history) => {
+const renderFood = (type, data, making) => {
   switch (type) {
     case 'comida':
       return (
@@ -18,7 +18,6 @@ const renderFood = (type, data, making, history) => {
           data={data}
           making={making}
           type={type}
-          history={history}
         />);
     case 'bebida':
       return (
@@ -27,7 +26,6 @@ const renderFood = (type, data, making, history) => {
           data={data}
           making={making}
           type={type}
-          history={history}
         />);
     default:
       return null;
@@ -35,11 +33,11 @@ const renderFood = (type, data, making, history) => {
 };
 
 const ItemId = (props) => {
-  const { history } = props;
   const { fetchRecipe, isLoading, setIsLoading, renderID } = useContext(RecipeAppContext);
   const { type, id, making } = useParams();
   const [data, setData] = useState();
   const cb = (resp) => {
+    console.log('cb')
     setData(resp);
     setIsLoading(false);
   };
@@ -54,13 +52,9 @@ const ItemId = (props) => {
 
   return (
     <div className="page_itemid">
-      {(isLoading || !data) ? (<Loading />) : (renderFood(type, data, making, history))}
+      {(isLoading) ? (<Loading />) : (renderFood(type, data, making))}
     </div>
   );
-};
-
-ItemId.propTypes = {
-  history: propTypes.instanceOf(Object).isRequired,
 };
 
 export default ItemId;

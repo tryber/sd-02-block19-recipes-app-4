@@ -68,7 +68,7 @@ function CardRecomended(props) {
   useEffect(() => {
     randomRecomended(fetchRecipe, type, setRandomResults, setRandomResults2);
   }, []);
-
+  
   return (
     <div className="comp_cardRecomended">
       <Card details={randomResults} dataBase={switchDataBase(type)} />
