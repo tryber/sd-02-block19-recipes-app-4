@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import context from '../../context/Context';
@@ -14,7 +14,6 @@ const RecipeCard = ({ details, dataBase }) => {
   const history = useHistory();
   const { setIsLoading, setIdRecipe } = useContext(context);
   const { [`id${dataBase}`]: id, [`str${dataBase}`]: recipe, [`str${dataBase}Thumb`]: img, strCategory: category } = details;
-  // useEffect(() => () => setRenderID(false), []);
   return (
     <div className="recipe-card-container">
       <img className="img-card" src={img} alt={recipe} />

@@ -36,7 +36,7 @@ const renderFood = (type, data, making, history) => {
 
 const ItemId = (props) => {
   const { history } = props;
-  const { fetchRecipe, isLoading, setIsLoading, idRecipe  } = useContext(RecipeAppContext);
+  const { fetchRecipe, isLoading, setIsLoading, idRecipe } = useContext(RecipeAppContext);
   const { type, id, making } = useParams();
   const [data, setData] = useState();
   const cb = (resp) => {
