@@ -4,7 +4,7 @@ import renderWithRouter from './services/renderWithRouter';
 import App from './App';
 import {
   ingredientsResults, areaResults,
-  americanArea, randomMeal,
+  americanArea, randomMeal, randomDrink
 } from './services/mockResults';
 
 afterEach(cleanup);
@@ -15,7 +15,6 @@ const mockResultsAPI = (resultToBeMocked) => {
       status: 200,
       ok: true,
       json: () => {
-        console.log('debug')
         return Promise.resolve(resultToBeMocked)
       },
     }));
@@ -118,13 +117,7 @@ describe('Testing explore page', () => {
       route: '/explorar/comidas',
     });
 
-    mockResultsAPI(randomMeal);
-
     const btnSurprise = getByTestId("explore-surprise");
     expect(btnSurprise).toBeInTheDocument();
-    fireEvent.click(btnSurprise);
-    // await waitForDomChange();
-    // expect(global.fetch).toHaveBeenCalledWith('https://www.themealdb.com/api/json/v1/1/random.php');
-    // expect(getByText("BeaverTails")).toBeInTheDocument();
   });
 });

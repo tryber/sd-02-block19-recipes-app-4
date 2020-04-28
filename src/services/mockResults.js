@@ -45,3 +45,58 @@ export const randomMeal = {
     }
   ],
 };
+
+export const randomDrink = {
+  drinks: [
+    {
+      idDrink: "17245",
+      strDrink: "Rosemary Blue",
+      strCategory: "Cocktail",
+      strDrinkThumb: "https://www.thecocktaildb.com/images/media/drink/qwc5f91512406543.jpg",
+      strIngredient1: "Gin",
+      strIngredient2: "Blue Curacao",
+      strMeasure1: "50 ml",
+      strMeasure2: "15 ml",
+    }
+  ],
+};
+
+export const listFiltersMeal = {
+  meals: [
+    {
+      strCategory: "Bife"
+    },
+    {
+      strCategory: "Café Manhã"
+    },
+    {
+      strCategory: "Chicken"
+    },
+    {
+      strCategory: "Sobremesas"
+    },
+    {
+      strCategory: "Goat"
+    },
+  ]
+}
+
+export const filterByCategorie = {
+  meals: [
+    {
+      strMeal: "Bife enorme",
+      strMealThumb: "https://www.themealdb.com/images/media/meals/1548772327.jpg",
+      idMeal: "52959"
+    },
+    {
+      strMeal: "Bife grande",
+      strMealThumb: "https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg",
+      idMeal: "52819"
+    },
+    {
+      strMeal: "Bifinho",
+      strMealThumb: "https://www.themealdb.com/images/media/meals/1520084413.jpg",
+      idMeal: "52944"
+    },
+  ],
+};
