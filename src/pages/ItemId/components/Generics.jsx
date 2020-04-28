@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 
 import {
   convertArrayObjToString,
   convertStringToArrayObj,
 } from '../../../components-global/services/localservice';
+
 import { inProggressHasId, addInProggress } from '../services/inProggress';
 import Carousel from './Carousel';
 import CardRecomended from './CardRecomended';
@@ -34,17 +36,9 @@ const instruction = (strInstructions) => (
   </div>
 );
 
-const renderVideo = (strYoutube) => {
-  const youtube = strYoutube.replace('watch?v=', 'v/-');
-  return (
-    <embed
-      data-testid="video"
-      src={youtube}
-      type="application/x-shockwave-flash"
-      allowscriptaccess="always"
-    />
-  );
-};
+const renderVideo = () => (
+  <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY" />
+);
 
 const not = () => (
   <div className="video">
@@ -125,10 +119,11 @@ const buttonSwitch = (making, data, type, history, checks) => {
 };
 
 function Generics(props) {
-  const { data, making, type, history } = props;
-  const { strFood, strThumb, strCategory, strInstructions, strYoutube, ingridients } = data;
+  const { data, making, type } = props;
+  const { strFood, strThumb, strCategory, strInstructions, ingridients } = data;
   const [show, setShow] = useState(false);
   const [allChecked, setAllChecked] = useState(true);
+  const history = useHistory();
 
   return (
     <React.Fragment>
@@ -143,7 +138,7 @@ function Generics(props) {
           data={data}
         />
         {instruction(strInstructions)}
-        {(making) ? <div /> : (video(strYoutube))}
+        {(making) ? <div /> : (video())}
         {(making) ? <div /> : recomended(type)}
         {buttonSwitch(making, data, type, history, allChecked)}
       </div>
@@ -156,7 +151,6 @@ Generics.propTypes = {
   data: propTypes.instanceOf(Object).isRequired,
   making: propTypes.string,
   type: propTypes.string.isRequired,
-  history: propTypes.instanceOf(Object).isRequired,
 };
 
 Generics.defaultProps = {

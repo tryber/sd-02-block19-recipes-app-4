@@ -4,14 +4,13 @@ import propTypes from 'prop-types';
 import Generics from './Generics';
 
 function Drink(props) {
-  const { convertTypeToData, data, making, type, history } = props;
+  const { convertTypeToData, data, making, type } = props;
 
   return (
     <Generics
       data={convertTypeToData('bebida', data)}
       making={making}
       type={type}
-      history={history}
     />
   );
 }
@@ -21,7 +20,6 @@ Drink.propTypes = {
   data: propTypes.instanceOf(Object).isRequired,
   making: propTypes.string,
   type: propTypes.string.isRequired,
-  history: propTypes.instanceOf(Object).isRequired,
 };
 
 Drink.defaultProps = {
