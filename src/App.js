@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import RecipeAppProvider from './context/Provider';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
@@ -11,21 +11,19 @@ import Loading from './components-global/Loading';
 
 const App = () => (
   <RecipeAppProvider>
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Login} />
-        <Route exact path="/loading" component={Loading} />
-        <Route exact path="/explorar" component={Explore} />
-        <Route exact path="/receitas-favoritas" component={DoneFavorites} />
-        <Route exact path="/receitas-feitas" component={DoneFavorites} />
-        <Route exact path="/explorar/:type" component={Explore} />
-        <Route exact path="/explorar/:type/:kindOfRecipe" component={Explore} />
-        <Route exact path="/receitas/:type/:id" component={ItemID} />
-        <Route exact path="/receitas/:type/:id/:making" component={ItemID} />
-        <Route exact path="/perfil" component={Profile} />
-        <Route exact path="/:type" component={Recipes} />
-      </Switch>
-    </Router>
+    <Switch>
+      <Route exact path="/" component={Login} />
+      <Route exact path="/loading" component={Loading} />
+      <Route exact path="/explorar" component={Explore} />
+      <Route exact path="/receitas-favoritas" component={DoneFavorites} />
+      <Route exact path="/receitas-feitas" component={DoneFavorites} />
+      <Route exact path="/explorar/:type" component={Explore} />
+      <Route exact path="/explorar/:type/:kindOfRecipe" component={Explore} />
+      <Route exact path="/receitas/:type/:id" component={ItemID} />
+      <Route exact path="/receitas/:type/:id/:making" component={ItemID} />
+      <Route exact path="/perfil" component={Profile} />
+      <Route exact path="/:type" component={Recipes} />
+    </Switch>
   </RecipeAppProvider>
 );
 
