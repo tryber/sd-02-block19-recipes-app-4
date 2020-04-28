@@ -64,19 +64,19 @@ export const randomDrink = {
 export const listFiltersMeal = {
   meals: [
     {
-      strCategory: 'Bife'
+      strCategory: 'Bife',
     },
     {
-      strCategory: 'Café Manhã'
+      strCategory: 'Café Manhã',
     },
     {
-      strCategory: 'Chicken'
+      strCategory: 'Chicken',
     },
     {
-      strCategory: 'Sobremesas'
+      strCategory: 'Sobremesas',
     },
     {
-      strCategory: 'Goat'
+      strCategory: 'Goat',
     },
   ],
 };
