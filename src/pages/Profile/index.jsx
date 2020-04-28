@@ -6,7 +6,7 @@ import './style/style.css';
 import Footer from '../../components-global/Footer';
 
 const Profile = () => {
-  const { emailBool } = useContext(RecipeAppContext);
+  const { localBol } = useContext(RecipeAppContext);
   const [emailP, setEmailP] = useState('');
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const Profile = () => {
     setEmailP(email);
   }, []);
 
-  if (!emailBool) return (<div>Loading...</div>);
+  // if (!localBol) return (<div>Loading...</div>);
 
   return (
     <div className="container-Profile">
