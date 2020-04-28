@@ -2,7 +2,10 @@ import React from 'react';
 import { fireEvent, cleanup, waitForDomChange } from '@testing-library/react';
 import renderWithRouter from './services/renderWithRouter';
 import App from './App';
-import { ingredientsResults, areaResults } from './services/mockResults';
+import {
+  ingredientsResults, areaResults,
+  americanArea, randomMeal,
+} from './services/mockResults';
 
 afterEach(cleanup);
 
@@ -75,7 +78,7 @@ describe('Testing explore page', () => {
   });
 
   test('Testing by area page explore', async () => {
-    const { getByText, getByTestId, queryByText, getAllByText } = renderWithRouter(
+    const { getByText, getByTestId, queryByText, queryAllByText } = renderWithRouter(
       <App />, {
       route: '/explorar/comidas',
     });
@@ -86,10 +89,42 @@ describe('Testing explore page', () => {
     expect(btnByArea).toBeInTheDocument();
     fireEvent.click(btnByArea);
     await waitForDomChange();
+    expect(global.fetch).toHaveBeenCalledWith('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
     expect(getByText("Explorar area")).toBeInTheDocument();
     const btnDropdown = getByTestId("explore-by-area-dropdown");
     expect(btnDropdown).toBeInTheDocument();
-    fireEvent.change(btnDropdown, { target: { value: "American" } });
 
+    mockResultsAPI(americanArea);
+
+    fireEvent.change(btnDropdown, { target: { value: "American" } });
+    await waitForDomChange();
+    expect(global.fetch).toHaveBeenCalledWith('https://www.themealdb.com/api/json/v1/1/filter.php?a=American');
+    expect(getByText("Banana Pancakes")).toBeInTheDocument();
+    expect(getByText("BBQ Pork Sloppy Joes with Pickled Onion & Sweet Potato Wedges")).toBeInTheDocument();
+    expect(getByText("Beef Brisket Pot Roast")).toBeInTheDocument();
+    expect(queryByText("Big Mac")).toBeNull();
+
+    mockResultsAPI(randomMeal);
+
+    fireEvent.change(btnDropdown, { target: { value: "All areas" } });
+    await waitForDomChange();
+    expect(queryAllByText(/BeaverTails/i)).toBeDefined();
+    expect(queryAllByText(/BeaverTails/i).length).toBe(12);
+  });
+
+  test('Testing surprise me', async () => {
+    const { getByText, getByTestId, queryByText, queryAllByText } = renderWithRouter(
+      <App />, {
+      route: '/explorar/comidas',
+    });
+
+    mockResultsAPI(randomMeal);
+
+    const btnSurprise = getByTestId("explore-surprise");
+    expect(btnSurprise).toBeInTheDocument();
+    fireEvent.click(btnSurprise);
+    // await waitForDomChange();
+    // expect(global.fetch).toHaveBeenCalledWith('https://www.themealdb.com/api/json/v1/1/random.php');
+    // expect(getByText("BeaverTails")).toBeInTheDocument();
   });
 });

@@ -33,3 +33,15 @@ export const americanArea = {
     },
   ],
 };
+
+export const randomMeal = {
+  meals: [
+    {
+      idMeal: "52928",
+      strMeal: "BeaverTails",
+      strMealThumb: "https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg",
+      strTags: "Treat,Pudding,Speciality",
+      strCategory: "Dessert",
+    }
+  ],
+};

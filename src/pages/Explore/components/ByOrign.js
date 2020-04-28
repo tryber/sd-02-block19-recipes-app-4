@@ -12,7 +12,7 @@ const byCountrie = (recipesByContry, hist) => (
         <img src={recipe.strMealThumb} alt={recipe.strMeal} height="80vh" />
         <p>{recipe.strMeal}</p>
         <button
-          onClick={() => hist.push(`/receitas/comidas/${recipe.idMeal}`)}
+          onClick={() => hist.push(`/receitas/comida/${recipe.idMeal}`)}
           className="btn-ver-mais"
         >Visitar receita!</button>
       </div>))}
