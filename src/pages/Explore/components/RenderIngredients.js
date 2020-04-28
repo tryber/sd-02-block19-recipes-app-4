@@ -24,12 +24,13 @@ const RenderIngredients = () => {
     <div className="render-ing-container">
       {ingredientsArray.map((ing) => (
         <div className="card-ing" key={ing[adjustedName]}>
-          <p>{ing[adjustedName]}</p>
+          <p data-testid={`${ing[adjustedName]}-card-name`} >{ing[adjustedName]}</p>
           <img
             src={
               `https://www.${adjustedDB}.com/images/ingredients/${ing[adjustedName]}-Small.png`
             }
             alt={ing[adjustedName]}
+            data-testid={`${ing[adjustedName]}-card-img`}
           />
           <button onClick={() => listByIng(ing[adjustedName])}>Ver receitas!</button>
         </div>

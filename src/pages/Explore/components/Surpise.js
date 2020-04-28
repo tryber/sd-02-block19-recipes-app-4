@@ -15,7 +15,7 @@ const Surprise = () => {
     const route = response.meals || response.drinks;
     const { idDrink, idMeal } = route[0];
     const id = idDrink || idMeal;
-    history.push(`/${type}/${id}`);
+    history.push(`/receitas/${(type === 'comidas') ? 'comida' : 'bebida'}/${id}`);
   };
 
   useEffect(() => {

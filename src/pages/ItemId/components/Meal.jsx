@@ -5,7 +5,6 @@ import Generics from './Generics';
 
 function Meal(props) {
   const { convertTypeToData, data, making, type } = props;
-  console.log('data', data);
   return (
     <Generics
       data={convertTypeToData('comida', data)}

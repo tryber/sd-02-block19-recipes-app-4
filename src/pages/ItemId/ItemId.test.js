@@ -42,19 +42,6 @@ const mockApi = () => {
     }));
 }
 
-const mockDrinksRandom = () => {
-  jest.spyOn(global, 'fetch')
-    .mockImplementation(() => Promise.resolve({
-      status: 200,
-      ok: true,
-      json: () => { 
-        console.log('segundo mock')
-        return Promise.resolve(drinks);
-      }
-    }));
-}
-
-
 beforeEach(() => {
   localStorage.clear();
 });
@@ -72,10 +59,8 @@ describe('ItemId', () => {
     const apiMeals = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=52882';
     const apiDrinkRandom = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
     expect(global.fetch).toHaveBeenCalledWith(apiMeals);
-    // mockDrinksRandom();
-    // expect(global.fetch).toHaveBeenCalledWith(apiDrinkRandom);
-    // await waitForDomChange();
     await wait();
+    expect(global.fetch).toHaveBeenCalledWith(apiDrinkRandom);
 
     expect(getByTestId('recipe-photo')).toBeInTheDocument();
     expect(getByTestId('share-btn')).toBeInTheDocument();
@@ -94,61 +79,4 @@ describe('ItemId', () => {
 
     expect(getByTestId('start-recipe-btn')).toBeInTheDocument();
   });
-
-//   test('Filter by name', async () => {
-//     const { getByTestId, queryByText } = await tableRender();
-//     const filters = getByTestId('filters');
-//     expect(filters).toBeInTheDocument();
-
-//     const inputName = getByTestId('inputName');
-//     fireEvent.change(inputName, { target: { value: 'Alderaan' } });
-//     expect(inputName.value).toBe('Alderaan');
-
-//     expect(queryByText(/Alderaan/)).toBeInTheDocument();
-//     expect(queryByText(/Yavin IV/)).not.toBeInTheDocument();
-//   });
-
-//   test('Filter by condition', async () => {
-//     const { getAllByTestId, queryByText, getByText } = await tableRender();
-//     await wait();
-//     const add = getByText('Add filter');
-//     fireEvent.click(add);
-//     const allfilter = getAllByTestId('filter');
-//     expect(allfilter.length).toBe(2);
-
-//     const rotationPeriod = allfilter[0].querySelector("button[name*='rotation_period']");
-//     const selectType = allfilter[0].querySelector("p[name*='tagtype']");
-//     fireEvent.click(rotationPeriod);
-//     expect(selectType.innerHTML).toBe('rotation_period');
-
-//     const menorQue = allfilter[0].querySelector("button[name*='Menor que']");
-//     const selectCond = allfilter[0].querySelector("p[name*='tagcondition']");
-//     fireEvent.click(menorQue);
-//     expect(selectCond.innerHTML).toBe('Menor que');
-
-//     const inputCondition = allfilter[0].querySelector("input[name*='inputCondition']");
-//     fireEvent.change(inputCondition, { target: { value: '25' } });
-//     expect(inputCondition.value).toBe('25');
-
-//     expect(queryByText(/Yavin IV/)).not.toBeInTheDocument();
-//     expect(queryByText(/Alderaan/)).toBeInTheDocument();
-//   });
-
-//   test('Filter by order', async () => {
-//     const { getByTestId } = await tableRender();
-
-//     const table = getByTestId('table');
-//     const comp_order = getByTestId('comp_order');
-//     const btnAsc = comp_order.querySelector("button[name*='ASC']");
-//     fireEvent.click(btnAsc);
-
-//     const order = getByTestId('order');
-//     const name = order.querySelector("button[name*='name']");
-//     fireEvent.click(name);
-
-//     const tbody = table.querySelector('tbody');
-//     const trs = tbody.querySelectorAll('tr');
-
-//     expect(trs[0].querySelectorAll('td')[0].innerHTML).toBe('Alderaan');
-//   });
 });

@@ -1,27 +1,26 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import context from '../../context/Context';
 import './style/recipeCard.css';
 
-const goToId = (id, history, db, setIsLoading, setRenderID) => {
+const goToId = (id, history, db, setIsLoading, setIdRecipe) => {
   setIsLoading(true);
-  setRenderID(true);
+  setIdRecipe(id);
   history.push(`/receitas/${db === 'Meal' ? 'comida' : 'bebida'}/${id}`);
 };
 
 const RecipeCard = ({ details, dataBase }) => {
   const history = useHistory();
-  const { setIsLoading, setRenderID } = useContext(context);
+  const { setIsLoading, setIdRecipe } = useContext(context);
   const { [`id${dataBase}`]: id, [`str${dataBase}`]: recipe, [`str${dataBase}Thumb`]: img, strCategory: category } = details;
-  useEffect(() => () => setRenderID(false), []);
   return (
-    <div className="recipe-card-container">
+    <div className="recipe-card-container" data-testid={`${id}-recomendation-card`}>
       <img className="img-card" src={img} alt={recipe} />
       <div className="categorie-card">{category}</div>
       <div className="recipe-card">{recipe}</div>
       <button
-        onClick={() => goToId(id, history, dataBase, setIsLoading, setRenderID)}
+        onClick={() => goToId(id, history, dataBase, setIsLoading, setIdRecipe)}
         className="btn-ver-mais"
       >Visitar receita!</button>
     </div>
