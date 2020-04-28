@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import propTypes from 'prop-types';
 
 import Loading from '../../components-global/Loading';
 import RecipeAppContext from '../../context/Context';
@@ -32,7 +31,7 @@ const renderFood = (type, data, making) => {
   }
 };
 
-const ItemId = (props) => {
+const ItemId = () => {
   const { fetchRecipe, isLoading, setIsLoading, idRecipe } = useContext(RecipeAppContext);
   const { type, id, making } = useParams();
   const [data, setData] = useState();

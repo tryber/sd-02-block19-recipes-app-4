@@ -37,7 +37,6 @@ const instruction = (strInstructions) => (
 );
 
 const renderVideo = (strYoutube) => {
-  const youtube = strYoutube.replace('watch?v=', 'v/-');
   return (
     <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY" />
   );
@@ -127,7 +126,7 @@ function Generics(props) {
   const [show, setShow] = useState(false);
   const [allChecked, setAllChecked] = useState(true);
   const history = useHistory();
-  
+
   return (
     <React.Fragment>
       <img src={strThumb} data-testid="recipe-photo" alt="" />
