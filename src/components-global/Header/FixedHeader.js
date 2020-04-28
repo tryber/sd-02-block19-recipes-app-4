@@ -25,9 +25,12 @@ const FixedHeader = ({ title, hasSearchBar }) => {
         <li data-testid="page-title">{title}</li>
         {hasSearchBar &&
           <Link to={`/${db === 'themealdb' ? 'comidas' : 'bebidas'}`}>
-            <li><button data-testid="search-top-btn" onClick={() => toggleClick()}>
-              <span className="material-icons">search</span>
-            </button></li>
+            <li><span
+              data-testid="search-top-btn"
+              onClick={() => toggleClick()}
+              className="material-icons"
+            >search
+            </span></li>
           </Link>}
       </nav>
     </div>

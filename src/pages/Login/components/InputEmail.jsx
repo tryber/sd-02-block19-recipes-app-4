@@ -11,7 +11,7 @@ const InputEmail = () => {
       setEmailUser(e.value);
       e.style.border = '1px solid green';
     } else {
-      e.style.borderColor = 'red';
+      e.style.borderColor = '1px solid red';
       setEmailBool(false);
     }
   };

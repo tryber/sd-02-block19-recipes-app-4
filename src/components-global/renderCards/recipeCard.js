@@ -1,23 +1,31 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+
+import React, { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import context from '../../context/Context';
 import './style/recipeCard.css';
 
-const RecipeCard = ({ details, dataBase }) => {
-  const { [`id${dataBase}`]: id, [`str${dataBase}`]: recipe, [`str${dataBase}Thumb`]: img, strCategory: category } = details;
+const goToId = (id, history, db, setIsLoading, setRenderID) => {
+  setIsLoading(true);
+  setRenderID(true);
+  history.push(`/receitas/${db === 'Meal' ? 'comida' : 'bebida'}/${id}`);
+};
 
+const RecipeCard = ({ details, dataBase }) => {
+  const history = useHistory();
+  const { setIsLoading, setRenderID } = useContext(context);
+  const { [`id${dataBase}`]: id, [`str${dataBase}`]: recipe, [`str${dataBase}Thumb`]: img, strCategory: category } = details;
+  useEffect(() => () => setRenderID(false), []);
   return (
-    <Link className="linkDt" to={`/receitas/${dataBase === 'Meal' ? 'comida' : 'bebida'}/${id}`}>
-      <div className="recipe-card-container">
-        <div className="container-imgR">
-          <img className="img-card" src={img} alt={recipe} />
-        </div>
-        <div className="container-infos">
-          <div className="categorie-card">{category}</div>
-          <div className="recipe-card">{recipe}</div>
-        </div>
-      </div>
-    </Link>
+    <div className="recipe-card-container">
+      <img className="img-card" src={img} alt={recipe} />
+      <div className="categorie-card">{category}</div>
+      <div className="recipe-card">{recipe}</div>
+      <button
+        onClick={() => goToId(id, history, dataBase, setIsLoading, setRenderID)}
+        className="btn-ver-mais"
+      >Visitar receita!</button>
+    </div>
   );
 };
 

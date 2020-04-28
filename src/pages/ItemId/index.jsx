@@ -36,22 +36,25 @@ const renderFood = (type, data, making, history) => {
 
 const ItemId = (props) => {
   const { history } = props;
-  const { fetchRecipe } = useContext(RecipeAppContext);
+  const { fetchRecipe, isLoading, setIsLoading, renderID } = useContext(RecipeAppContext);
   const { type, id, making } = useParams();
-  const [loading, setLoading] = useState(true);
   const [data, setData] = useState();
   const cb = (resp) => {
     setData(resp);
-    setLoading(false);
+    setIsLoading(false);
   };
 
   useEffect(() => {
     fetchRecipe(switchType(type), `lookup.php?i=${id}`, cb);
   }, []);
 
+  useEffect(() => {
+    fetchRecipe(switchType(type), `lookup.php?i=${id}`, cb);
+  }, [renderID]);
+
   return (
     <div className="page_itemid">
-      {(loading) ? (<Loading />) : (renderFood(type, data, making, history))}
+      {(isLoading || !data) ? (<Loading />) : (renderFood(type, data, making, history))}
     </div>
   );
 };
