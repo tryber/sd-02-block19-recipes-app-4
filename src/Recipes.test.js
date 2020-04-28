@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, cleanup, waitForDomChange, queryAllByAltText } from '@testing-library/react';
+import { fireEvent, cleanup, waitForDomChange } from '@testing-library/react';
 import renderWithRouter from './services/renderWithRouter';
 import App from './App';
 import {
@@ -34,6 +34,7 @@ const mockResultsAPI = (resultToBeMocked) => {
       status: 200,
       ok: true,
       json: () => {
+        console.log('entrou')
         return Promise.resolve(resultToBeMocked)
       },
     }));

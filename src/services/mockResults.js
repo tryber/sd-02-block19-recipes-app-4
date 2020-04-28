@@ -100,3 +100,67 @@ export const filterByCategorie = {
     },
   ],
 };
+
+export const searchByIng = {
+  meals: [
+    {
+      strMeal: "galinha1",
+      strMealThumb: "https://www.themealdb.com/images/media/meals/sypxpx1515365095.jpg",
+      idMeal: "52940"
+    },
+    {
+      strMeal: "galinha2",
+      strMealThumb: "https://www.themealdb.com/images/media/meals/uuuspp1511297945.jpg",
+      idMeal: "52846"
+    },
+    {
+      strMeal: "galinha3",
+      strMealThumb: "https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg",
+      idMeal: "52796"
+    },
+    {
+      strMeal: "galinha4",
+      strMealThumb: "https://www.themealdb.com/images/media/meals/wruvqv1511880994.jpg",
+      idMeal: "52934"
+    },
+    {
+      strMeal: "galinha5",
+      strMealThumb: "https://www.themealdb.com/images/media/meals/1529446352.jpg",
+      idMeal: "52956"
+    },
+  ],
+};
+
+export const searchByName = {
+  meals: [
+    {
+      idMeal: "52802",
+      strMeal: "Fish pie",
+    },
+    {
+      idMeal: "52802",
+      strMeal: "Torta 2",
+    },
+    {
+      idMeal: "52802",
+      strMeal: "Torta 3",
+    },
+  ],
+};
+
+export const searchByFirstLetter = {
+  meals: [
+    {
+      idMeal: "52802",
+      strMeal: "ab",
+    },
+    {
+      idMeal: "52802",
+      strMeal: "ac",
+    },
+    {
+      idMeal: "52802",
+      strMeal: "ad",
+    },
+  ],
+};
