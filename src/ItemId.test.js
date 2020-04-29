@@ -6,8 +6,8 @@ import {
 import { Router } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
 
-import { randomMeal, randomDrink } from '../../services/mockResults';
-import App from '../../App';
+import { randomMeal, randomDrink } from './services/mockResults';
+import App from './App';
 
 
 function renderWithRouter(
@@ -76,7 +76,7 @@ afterEach(() => {
 });
 
 describe('ItemId', () => {
-  test('/receitas/comida/52928', async () => {
+  test.only('/receitas/comida/52928', async () => {
     mockApi1();
     const {
       getByTestId, getAllByTestId, container, history,
@@ -90,6 +90,14 @@ describe('ItemId', () => {
     expect(global.fetch).toHaveBeenCalledWith(apiMeals);
     await wait();
     expect(global.fetch).toHaveBeenCalledWith(apiDrinkRandom);
+
+    fireEvent.click(getByTestId('favorite-btn'));
+    expect(localStorage.getItem('favorite-recipes'))
+      .toBe('[{"id":"52928","category":"Dessert","image":"https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg","type":"comida"}]');
+    fireEvent.click(getByTestId('favorite-btn'));
+    expect(localStorage.getItem('favorite-recipes'))
+      .toBe('[]');
+
     expect(getByTestId('recipe-photo').src)
       .toBe('https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg');
     expect(getByTestId('share-btn')).toBeInTheDocument();
