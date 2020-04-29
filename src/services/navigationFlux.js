@@ -22,5 +22,3 @@ export const profile = () => {
   expect(btnProfile[0]).toBeInTheDocument();
   fireEvent.click(btnProfile[0]);
 };
-
-export const 
