@@ -57,6 +57,15 @@ const mockMeal = () => {
     }));
 };
 
+const mockDrink = () => {
+  jest.spyOn(global, 'fetch')
+    .mockImplementationOnce(() => Promise.resolve({
+      status: 200,
+      ok: true,
+      json: () => Promise.resolve(randomDrink),
+    }));
+};
+
 beforeEach(() => {
   localStorage.clear();
 });
@@ -111,6 +120,7 @@ describe('ItemId', () => {
 
     fireEvent.click(getByTestId('start-recipe-btn'));
     expect(history.location.pathname).toBe('/receitas/comida/52928/making');
+    expect(localStorage.getItem('in-proggress')).toBe('[52928]');
   });
 
   test('/receitas/bebida/17245', async () => {
@@ -148,10 +158,14 @@ describe('ItemId', () => {
     expect(recomended[0].querySelector('div[class="recipe-card"]').innerHTML)
       .toBe('BeaverTails');
     expect(getByTestId('start-recipe-btn').innerHTML).toBe('Iniciar receita');
+
+    localStorage.setItem('in-proggress', '[52928]');
+    fireEvent.click(getByTestId('start-recipe-btn'));
+    expect(localStorage.getItem('in-proggress')).toBe('[52928,17245]');
   });
 
 
-  test('/receitas/:type/:id/:making', async () => {
+  test('/receitas/comida/52928/making', async () => {
     mockMeal();
     const {
       getByTestId, queryByTestId, getAllByTestId, container, history,
@@ -179,10 +193,43 @@ describe('ItemId', () => {
     expect(localStorage.getItem('proggress')).toBe('{"52928":["0","1"]}');
     fireEvent.click(inputs[2]);
     expect(localStorage.getItem('proggress')).toBe('{"52928":["0","1","2"]}');
-
     expect(getByTestId('start-recipe-btn').disabled).toBe(false);
+    fireEvent.click(inputs[2]);
+    expect(localStorage.getItem('proggress')).toBe('{"52928":["0","1"]}');
+    fireEvent.click(inputs[2]);
     fireEvent.click(getByTestId('start-recipe-btn'));
-
     expect(history.location.pathname).toBe('/receitas-feitas');
+    expect(localStorage.getItem('done-recipes'))
+      .toBe('[{"id":"52928","category":"Dessert","title":"BeaverTails","image":"https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg","doneDate":"29/4/2020","type":"comida"}]')
+  });
+
+
+  test('/receitas/bebida/17245/making', async () => {
+    mockDrink();
+    const {
+      getByTestId, queryByTestId, getAllByTestId, container, history,
+    } = renderWithRouter (
+      <App />,
+      { route: '/receitas/bebida/17245/making' },
+    );
+    expect(history.location.pathname).toBe('/receitas/bebida/17245/making');
+    await wait();
+    expect(getByTestId('recipe-photo').src)
+      .toBe('https://www.thecocktaildb.com/images/media/drink/qwc5f91512406543.jpg');
+    expect(getByTestId('share-btn')).toBeInTheDocument();
+    expect(getByTestId('favorite-btn')).toBeInTheDocument();
+    expect(getByTestId('recipe-title').innerHTML).toBe('Rosemary Blue');
+
+    expect(queryByTestId('video')).not.toBeInTheDocument();
+    expect(queryByTestId('17245-recomendation-card')).not.toBeInTheDocument();
+
+    expect(getByTestId('start-recipe-btn').disabled).toBe(true);
+
+    const inputs = container.querySelectorAll('input[type="checkbox"]');
+    fireEvent.click(inputs[0]);
+    expect(localStorage.getItem('proggress')).toBe('{"17245":["0"]}');
+    fireEvent.click(inputs[1]);
+    expect(localStorage.getItem('proggress')).toBe('{"17245":["0","1"]}');
+    expect(getByTestId('start-recipe-btn').disabled).toBe(false);
   });
 });
