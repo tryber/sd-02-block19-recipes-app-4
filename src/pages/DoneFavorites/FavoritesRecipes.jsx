@@ -16,7 +16,6 @@ const FavoritesRecipes = (props) => {
   useEffect(() => {
     setItems(convertStringToArrayObj(localStorage.getItem('favorite-recipes')) || []);
   }, []);
-  console.log(items)
   return (
     <div>
       <Header2 title="Receitas favoritas" history={history} />
