@@ -3,7 +3,7 @@ import { fireEvent, cleanup, waitForDomChange } from '@testing-library/react';
 import renderWithRouter from './services/renderWithRouter';
 import App from './App';
 import {
-  listFiltersMeal, randomMeal, filterByCategorie
+  listFiltersMeal, randomMeal, filterByCategorie, randomDrink
 } from './services/mockResults';
 
 afterEach(cleanup);
@@ -55,13 +55,31 @@ describe('Testing recipe page', () => {
     })
     const beaverTails = queryAllByText('BeaverTails');
     expect(beaverTails.length).toBe(12);
-    
+
     mockResultsAPI(filterByCategorie);
     const btnFiltro = getByText('Bife');
     fireEvent.click(btnFiltro);
     await waitForDomChange();
-    filterByCategorie.meals.map(({strMeal})=> {
+    filterByCategorie.meals.map(({ strMeal }) => {
       expect(getByText(strMeal)).toBeInTheDocument();
     });
+  });
+
+  test('Testing selecting recipes', async () => {
+    mockMultipleAPI(listFiltersMeal, randomMeal);
+    const { getByText, getByTestId, queryAllByText } = renderWithRouter(
+      <App />, {
+      route: '/comidas',
+    });
+
+    expect(getByText("Comidas")).toBeInTheDocument();
+    await waitForDomChange();
+    
+    mockMultipleAPI(randomMeal, randomDrink);
+    
+    const visitarReceita1 = queryAllByText(/Visitar/i);
+    fireEvent.click(visitarReceita1[0]);
+    await waitForDomChange();
+    expect(getByText('BeaverTails')).toBeInTheDocument();
   });
 });

@@ -3,7 +3,7 @@ import { fireEvent, cleanup, waitForDomChange, queryAllByAltText, queryByText } 
 import renderWithRouter from './services/renderWithRouter';
 import App from './App';
 import {
-  listFiltersMeal, randomMeal, searchByIng, searchByName, searchByFirstLetter
+  listFiltersMeal, randomMeal, searchByIng, searchByName, searchByFirstLetter, randomDrink,
 } from './services/mockResults';
 
 afterEach(cleanup);
@@ -38,6 +38,34 @@ const mockResultsAPI = (resultToBeMocked) => {
       },
     }));
 };
+
+const mockTripleAPI = () => {
+  jest.spyOn(global, 'fetch')
+    .mockImplementationOnce(() => Promise.resolve({
+      status: 200,
+      ok: true,
+      json: () => {
+        console.log('primeiro mock');
+        return Promise.resolve(randomMeal)
+      },
+    }))
+    .mockImplementationOnce(() => Promise.resolve({
+      status: 200,
+      ok: true,
+      json: () => {
+        console.log('segundo mock');
+        return Promise.resolve(randomMeal)
+      },
+    }))
+    .mockImplementation(() => Promise.resolve({
+      status: 200,
+      ok: true,
+      json: () => {
+        console.log('terceiro mock');
+        return Promise.resolve(randomDrink)
+      },
+    }));
+}
 
 describe('Testing Header', () => {
   mockMultipleAPI(listFiltersMeal, randomMeal);
@@ -94,5 +122,13 @@ describe('Testing Header', () => {
     searchByFirstLetter.meals.map(({ strMeal }) => {
       expect(getByText(strMeal)).toBeInTheDocument();
     });
+
+    mockTripleAPI();
+
+    fireEvent.click(nameBtn);
+    fireEvent.change(inpSearch, { target: { value: "Beaver" } });
+    await waitForDomChange();
+    expect(getByText('BeaverTails')).toBeInTheDocument();
+
   });
 });
