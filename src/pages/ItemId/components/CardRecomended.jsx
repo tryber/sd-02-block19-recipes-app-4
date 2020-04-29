@@ -22,25 +22,13 @@ function switchDataBase(type) {
 }
 
 function switcType(type) {
-  switch (type) {
-    case 'bebida':
-      return 'comida';
-    case 'comida':
-      return 'bebida';
-    default:
-      return null;
-  }
+  if (type === 'comida') return 'bebida';
+  if (type === 'bebida') return 'comida';
 }
 
 function switchObj(type) {
-  switch (type) {
-    case 'bebida':
-      return 'meals';
-    case 'comida':
-      return 'drinks';
-    default:
-      return null;
-  }
+  if (type === 'comida') return 'drinks';
+  if (type === 'bebida') return 'meals';
 }
 
 const cb = (setRandomResults, type) => (resp) => {
