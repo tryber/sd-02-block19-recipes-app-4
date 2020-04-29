@@ -46,7 +46,7 @@ const ItemId = () => {
 
   return (
     <div className="page_itemid">
-      {(isLoading) ? (<Loading />) : (renderFood(type, data, making))}
+      {(isLoading || !data) ? (<Loading />) : (renderFood(type, data, making))}
     </div>
   );
 };
