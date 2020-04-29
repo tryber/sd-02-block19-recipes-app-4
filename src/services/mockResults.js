@@ -42,7 +42,7 @@ export const randomMeal = {
       strArea: 'British',
       strMealThumb: 'https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg',
       strTags: 'Treat,Pudding,Speciality',
-      strYoutube:'https://www.youtube.com/watch?v=Ds1Jb8H5Sg8',
+      strYoutube: 'https://www.youtube.com/watch?v=Ds1Jb8H5Sg8',
       strCategory: 'Dessert',
       strIngredient1: 'Water',
       strIngredient2: 'Yeast',
