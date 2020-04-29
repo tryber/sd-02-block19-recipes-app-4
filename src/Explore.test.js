@@ -4,7 +4,7 @@ import renderWithRouter from './services/renderWithRouter';
 import App from './App';
 import {
   ingredientsResults, areaResults,
-  americanArea, randomMeal, randomDrink
+  americanArea, randomMeal, randomDrink, lookupIngDrink
 } from './services/mockResults';
 
 afterEach(cleanup);
@@ -19,6 +19,34 @@ const mockResultsAPI = (resultToBeMocked) => {
       },
     }));
 };
+
+const mockMultipleAPI = () => {
+  jest.spyOn(global, 'fetch')
+    .mockImplementationOnce(() => Promise.resolve({
+      status: 200,
+      ok: true,
+      json: () => {
+        console.log('primeiro mock');
+        return Promise.resolve(randomDrink)
+      },
+    }))
+    .mockImplementationOnce(() => Promise.resolve({
+      status: 200,
+      ok: true,
+      json: () => {
+        console.log('segundo mock');
+        return Promise.resolve(lookupIngDrink)
+      },
+    }))
+    .mockImplementation(() => Promise.resolve({
+      status: 200,
+      ok: true,
+      json: () => {
+        console.log('terceiro mock');
+        return Promise.resolve(randomMeal)
+      },
+    }));
+}
 
 describe('Testing explore page', () => {
   test('Testing first page of explore', () => {
@@ -112,12 +140,23 @@ describe('Testing explore page', () => {
   });
 
   test('Testing surprise me', async () => {
+    mockMultipleAPI()
     const { getByText, getByTestId, queryByText, queryAllByText } = renderWithRouter(
       <App />, {
-      route: '/explorar/comidas',
+      route: '/explorar/bebidas',
     });
 
     const btnSurprise = getByTestId("explore-surprise");
     expect(btnSurprise).toBeInTheDocument();
+    fireEvent.click(btnSurprise);
+    await waitForDomChange();
+    expect(global.fetch).toHaveBeenCalledWith('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+    expect(global.fetch).toHaveBeenCalledWith('https://www.themealdb.com/api/json/v1/1/random.php');
+
+    expect(getByText('Margarita')).toBeInTheDocument();
+    expect(getByText('Ingredients')).toBeInTheDocument();
+    expect(getByText(/Rub the rim /i)).toBeInTheDocument();
+    expect(queryAllByText('BeaverTails')).toBeDefined();
+    expect(queryAllByText('BeaverTails').length).toBe(6);
   });
 });
