@@ -76,7 +76,7 @@ afterEach(() => {
 });
 
 describe('ItemId', () => {
-  test.only('/receitas/comida/52928', async () => {
+  test('/receitas/comida/52928', async () => {
     mockApi1();
     const {
       getByTestId, getAllByTestId, container, history,
