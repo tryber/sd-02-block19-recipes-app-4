@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import propTypes from 'prop-types';
 
 import Loading from '../../components-global/Loading';
 import RecipeAppContext from '../../context/Context';
@@ -9,7 +8,7 @@ import Drink from './components/Drink';
 import './style/index.css';
 import { convertTypeToData, switchType } from '../../services/convertDataType';
 
-const renderFood = (type, data, making, history) => {
+const renderFood = (type, data, making) => {
   switch (type) {
     case 'comida':
       return (
@@ -18,7 +17,6 @@ const renderFood = (type, data, making, history) => {
           data={data}
           making={making}
           type={type}
-          history={history}
         />);
     case 'bebida':
       return (
@@ -27,16 +25,14 @@ const renderFood = (type, data, making, history) => {
           data={data}
           making={making}
           type={type}
-          history={history}
         />);
     default:
       return null;
   }
 };
 
-const ItemId = (props) => {
-  const { history } = props;
-  const { fetchRecipe, isLoading, setIsLoading, renderID } = useContext(RecipeAppContext);
+const ItemId = () => {
+  const { fetchRecipe, isLoading, setIsLoading, idRecipe } = useContext(RecipeAppContext);
   const { type, id, making } = useParams();
   const [data, setData] = useState();
   const cb = (resp) => {
@@ -45,22 +41,14 @@ const ItemId = (props) => {
   };
 
   useEffect(() => {
-    fetchRecipe(switchType(type), `lookup.php?i=${id}`, cb);
-  }, []);
-
-  useEffect(() => {
-    fetchRecipe(switchType(type), `lookup.php?i=${id}`, cb);
-  }, [renderID]);
+    fetchRecipe(switchType(type), `lookup.php?i=${id || idRecipe}`, cb);
+  }, [idRecipe]);
 
   return (
     <div className="page_itemid">
-      {(isLoading || !data) ? (<Loading />) : (renderFood(type, data, making, history))}
+      {(isLoading || !data) ? (<Loading />) : (renderFood(type, data, making))}
     </div>
   );
-};
-
-ItemId.propTypes = {
-  history: propTypes.instanceOf(Object).isRequired,
 };
 
 export default ItemId;

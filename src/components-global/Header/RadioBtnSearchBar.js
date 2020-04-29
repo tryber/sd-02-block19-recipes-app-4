@@ -10,13 +10,14 @@ const RadioBtnSearchBar = () => {
       onChange={(e) => setRadioButtonSearch(e.target.value)}
       value={radioButtonSearch}
       className="form-header-flex"
+      data-testid="radio-value"
     >
       <div className="option-container">
         <input
           type="radio"
           name="t"
           value="ingredients"
-          checked={radioButtonSearch === 'ingredients'}
+          // checked={radioButtonSearch === 'ingredients'}
           data-testid="ingredient-search-radio"
         />
         <div>Ingredientes</div>
