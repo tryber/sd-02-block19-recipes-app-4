@@ -25,7 +25,7 @@ function render(data, setShow, doneDate, type, history) {
         <p className="date">Feita em: {doneDate}</p>
         {(type === 'comida') ?
           <div className="tags">
-            {data.strTags.split(',').slice(0, 2).map((tag) => (
+            {data.strTags && data.strTags.split(',').slice(0, 2).map((tag) => (
               <p key={tag}>{tag}</p>
             ))}
           </div> :
