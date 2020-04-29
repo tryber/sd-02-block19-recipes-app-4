@@ -60,6 +60,8 @@ export const randomDrink = {
       idDrink: '17245',
       strDrink: 'Rosemary Blue',
       strCategory: 'Cocktail',
+      strAlcoholic: 'Alcoholic',
+      strVideo: null,
       strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/qwc5f91512406543.jpg',
       strIngredient1: 'Gin',
       strIngredient2: 'Blue Curacao',
