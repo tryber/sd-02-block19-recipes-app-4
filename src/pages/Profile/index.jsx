@@ -19,7 +19,7 @@ const Profile = () => {
   return (
     <div className="container-Profile">
       <Header title={'Perfil'} />
-      <p>{emailP.email}</p>
+      <p data-testid="profile-email">{emailP.email}</p>
       <div className="container-buttonsP">
         <ButtonsProfile />
       </div>
