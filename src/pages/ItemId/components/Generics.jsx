@@ -87,7 +87,7 @@ const handleBtnMaking = (history, data, type) => {
 
 const handleBtnStart = (data, type, history) => {
   addInProggress(data);
-  const id = data.id;
+  const { id } = data;
   history.push(`/receitas/${type}/${id}/making`);
 };
 

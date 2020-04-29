@@ -6,29 +6,23 @@ import RecipeAppContext from '../../../context/Context';
 import Card from '../../../components-global/renderCards/recipeCard';
 
 function convertTypeToUrl(type) {
-  switch (type) {
-    case 'comida':
-      return 'themealdb';
-    case 'bebida':
-      return 'thecocktaildb';
-    default:
-      return null;
-  }
+  if (type === 'comida') return 'themealdb';
+  return 'thecocktaildb';
 }
 
 function switchDataBase(type) {
   if (type === 'comida') return 'Drink';
-  if (type === 'bebida') return 'Meal';
+  return 'Meal';
 }
 
 function switcType(type) {
   if (type === 'comida') return 'bebida';
-  if (type === 'bebida') return 'comida';
+  return 'comida';
 }
 
 function switchObj(type) {
   if (type === 'comida') return 'drinks';
-  if (type === 'bebida') return 'meals';
+  return 'meals';
 }
 
 const cb = (setRandomResults, type) => (resp) => {

@@ -20,7 +20,7 @@ function renderWithRouter(
   };
 }
 
-const mockApi = () => {
+const mockApi1 = () => {
   jest.spyOn(global, 'fetch')
     .mockImplementationOnce(() => Promise.resolve({
       status: 200,
@@ -31,6 +31,20 @@ const mockApi = () => {
       status: 200,
       ok: true,
       json: () => Promise.resolve(randomDrink),
+    }));
+}
+
+const mockApi2 = () => {
+  jest.spyOn(global, 'fetch')
+    .mockImplementationOnce(() => Promise.resolve({
+      status: 200,
+      ok: true,
+      json: () => Promise.resolve(randomDrink),
+    }))
+    .mockImplementation(() => Promise.resolve({
+      status: 200,
+      ok: true,
+      json: () => Promise.resolve(randomMeal),
     }));
 }
 
@@ -53,10 +67,10 @@ afterEach(() => {
 });
 
 describe('ItemId', () => {
-  test('/receitas/:type/:id', async () => {
-    mockApi();
+  test('/receitas/comida/52928', async () => {
+    mockApi1();
     const {
-      getByTestId, getByText, queryByText, getAllByTestId, container, history,
+      getByTestId, getAllByTestId, container, history,
     } = renderWithRouter(
       <App />,
       { route: '/receitas/comida/52928' },
@@ -94,12 +108,53 @@ describe('ItemId', () => {
     expect(recomended[0].querySelector('div[class="recipe-card"]').innerHTML)
       .toBe('Rosemary Blue');
     expect(getByTestId('start-recipe-btn').innerHTML).toBe('Iniciar receita');
+
+    fireEvent.click(getByTestId('start-recipe-btn'));
+    expect(history.location.pathname).toBe('/receitas/comida/52928/making');
   });
+
+  test('/receitas/bebida/17245', async () => {
+    mockApi2();
+    const {
+      getByTestId,queryByTestId, getAllByTestId, container, history,
+    } = renderWithRouter(
+      <App />,
+      { route: '/receitas/bebida/17245' },
+    );
+    await wait();
+
+    expect(getByTestId('recipe-photo').src)
+      .toBe('https://www.thecocktaildb.com/images/media/drink/qwc5f91512406543.jpg');
+    expect(getByTestId('share-btn')).toBeInTheDocument();
+    expect(getByTestId('favorite-btn')).toBeInTheDocument();
+    expect(getByTestId('recipe-title').innerHTML).toBe('Rosemary Blue');
+
+    expect(container.querySelector('p[class="type"]').innerHTML).toBe('Alcoholic');
+    const ingrids = getAllByTestId(/ingredient-name/i);
+    expect(ingrids[0].innerHTML).toBe('Gin');
+    expect(ingrids[1].innerHTML).toBe('Blue Curacao');
+
+    const measures = getAllByTestId(/ingredient-measure/i);
+    expect(measures[0].innerHTML).toBe(' - 50 ml');
+    expect(measures[1].innerHTML).toBe(' - 15 ml');
+
+    expect(queryByTestId('video')).not.toBeInTheDocument();
+
+    const recomended = getAllByTestId('52928-recomendation-card');
+    expect(recomended[0].querySelector('img[class="img-card"]').src)
+      .toBe('https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg');
+    expect(recomended[0].querySelector('div[class="categorie-card"]').innerHTML)
+      .toBe('Dessert');
+    expect(recomended[0].querySelector('div[class="recipe-card"]').innerHTML)
+      .toBe('BeaverTails');
+    expect(getByTestId('start-recipe-btn').innerHTML).toBe('Iniciar receita');
+  });
+
 
   test('/receitas/:type/:id/:making', async () => {
     mockMeal();
     const {
-      getByTestId, getByText, queryByText, getAllByTestId, container, history,
+      getByTestId, queryByTestId, getAllByTestId, container, history,
     } = renderWithRouter (
       <App />,
       { route: '/receitas/comida/52928/making' },
@@ -111,6 +166,9 @@ describe('ItemId', () => {
     expect(getByTestId('share-btn')).toBeInTheDocument();
     expect(getByTestId('favorite-btn')).toBeInTheDocument();
     expect(getByTestId('recipe-title').innerHTML).toBe('BeaverTails');
+
+    expect(queryByTestId('video')).not.toBeInTheDocument();
+    expect(queryByTestId('52928-recomendation-card')).not.toBeInTheDocument();
 
     expect(getByTestId('start-recipe-btn').disabled).toBe(true);
 
