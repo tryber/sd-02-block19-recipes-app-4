@@ -17,14 +17,8 @@ function convertTypeToUrl(type) {
 }
 
 function switchDataBase(type) {
-  switch (type) {
-    case 'comida':
-      return 'Drink';
-    case 'bebida':
-      return 'Meal';
-    default:
-      return null;
-  }
+  if (type === 'comida') return 'Drink';
+  if (type === 'bebida') return 'Meal';
 }
 
 function switcType(type) {
