@@ -36,9 +36,12 @@ const instruction = (strInstructions) => (
   </div>
 );
 
-const renderVideo = () => (
-  <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY" />
-);
+const renderVideo = (strYoutube) => {
+  const str = strYoutube.replace('watch?v=', 'embed/');
+  return (
+    <iframe width="420" height="345" src={str} data-testid="video" />
+  );
+};
 
 const not = () => (
   <div className="video">
@@ -120,7 +123,7 @@ const buttonSwitch = (making, data, type, history, checks) => {
 
 function Generics(props) {
   const { data, making, type } = props;
-  const { strFood, strThumb, strCategory, strInstructions, ingridients } = data;
+  const { strFood, strThumb, strCategory, strYoutube, strInstructions, ingridients } = data;
   const [show, setShow] = useState(false);
   const [allChecked, setAllChecked] = useState(true);
   const history = useHistory();
@@ -138,7 +141,7 @@ function Generics(props) {
           data={data}
         />
         {instruction(strInstructions)}
-        {(making) ? <div /> : (video())}
+        {(making) ? <div /> : (video(strYoutube))}
         {(making) ? <div /> : recomended(type)}
         {buttonSwitch(making, data, type, history, allChecked)}
       </div>

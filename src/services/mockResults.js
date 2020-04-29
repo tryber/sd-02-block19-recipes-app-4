@@ -39,9 +39,17 @@ export const randomMeal = {
     {
       idMeal: '52928',
       strMeal: 'BeaverTails',
+      strArea: 'British',
       strMealThumb: 'https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg',
       strTags: 'Treat,Pudding,Speciality',
+      strYoutube: 'https://www.youtube.com/watch?v=Ds1Jb8H5Sg8',
       strCategory: 'Dessert',
+      strIngredient1: 'Water',
+      strIngredient2: 'Yeast',
+      strIngredient3: 'Sugar',
+      strMeasure1: '1/2 cup',
+      strMeasure2: '2 parts',
+      strMeasure3: '1/2 cup',
     },
   ],
 };
