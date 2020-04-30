@@ -14,7 +14,7 @@ const DoneRecipes = (props) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    setItems(convertStringToArrayObj(localStorage.getItem('done-recipes')));
+    setItems(convertStringToArrayObj(localStorage.getItem('done-recipes') || '[]'));
   }, []);
 
   return (

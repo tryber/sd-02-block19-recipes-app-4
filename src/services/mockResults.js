@@ -1,10 +1,8 @@
-export const favoriteRecipes = [
-  { id:"52874",
-    category:"Beef",
-    title:"Beef and Mustard Pie",
-    image:"https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
-    doneDate:"28/4/2020",
-    type:"comida",
+export const favoriteRecipes = [ 
+  { category: "Beef",
+    id: "52874",
+    image: "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
+    type: "comida",
   },
 ];
 

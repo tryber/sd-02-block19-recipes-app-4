@@ -14,15 +14,14 @@ const FavoritesRecipes = (props) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    setItems(convertStringToArrayObj(localStorage.getItem('favorite-recipes')));
+    setItems(convertStringToArrayObj(localStorage.getItem('favorite-recipes') || '[]'));
   }, []);
-
   return (
     <div>
       <Header2 title="Receitas favoritas" history={history} />
       <Filters setItems={setItems} local="favorite-recipes" />
       {items.map((item) => {
-        const { category, id, image, type } = item;
+        const { category, id, image, type} = item;
         return (
           <SubCard
             key={id}

@@ -13,7 +13,7 @@ const btnSubCard = (history, type, data) => {
   history.push(`/receitas/${type}/${id}`);
 };
 
-function render(data, setShow, setItems, history, type) {
+function render(data, setShow, setItems, history, type, id) {
   return (
     <Card2 image={data.strThumb} key={data.id} history={history} type={type} data={data} >
       <React.Fragment>
@@ -23,7 +23,7 @@ function render(data, setShow, setItems, history, type) {
         </button>
         {(type === 'comida') ? <p>{data.strArea}</p> : <div />}
         <div className="icons">
-          <Favorite data={data} setItems={setItems} />
+          <Favorite data={data} setItems={setItems} id={id}/>
           <Share setShow={setShow} />
         </div>
       </React.Fragment>
@@ -45,7 +45,7 @@ const SubCard = (props) => {
 
   return (
     <div className="comp_subcard">
-      {(data) ? render(data, setShow, setItems, history, type) : <div />}
+      {(data) ? render(data, setShow, setItems, history, type, id) : <div />}
     </div>
   );
 };
