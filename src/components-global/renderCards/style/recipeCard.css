@@ -1,8 +1,11 @@
 .recipe-card-container {
+  align-items: stretch;
   border: grey 1px solid;
   border-radius: 14px;
   box-shadow: 0.25em 0.25em grey;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   margin-bottom: 3%;
   width: 100%;
@@ -46,6 +49,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
   padding: 3% 0;
   width: 100%;
 }
