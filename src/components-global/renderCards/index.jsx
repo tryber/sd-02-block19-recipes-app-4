@@ -14,7 +14,7 @@ const cRoute = (minPrefix, id, setIsLoading, setIdRecipe, history) => {
 const renderCardsFunction = (adjustedData, prefix) => (
   <div>
     {adjustedData.map((recipe) => (
-      <div className="container-cardsF" key={JSON.stringify(recipe)}>
+      <div className="container-cardsF" key={`${Math.random()} ${JSON.stringify(recipe)}`}>
         <RecipeCard details={recipe} dataBase={prefix} />
       </div>
     ))}
