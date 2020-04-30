@@ -14,19 +14,19 @@ const btnSubCard = (history, type, data) => {
 };
 
 const render = (data, setShow, setItems, history, type, id) => (
-    <Card2 image={data.strThumb} key={data.id} history={history} type={type} data={data} >
-      <React.Fragment>
-        <p className="subtitle">{data.strCategory}</p>
-        <button type="button" className="title" onClick={() => btnSubCard(history, type, data)}>
-          {data.strFood}
-        </button>
-        {(type === 'comida') ? <p>{data.strArea}</p> : <div />}
-        <div className="icons">
-          <Favorite data={data} setItems={setItems} id={id} />
-          <Share setShow={setShow} />
-        </div>
-      </React.Fragment>
-    </Card2>
+  <Card2 image={data.strThumb} key={data.id} history={history} type={type} data={data} >
+    <React.Fragment>
+      <p className="subtitle">{data.strCategory}</p>
+      <button type="button" className="title" onClick={() => btnSubCard(history, type, data)}>
+        {data.strFood}
+      </button>
+      {(type === 'comida') ? <p>{data.strArea}</p> : <div />}
+      <div className="icons">
+        <Favorite data={data} setItems={setItems} id={id} />
+        <Share setShow={setShow} />
+      </div>
+    </React.Fragment>
+  </Card2>
 );
 
 const SubCard = (props) => {
