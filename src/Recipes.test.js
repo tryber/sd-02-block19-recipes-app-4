@@ -14,7 +14,6 @@ const mockMultipleAPI = (result1ToBeMocked, result2ToBeMocked) => {
       status: 200,
       ok: true,
       json: () => {
-        console.log('primeiro mock');
         return Promise.resolve(result1ToBeMocked)
       },
     }))
@@ -22,7 +21,6 @@ const mockMultipleAPI = (result1ToBeMocked, result2ToBeMocked) => {
       status: 200,
       ok: true,
       json: () => {
-        console.log('segundo mock');
         return Promise.resolve(result2ToBeMocked)
       },
     }));
@@ -34,7 +32,6 @@ const mockResultsAPI = (resultToBeMocked) => {
       status: 200,
       ok: true,
       json: () => {
-        console.log('entrou')
         return Promise.resolve(resultToBeMocked)
       },
     }));

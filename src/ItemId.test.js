@@ -208,7 +208,7 @@ describe('ItemId', () => {
     fireEvent.click(getByTestId('start-recipe-btn'));
     expect(history.location.pathname).toBe('/receitas-feitas');
     expect(localStorage.getItem('done-recipes'))
-      .toBe('[{"id":"52928","category":"Dessert","title":"BeaverTails","image":"https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg","doneDate":"29/4/2020","type":"comida"}]')
+      .toEqual('[{"id":"52928","category":"Dessert","title":"BeaverTails","image":"https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg","doneDate":"30/4/2020","type":"comida"}]');
   });
 
 

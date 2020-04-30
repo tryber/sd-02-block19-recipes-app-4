@@ -11,7 +11,6 @@ const Surprise = () => {
   const { type } = useParams();
 
   const changeHistory = (response) => {
-    console.log(response);
     const route = response.meals || response.drinks;
     const { idDrink, idMeal } = route[0];
     const id = idDrink || idMeal;
