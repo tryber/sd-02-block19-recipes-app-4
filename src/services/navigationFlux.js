@@ -31,4 +31,4 @@ export const favoriteTest = () => {
   const btnFavorite = getAllByTestId('profile-favorite-btn');
   expect(btnFavorite[0]).toBeInTheDocument();
   fireEvent.click(btnFavorite[0]);
-}
+};

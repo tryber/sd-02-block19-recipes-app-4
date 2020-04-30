@@ -24,7 +24,7 @@ const RenderAllCards = () => {
       {resultsAll.length === 12 &&
         resultsAll.map((recipe) => (
           <div className="container-cards" key={recipe[`id${prefix}`]}>
-           <RecipeCard details={recipe} dataBase={prefix} />
+            <RecipeCard details={recipe} dataBase={prefix} />
           </div>
         ))
       }

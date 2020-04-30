@@ -13,8 +13,7 @@ const btnSubCard = (history, type, data) => {
   history.push(`/receitas/${type}/${id}`);
 };
 
-const render = (data, setShow, setItems, history, type, id) => {
-  return (
+const render = (data, setShow, setItems, history, type, id) => (
     <Card2 image={data.strThumb} key={data.id} history={history} type={type} data={data} >
       <React.Fragment>
         <p className="subtitle">{data.strCategory}</p>
@@ -28,8 +27,7 @@ const render = (data, setShow, setItems, history, type, id) => {
         </div>
       </React.Fragment>
     </Card2>
-  );
-};
+);
 
 const SubCard = (props) => {
   const { setShow, setItems, id, type, history } = props;
