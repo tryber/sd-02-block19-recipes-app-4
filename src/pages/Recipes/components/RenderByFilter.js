@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import context from '../../../context/Context';
 import Loading from '../../../components-global/Loading';
 import RecipeCard from '../../../components-global/renderCards/recipeCard';
+import '../../../components-global/renderCards/style/RenderAllCards.css';
 
 const RenderByFilter = () => {
   const { dataBase: [db], fetchRecipe, setIsLoading, isLoading,
@@ -22,11 +23,11 @@ const RenderByFilter = () => {
   const resultsAdjusted = resultsAll.meals || resultsAll.drinks || [];
 
   return (
-    <div>
+    <div className="container-renderCards">
       {isLoading && <Loading />}
       {!isLoading &&
         resultsAdjusted.map((recipe) => (
-          <div key={recipe[`id${prefix}`]}>
+          <div className="container-cards" key={recipe[`id${prefix}`]}>
             <RecipeCard details={recipe} dataBase={prefix} />
           </div>
         ))

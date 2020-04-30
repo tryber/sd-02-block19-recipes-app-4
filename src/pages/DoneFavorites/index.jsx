@@ -4,10 +4,10 @@ import DoneRecipes from './DoneRecipes';
 import FavoritesRecipes from './FavoritesRecipes';
 
 function switchDoneFavorite(history) {
-  if (window.location.href === 'http://localhost:3000/receitas-favoritas') {
+  if (history.location.pathname === '/receitas-favoritas') {
     return <FavoritesRecipes history={history} />;
   }
-  if (window.location.href === 'http://localhost:3000/receitas-feitas') {
+  if (history.location.pathname === '/receitas-feitas') {
     return <DoneRecipes history={history} />;
   }
   return <div />;

@@ -17,11 +17,11 @@ const btnFavorite = (data, setItems) => {
 };
 
 const Favorite = (props) => {
-  const { data, setItems } = props;
+  const { data, setItems, id } = props;
   return (
     <button
       type="button"
-      data-testid="favorite-btn"
+      data-testid={`${id}-horizontal-favorite-btn`}
       className="material-icons"
       onClick={() => btnFavorite(data, setItems)}
     >
@@ -33,6 +33,7 @@ const Favorite = (props) => {
 Favorite.propTypes = {
   data: propTypes.instanceOf(Object).isRequired,
   setItems: propTypes.func.isRequired,
+  id: propTypes.number.isRequired,
 };
 
 export default Favorite;

@@ -1,25 +1,24 @@
-import React, { useContext, useState, useEffect } from 'react';
-import RecipeAppContext from '../../context/Context';
+import React, { useState, useEffect } from 'react';
 import Header from '../../components-global/Header';
 import ButtonsProfile from './components/ButtonsProfile';
 import './style/style.css';
 import Footer from '../../components-global/Footer';
 
 const Profile = () => {
-  const { emailBool } = useContext(RecipeAppContext);
   const [emailP, setEmailP] = useState('');
 
   useEffect(() => {
     const email = JSON.parse(localStorage.getItem('user'));
-    setEmailP(email);
+    if (!email) return (<div>Loading...</div>);
+    return setEmailP(email);
   }, []);
 
-  if (!emailBool) return (<div>Loading...</div>);
+  if (!emailP.email) return (<div>Loading...</div>);
 
   return (
     <div className="container-Profile">
       <Header title={'Perfil'} />
-      <p>{emailP.email}</p>
+      <p data-testid="profile-email">{emailP.email}</p>
       <div className="container-buttonsP">
         <ButtonsProfile />
       </div>

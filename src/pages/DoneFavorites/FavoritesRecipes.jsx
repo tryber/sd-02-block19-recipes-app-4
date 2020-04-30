@@ -14,7 +14,7 @@ const FavoritesRecipes = (props) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    setItems(convertStringToArrayObj(localStorage.getItem('favorite-recipes')) || []);
+    setItems(convertStringToArrayObj(localStorage.getItem('favorite-recipes') || '[]'));
   }, []);
   return (
     <div>

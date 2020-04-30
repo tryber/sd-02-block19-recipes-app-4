@@ -10,17 +10,17 @@ const ButtonsProfile = () => {
     <React.Fragment>
       <div className="buttons">
         <Link to="/receitas-feitas">
-          <button>Receitas Feitas</button>
+          <button data-testid="profile-done-btn">Receitas Feitas</button>
         </Link>
       </div>
       <div className="buttons">
         <Link to="/receitas-favoritas">
-          <button>Receitas Favoritas</button>
+          <button data-testid="profile-favorite-btn">Receitas Favoritas</button>
         </Link>
       </div>
       <div className="buttons">
         <Link to="/">
-          <button onClick={() => clearStorage()}>Sair</button>
+          <button data-testid="profile-logout-btn" onClick={() => clearStorage()}>Sair</button>
         </Link>
       </div>
     </React.Fragment>

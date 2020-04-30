@@ -26,7 +26,6 @@ const mockMultipleAPI = () => {
       status: 200,
       ok: true,
       json: () => {
-        console.log('primeiro mock');
         return Promise.resolve(randomDrink)
       },
     }))
@@ -34,7 +33,6 @@ const mockMultipleAPI = () => {
       status: 200,
       ok: true,
       json: () => {
-        console.log('segundo mock');
         return Promise.resolve(lookupIngDrink)
       },
     }))
@@ -42,7 +40,6 @@ const mockMultipleAPI = () => {
       status: 200,
       ok: true,
       json: () => {
-        console.log('terceiro mock');
         return Promise.resolve(randomMeal)
       },
     }));

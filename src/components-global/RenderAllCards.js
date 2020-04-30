@@ -3,6 +3,7 @@ import context from '../context/Context';
 import Loading from './Loading';
 import useRamdomCard from '../customHooks/useRamdomCard';
 import RecipeCard from './renderCards/recipeCard';
+import './renderCards/style/RenderAllCards.css';
 
 const RenderAllCards = () => {
   const { dataBase: [db], fetchRecipe, setIsLoading } = useContext(context);
@@ -18,11 +19,11 @@ const RenderAllCards = () => {
   const prefix = db === 'themealdb' ? 'Meal' : 'Drink';
 
   return (
-    <div>
+    <div className="container-renderCards">
       {resultsAll.length !== 12 && <Loading />}
       {resultsAll.length === 12 &&
         resultsAll.map((recipe) => (
-          <div key={recipe[`id${prefix}${Math.random()}`]}>
+          <div className="container-cards" key={recipe[`id${prefix}`]}>
             <RecipeCard details={recipe} dataBase={prefix} />
           </div>
         ))
