@@ -1,7 +1,6 @@
 .container-renderCards {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: space-around;
   padding: 1%;
   width: 100%;

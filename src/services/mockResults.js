@@ -1,11 +1,3 @@
-export const favoriteRecipes = [ 
-  { category: "Beef",
-    id: "52874",
-    image: "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
-    type: "comida",
-  },
-];
-
 export const ingredientsResults = {
   meals: [
     { idIngredient: '1', strIngredient: 'Chicken' },

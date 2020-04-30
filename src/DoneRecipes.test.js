@@ -1,8 +1,5 @@
 import React from 'react';
-import { fireEvent, cleanup, waitFor, waitForDomChange, findByText, getAllByText } from '@testing-library/react';
-import { favoriteRecipes } from './services/mockResults';
-import { convertArrayObjToString } from './components-global/services/localservice';
-import { login, profile, favoriteTest } from './services/navigationFlux';
+import { fireEvent, cleanup, waitForDomChange } from '@testing-library/react';
 import renderWithRouter from './services/renderWithRouter';
 import App from './App';
 import '@testing-library/jest-dom';

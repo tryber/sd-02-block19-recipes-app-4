@@ -11,10 +11,11 @@ const Profile = () => {
 
   useEffect(() => {
     const email = JSON.parse(localStorage.getItem('user'));
+    if (!email) return (<div>Loading...</div>);
     setEmailP(email);
   }, []);
 
-  // if (!localBol) return (<div>Loading...</div>);
+  if (!emailP.email) return (<div>Loading...</div>);
 
   return (
     <div className="container-Profile">

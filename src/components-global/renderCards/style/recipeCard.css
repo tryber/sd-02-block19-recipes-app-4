@@ -8,10 +8,9 @@
 }
 
 .recipe-card-container .img-card {
+  box-shadow: 2px 2px grey;
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
-  border-radius: 10px;
-  box-shadow: 2px 2px grey;
   height: 80%;
   margin: 2%;
   width: 50%;
@@ -46,8 +45,8 @@
 .container-infos {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  padding: 3% 0 3%;
+  justify-content: space-between;
+  padding: 3% 0;
   width: 100%;
 }
 

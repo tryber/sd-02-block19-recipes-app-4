@@ -1,8 +1,5 @@
 import React from 'react';
-import { fireEvent, cleanup, waitFor, waitForDomChange, findByText, getAllByText } from '@testing-library/react';
-import { favoriteRecipes } from './services/mockResults';
-import { convertArrayObjToString } from './components-global/services/localservice';
-import { login, profile, favoriteTest } from './services/navigationFlux';
+import { fireEvent, cleanup, waitForDomChange } from '@testing-library/react';
 import renderWithRouter from './services/renderWithRouter';
 import App from './App';
 import '@testing-library/jest-dom';
@@ -13,7 +10,7 @@ afterEach(() => {
 });
 
 beforeEach(() => {
-  localStorage.clear();
+  localStorage.setItem('user', JSON.stringify({"email":"Lipe_Lim@hotmail.com"}));
 })
 
 test('Testing Static Items on FavoritesRecipes', async () => {
@@ -28,10 +25,9 @@ test('Testing Static Items on FavoritesRecipes', async () => {
 
   const lStorage = JSON.parse(localStorage.getItem('favorite-recipes'));
   expect(lStorage).toEqual([{id:"52878",category:"Beef",image:"https://www.themealdb.com/images/media/meals/wrssvt1511556563.jpg",type:"comida"}]);
-  localStorage.setItem('user', JSON.stringify({"email":"Lipe_Lim@hotmail.com"}));
 
   history.push('/perfil');
-
+  await waitForDomChange();
   const favRecipesBtn = getByTestId('profile-favorite-btn');
   expect(favRecipesBtn).toBeInTheDocument();
   fireEvent.click(favRecipesBtn);

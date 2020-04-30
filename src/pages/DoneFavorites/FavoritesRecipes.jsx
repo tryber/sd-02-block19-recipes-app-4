@@ -21,7 +21,7 @@ const FavoritesRecipes = (props) => {
       <Header2 title="Receitas favoritas" history={history} />
       <Filters setItems={setItems} local="favorite-recipes" />
       {items.map((item) => {
-        const { category, id, image, type} = item;
+        const { category, id, image, type } = item;
         return (
           <SubCard
             key={id}
