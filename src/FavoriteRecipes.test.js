@@ -5,13 +5,13 @@ import App from './App';
 import '@testing-library/jest-dom';
 
 afterEach(() => {
-  cleanup;
+  cleanup();
   localStorage.clear();
 });
 
 beforeEach(() => {
   localStorage.setItem('user', JSON.stringify({"email":"Lipe_Lim@hotmail.com"}));
-})
+});
 
 test('Testing Static Items on FavoritesRecipes', async () => {
   const { getByText, getByTestId, history, getAllByText } = renderWithRouter(<App />);
