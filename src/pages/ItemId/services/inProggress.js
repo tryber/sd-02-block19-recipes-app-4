@@ -9,12 +9,6 @@ export const inProggressHasId = (data) => {
   return arr.find((item) => item === id);
 };
 
-export const delInProggress = (data) => {
-  const id = data.id;
-  const arr = stringToArray(localStorage.getItem('in-proggress'));
-  return arr.filter((item) => item.id !== id);
-};
-
 export const addInProggress = (data) => {
   const id = data.id;
   const arr = stringToArray(localStorage.getItem('in-proggress')) || [];
