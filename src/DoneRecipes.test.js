@@ -67,5 +67,4 @@ test('Testing Static Items on RecipesDone', async () => {
   expect(btnAll).toBeInTheDocument();
   expect(btnFood).toBeInTheDocument();
   expect(btnDrinks).toBeInTheDocument();
-
 })
