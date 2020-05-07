@@ -11,7 +11,9 @@ import Footer from '../../components-global/Footer';
 
 const adjustTitle = (type, kindOfRecipe) => {
   if (!type && !kindOfRecipe) return 'Explorar';
-  if (type && !kindOfRecipe) return `Explorar ${type}`;
+  if (type && !kindOfRecipe) {
+    return `Explorar - ${type.substring(0, 1).toUpperCase().concat(type.substring(1))}`;
+  }
   return `Explorar ${kindOfRecipe}`;
 };
 

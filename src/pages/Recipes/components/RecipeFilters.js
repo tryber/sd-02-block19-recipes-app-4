@@ -26,7 +26,7 @@ const RecipeFilters = () => {
   useEffect(() => {
     setIsLoading(true);
     fetchRecipe(db, 'list.php?c=list', getFilters);
-  }, []);
+  }, [db]);
   return (
     <div>
       {arrCategories.length === 6 &&

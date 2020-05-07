@@ -61,7 +61,7 @@ describe('Testing explore page', () => {
     fireEvent.click(btnExploreMeal);
     expect(getByText("Por local de origem")).toBeInTheDocument();
     expect(getByText("Me surpreenda!")).toBeInTheDocument();
-    expect(getByText("Explorar comidas")).toBeInTheDocument();
+    expect(getByText("Explorar - Comidas")).toBeInTheDocument();
     expect(getByText("Por ingredientes")).toBeInTheDocument();
   });
 
@@ -76,7 +76,7 @@ describe('Testing explore page', () => {
 
     expect(queryByText("Por local de origem")).toBeNull()
     expect(getByText("Me surpreenda!")).toBeInTheDocument();
-    expect(getByText("Explorar bebidas")).toBeInTheDocument();
+    expect(getByText("Explorar - Bebidas")).toBeInTheDocument();
     expect(getByText("Por ingredientes")).toBeInTheDocument();
   });
 

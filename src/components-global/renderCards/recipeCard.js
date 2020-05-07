@@ -17,11 +17,11 @@ const RecipeCard = ({ details, dataBase }) => {
   return (
     <div className="recipe-card-container" data-testid={`${id}-recomendation-card`}>
       <div className="container-imgR">
-        <img className="img-card" src={img} alt={recipe} />
+        <img data-testid={`${id}-card-img`} className="img-card" src={img} alt={recipe} />
       </div>
       <div className="container-infos">
-        <div className="categorie-card">{category}</div>
-        <div className="recipe-card">{recipe}</div>
+        <div data-testid={`${id}-card-category`} className="categorie-card">{category}</div>
+        <div data-testid={`${id}-card-name`} className="recipe-card">{recipe}</div>
         <button
           onClick={() => goToId(id, history, dataBase, setIsLoading, setIdRecipe)}
           className="btn-ver-mais"
