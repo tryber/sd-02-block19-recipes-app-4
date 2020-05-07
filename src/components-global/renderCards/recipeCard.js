@@ -12,7 +12,6 @@ const goToId = (id, history, db, setIsLoading, setIdRecipe) => {
 
 const RecipeCard = ({ details, dataBase }) => {
   const history = useHistory();
-  console.log(details)
   const { setIsLoading, setIdRecipe } = useContext(context);
   const { [`id${dataBase}`]: id, [`str${dataBase}`]: recipe, [`str${dataBase}Thumb`]: img, strCategory: category } = details;
   return (
@@ -22,7 +21,7 @@ const RecipeCard = ({ details, dataBase }) => {
       </div>
       <div className="container-infos">
         <div data-testid={`${id}-card-category`} className="categorie-card">{category}</div>
-        <div  data-testid={`${id}-card-name`} className="recipe-card">{recipe}</div>
+        <div data-testid={`${id}-card-name`} className="recipe-card">{recipe}</div>
         <button
           onClick={() => goToId(id, history, dataBase, setIsLoading, setIdRecipe)}
           className="btn-ver-mais"
