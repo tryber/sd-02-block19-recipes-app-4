@@ -34,10 +34,10 @@ const RenderCards = () => {
   return (
     <div className="container-allCards">
       {isLoading && <Loading />}
-      {!adjustedData && !isLoading &&
-        <div className='text-ccentral-search'>
-          {searchBarInput ? 'Nenhum resultado' : 'Faça sua pesquisa'}
-        </div>}
+      {!adjustedData && searchBarInput && !isLoading &&
+        <div className="text-central-search">Nenhum resultado</div>}
+      {!adjustedData && !searchBarInput && !isLoading &&
+        <div className="text-central-search">Faça sua pesquisa</div>}
       {isOnSearchBar && adjustedData && adjustedData.length === 1
         && cRoute(minPrefix, adjustedData[0][`id${prefix}`], setIsLoading, setIdRecipe, history)}
       {adjustedData && renderCardsFunction(adjustedData, prefix)}
