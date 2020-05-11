@@ -17,14 +17,14 @@ const Profile = () => {
 
   return (
     <React.Fragment>
-        <Header title={'Perfil'} />
-        <div className="container-Profile">
-          <h1 data-testid="profile-email">{emailP.email}</h1>
-          <div className="container-buttonsP">
-            <ButtonsProfile />
-          </div>
+      <Header title={'Perfil'} />
+      <div className="container-Profile">
+        <h1 data-testid="profile-email">{emailP.email}</h1>
+        <div className="container-buttonsP">
+          <ButtonsProfile />
         </div>
-        <Footer />
+      </div>
+      <Footer />
     </React.Fragment>
   );
 };
