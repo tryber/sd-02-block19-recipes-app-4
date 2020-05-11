@@ -8,7 +8,7 @@ import RecipeAppContext from '../../../context/Context';
 import Share from '../../../components-global/Share';
 import '../style/style.css';
 
-const btnSubCard2 = (history, type, { id }) => {
+const btnSubCard2 = (type, { id }) => {
   const history = useHistory();
   history.push(`/receitas/${type}/${id}`);
 };
