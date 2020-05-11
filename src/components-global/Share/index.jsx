@@ -24,6 +24,7 @@ const Share = (props) => {
 
 Share.propTypes = {
   setShow: propTypes.func.isRequired,
+  testid: propTypes.string.isRequired,
 };
 
 export default Share;

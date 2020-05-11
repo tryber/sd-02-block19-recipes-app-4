@@ -28,6 +28,7 @@ Card2.propTypes = {
   type: propTypes.string.isRequired,
   history: propTypes.instanceOf(Object).isRequired,
   data: propTypes.instanceOf(Object).isRequired,
+  imgTestid: propTypes.string.isRequired,
 };
 
 export default Card2;

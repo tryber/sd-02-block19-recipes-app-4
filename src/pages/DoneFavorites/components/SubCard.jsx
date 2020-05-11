@@ -59,6 +59,7 @@ SubCard.propTypes = {
   setItems: propTypes.func.isRequired,
   id: propTypes.string.isRequired,
   type: propTypes.string.isRequired,
+  index: propTypes.number.isRequired,
   history: propTypes.instanceOf(Object).isRequired,
 };
 
