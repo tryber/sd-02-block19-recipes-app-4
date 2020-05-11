@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
 
 import { addProggress, deleteProggress } from '../services/proggress';
@@ -78,6 +78,11 @@ const ingredientsCheckbox = (checks, setChecks, setAllChecked, data) => (
 const Ingridients = (props) => {
   const { ingridients, setAllChecked, making, data } = props;
   const [checks, setChecks] = useState(initChecks(data, ingridients));
+
+  useEffect(() => {
+    allCheckedFunc(checks);
+  }, []);
+
   return (
     <div className="ingredients">
       <p className="subtitle">Ingredients</p>

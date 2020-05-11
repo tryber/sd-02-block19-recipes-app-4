@@ -7,7 +7,7 @@ import {
   convertStringToArrayObj,
 } from '../../../components-global/services/localservice';
 
-import { inProggressHasId, addInProggress } from '../services/inProggress';
+import { inProggressHasId, addInProggress, deleteInProggress } from '../services/inProggress';
 import Carousel from './Carousel';
 import CardRecomended from './CardRecomended';
 import Message from '../../../components-global/Message';
@@ -67,7 +67,7 @@ const header = (strFood, data, setShow, type) => (
   <div className="header">
     <p className="title" data-testid="recipe-title">{strFood}</p>
     <div>
-      <Share setShow={setShow} testid="share-btn" />
+      <Share setShow={setShow} testid="share-btn" type={type} data={data} />
       <Favorite data={data} type={type} />
     </div>
   </div>
@@ -82,6 +82,7 @@ const handleBtnMaking = (history, data, type) => {
     arr.push({ id, category, title, image, doneDate, type });
   }
   localStorage.setItem('done-recipes', convertArrayObjToString(arr));
+  deleteInProggress(data);
   history.push('/receitas-feitas');
 };
 
@@ -91,13 +92,13 @@ const handleBtnStart = (data, type, history) => {
   history.push(`/receitas/${type}/${id}/making`);
 };
 
-const btnMaking = (history, allChecked2, data, type) => (
+const btnMaking = (history, allChecked, data, type) => (
   <button
     type="button"
     className="init"
     data-testid="start-recipe-btn"
     onClick={() => handleBtnMaking(history, data, type)}
-    disabled={allChecked2}
+    disabled={allChecked}
   >
     Finalizar receita
   </button>
@@ -125,7 +126,7 @@ function Generics(props) {
   const { data, making, type } = props;
   const { strFood, strThumb, strCategory, strYoutube, strInstructions, ingridients } = data;
   const [show, setShow] = useState(false);
-  const [allChecked, setAllChecked] = useState(true);
+  const [allChecked, setAllChecked] = useState();
   const history = useHistory();
 
   return (

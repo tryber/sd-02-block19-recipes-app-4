@@ -17,3 +17,10 @@ export const addInProggress = (data) => {
   }
   localStorage.setItem('in-proggress', arrayToString(arr));
 };
+
+export const deleteInProggress = (data) => {
+  const id = data.id;
+  const arr = stringToArray(localStorage.getItem('in-proggress')) || [];
+  arr.splice(arr.indexOf(id), 1);
+  localStorage.setItem('in-proggress', arrayToString(arr));
+}

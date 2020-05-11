@@ -3,18 +3,19 @@ import propTypes from 'prop-types';
 
 import './icons.css';
 
-const btnShare = (setShow) => {
+const btnShare = (setShow, type, data) => {
+  const id = data.id;
   setShow(true);
-  window.navigator.clipboard.writeText(window.location.href);
+  window.navigator.clipboard.writeText(`http://localhost:3000/receitas/${type}/${id}`);
 };
 
 const Share = (props) => {
-  const { setShow, testid } = props;
+  const { setShow, testid, type, data } = props;
   return (
     <button
       type="button"
       data-testid={testid}
-      onClick={() => btnShare(setShow)}
+      onClick={() => btnShare(setShow, type, data)}
       className="material-icons"
     >
       share
@@ -25,6 +26,8 @@ const Share = (props) => {
 Share.propTypes = {
   setShow: propTypes.func.isRequired,
   testid: propTypes.string.isRequired,
+  type: propTypes.string.isRequired,
+  data: propTypes.instanceOf(Object).isRequired,
 };
 
 export default Share;

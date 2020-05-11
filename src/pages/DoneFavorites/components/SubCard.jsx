@@ -29,7 +29,7 @@ const render = (data, setShow, setItems, history, type, id, index) => (
       {(type === 'comida') ? <p>{data.strArea}</p> : <div />}
       <div className="icons">
         <Favorite data={data} setItems={setItems} id={id} testid={`${index}-horizontal-favorite-btn`} />
-        <Share setShow={setShow} />
+        <Share setShow={setShow} type={type} data={data} />
       </div>
     </React.Fragment>
   </Card2>
