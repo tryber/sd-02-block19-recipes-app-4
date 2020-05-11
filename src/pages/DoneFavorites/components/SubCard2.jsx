@@ -13,20 +13,21 @@ const btnSubCard2 = (history, type, { id }) => {
 
 function render(data, setShow, doneDate, type, history) {
   return (
-    <Card2 image={data.strThumb} key={data.id} data={data} history={history} type={type} >
+    <Card2 image={data.strThumb} key={data.id} data={data} history={history} type={type} imgTestid={`${index}-horizontal-image`}>
       <React.Fragment>
         <div className="header">
-          <p className="subtitle">{data.strCategory}</p>
+          <p className="subtitle" data-testid={`${index}-horizontal-top-text`}>{data.strCategory}</p>
           <Share setShow={setShow} />
         </div>
         <button
           type="button"
           className="title"
           onClick={() => btnSubCard2(history, type, data)}
+          data-testid={`${index}-horizontal-name`}
         >
           {data.strFood}
         </button>
-        <p className="date">Feita em: {doneDate}</p>
+        <p className="date" data-testid={`${index}-horizontal-done-date`}>Feita em: {doneDate}</p>
         {(type === 'comida') ?
           <div className="tags">
             {data.strTags && data.strTags.split(',').slice(0, 2).map((tag) => (

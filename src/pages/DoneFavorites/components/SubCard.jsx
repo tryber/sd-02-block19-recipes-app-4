@@ -20,7 +20,6 @@ const render = (data, setShow, setItems, history, type, id, index) => (
     history={history}
     type={type}
     data={data}
-    imgTestid={`${index}-horizontal-image`}
   >
     <React.Fragment>
       <p className="subtitle">{data.strCategory}</p>
