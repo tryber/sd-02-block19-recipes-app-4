@@ -12,9 +12,9 @@ const cRoute = (minPrefix, id, setIsLoading, setIdRecipe, history) => {
 };
 
 const renderCardsFunction = (adjustedData, prefix) => (
-  <div>
+  <div className="container-renderCards">
     {adjustedData.map((recipe) => (
-      <div className="container-cardsF" key={`${Math.random()} ${JSON.stringify(recipe)}`}>
+      <div className="container-cards" key={`${Math.random()} ${JSON.stringify(recipe)}`}>
         <RecipeCard details={recipe} dataBase={prefix} />
       </div>
     ))}
@@ -32,10 +32,12 @@ const RenderCards = () => {
     adjustedData = data.map(({ [minPrefix]: [returnedData] }) => returnedData);
   }
   return (
-    <div className="container-all-recipes">
+    <div className="container-allCards">
       {isLoading && <Loading />}
-      {!adjustedData && searchBarInput && !isLoading && <div>Nenhum resultado</div>}
-      {!adjustedData && !searchBarInput && !isLoading && <div>Faça sua pesquisa</div>}
+      {!adjustedData && searchBarInput && !isLoading &&
+        <div className="text-central-search">Nenhum resultado</div>}
+      {!adjustedData && !searchBarInput && !isLoading &&
+        <div className="text-central-search">Faça sua pesquisa</div>}
       {isOnSearchBar && adjustedData && adjustedData.length === 1
         && cRoute(minPrefix, adjustedData[0][`id${prefix}`], setIsLoading, setIdRecipe, history)}
       {adjustedData && renderCardsFunction(adjustedData, prefix)}

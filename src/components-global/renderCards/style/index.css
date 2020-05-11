@@ -8,3 +8,11 @@
 .container-cardsF {
   padding-bottom: 2%;
 }
+
+.flex-card-adjust {
+  border: 2px solid red;
+}
+
+.text-central-search {
+  text-align: center;
+}
