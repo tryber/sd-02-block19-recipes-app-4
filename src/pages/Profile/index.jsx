@@ -16,14 +16,16 @@ const Profile = () => {
   if (!emailP.email) return (<div>Loading...</div>);
 
   return (
-    <div className="container-Profile">
-      <Header title={'Perfil'} />
-      <p data-testid="profile-email">{emailP.email}</p>
-      <div className="container-buttonsP">
-        <ButtonsProfile />
-      </div>
-      <Footer />
-    </div>
+    <React.Fragment>
+        <Header title={'Perfil'} />
+        <div className="container-Profile">
+          <h1 data-testid="profile-email">{emailP.email}</h1>
+          <div className="container-buttonsP">
+            <ButtonsProfile />
+          </div>
+        </div>
+        <Footer />
+    </React.Fragment>
   );
 };
 
