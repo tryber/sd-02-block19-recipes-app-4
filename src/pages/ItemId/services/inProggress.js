@@ -23,4 +23,4 @@ export const deleteInProggress = (data) => {
   const arr = stringToArray(localStorage.getItem('in-proggress')) || [];
   arr.splice(arr.indexOf(id), 1);
   localStorage.setItem('in-proggress', arrayToString(arr));
-}
+};
