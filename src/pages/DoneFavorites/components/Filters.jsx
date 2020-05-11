@@ -22,9 +22,9 @@ const Filters = (props) => {
   const { setItems, local } = props;
   return (
     <div className="comp_filters">
-      <button type="button" onClick={() => btnAll(setItems, local)}>All</button>
-      <button type="button" onClick={() => btnFood(setItems, local)}>Food</button>
-      <button type="button" onClick={() => btnDrinks(setItems, local)}>Drinks</button>
+      <button type="button" onClick={() => btnAll(setItems, local)} data-testid="filter-by-all-btn">All</button>
+      <button type="button" onClick={() => btnFood(setItems, local)} data-testid="filter-by-food-btn">Food</button>
+      <button type="button" onClick={() => btnDrinks(setItems, local)} data-testid="filter-by-drink-btn">Drinks</button>
     </div>
   );
 };

@@ -9,11 +9,11 @@ const btnShare = (setShow) => {
 };
 
 const Share = (props) => {
-  const { setShow } = props;
+  const { setShow, testid } = props;
   return (
     <button
       type="button"
-      data-testid="share-btn"
+      data-testid={testid}
       onClick={() => btnShare(setShow)}
       className="material-icons"
     >

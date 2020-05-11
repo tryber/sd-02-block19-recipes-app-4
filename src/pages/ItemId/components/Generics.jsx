@@ -67,7 +67,7 @@ const header = (strFood, data, setShow, type) => (
   <div className="header">
     <p className="title" data-testid="recipe-title">{strFood}</p>
     <div>
-      <Share setShow={setShow} />
+      <Share setShow={setShow} testid='share-btn' />
       <Favorite data={data} type={type} />
     </div>
   </div>

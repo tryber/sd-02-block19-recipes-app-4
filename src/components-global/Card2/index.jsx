@@ -9,11 +9,11 @@ const btn = (history, type, data) => {
 };
 
 const Card2 = (props) => {
-  const { image, children, data, history, type } = props;
+  const { image, children, data, history, type, imgTestid } = props;
   return (
     <div className="comp_card2">
       <button type="button" onClick={() => btn(history, type, data)}>
-        <img src={image} alt="" />
+        <img src={image} alt="" data-testid={imgTestid} />
       </button>
       <div className="container">
         {children}

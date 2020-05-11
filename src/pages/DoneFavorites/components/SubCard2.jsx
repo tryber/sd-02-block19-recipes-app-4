@@ -19,7 +19,11 @@ function render(data, setShow, doneDate, type, history) {
           <p className="subtitle">{data.strCategory}</p>
           <Share setShow={setShow} />
         </div>
-        <button type="button" className="title" onClick={() => btnSubCard2(history, type, data)}>
+        <button
+          type="button"
+          className="title"
+          onClick={() => btnSubCard2(history, type, data)}
+        >
           {data.strFood}
         </button>
         <p className="date">Feita em: {doneDate}</p>

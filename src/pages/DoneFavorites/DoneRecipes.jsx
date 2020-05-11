@@ -21,7 +21,7 @@ const DoneRecipes = (props) => {
     <div>
       <Header2 title="Receitas feitas" history={history} />
       <Filters setItems={setItems} local="done-recipes" />
-      {items.map((item) => {
+      {items.map((item, index) => {
         const { category, id, image, type, doneDate } = item;
         return (
           <SubCard2
@@ -33,6 +33,7 @@ const DoneRecipes = (props) => {
             doneDate={doneDate}
             history={history}
             image={image}
+            index={index}
           />
         );
       })}

@@ -13,8 +13,15 @@ const btnSubCard = (history, type, data) => {
   history.push(`/receitas/${type}/${id}`);
 };
 
-const render = (data, setShow, setItems, history, type, id) => (
-  <Card2 image={data.strThumb} key={data.id} history={history} type={type} data={data} >
+const render = (data, setShow, setItems, history, type, id, index) => (
+  <Card2
+    image={data.strThumb}
+    key={data.id}
+    history={history}
+    type={type}
+    data={data}
+    imgTestid={`${index}-horizontal-image`}
+  >
     <React.Fragment>
       <p className="subtitle">{data.strCategory}</p>
       <button type="button" className="title" onClick={() => btnSubCard(history, type, data)}>
@@ -22,7 +29,7 @@ const render = (data, setShow, setItems, history, type, id) => (
       </button>
       {(type === 'comida') ? <p>{data.strArea}</p> : <div />}
       <div className="icons">
-        <Favorite data={data} setItems={setItems} id={id} />
+        <Favorite data={data} setItems={setItems} id={id} testid={`${index}-horizontal-favorite-btn`} />
         <Share setShow={setShow} />
       </div>
     </React.Fragment>
@@ -30,7 +37,7 @@ const render = (data, setShow, setItems, history, type, id) => (
 );
 
 const SubCard = (props) => {
-  const { setShow, setItems, id, type, history } = props;
+  const { setShow, setItems, id, type, history, index } = props;
   const { fetchRecipe } = useContext(RecipeAppContext);
   const [data, setData] = useState();
   const cb = (resp) => {
@@ -43,7 +50,7 @@ const SubCard = (props) => {
 
   return (
     <div className="comp_subcard">
-      {(data) ? render(data, setShow, setItems, history, type, id) : <div />}
+      {(data) ? render(data, setShow, setItems, history, type, id, index) : <div />}
     </div>
   );
 };
