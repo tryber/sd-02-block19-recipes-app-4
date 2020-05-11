@@ -9,7 +9,7 @@ const Header = ({ title, hasSearchBar }) => {
   const { isOnSearchBar } = useContext(RecipeAppContext);
 
   return (
-    <div>
+    <div className="container-HeaderPerfil">
       <FixedHeader title={title} hasSearchBar={hasSearchBar} />
       {isOnSearchBar && <HiddenableHeader />}
       {isOnSearchBar && <RenderRecipes />}

@@ -20,9 +20,9 @@ describe('Testing login page', () => {
     fireEvent.change(pass, { target: { value: "123456789" } });
     expect(btn.disabled).toBeTruthy();
     fireEvent.change(email, { target: { value: "teste@test.com" } });
-    fireEvent.change(pass, { target: { value: "12345" } });
+    fireEvent.change(pass, { target: { value: "123456" } });
     expect(btn.disabled).toBeTruthy();
-    fireEvent.change(pass, { target: { value: "123456789" } });
+    fireEvent.change(pass, { target: { value: "1234567" } });
     expect(btn.disabled).toBeFalsy();
     fireEvent.click(btn);
     const lsMeals = localStorage.getItem("meals-token");

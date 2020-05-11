@@ -5,7 +5,7 @@ const InputPass = () => {
   const { setPass } = useContext(RecipeAppContext);
 
   const onChangeHandlePass = (e) => {
-    if (e.value.length >= 6) {
+    if (e.value.length > 6) {
       setPass(true);
       e.style.border = '1px solid green';
     } else {
@@ -21,7 +21,7 @@ const InputPass = () => {
         placeholder="SENHA"
         name="password"
         data-testid="password-input"
-        required minLength="6"
+        required minLength="7"
         onChange={(e) => onChangeHandlePass(e.target)}
       />
     </React.Fragment>
