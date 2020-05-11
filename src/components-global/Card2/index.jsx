@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 
 import './style.css';
 
@@ -9,7 +10,8 @@ const btn = (history, type, data) => {
 };
 
 const Card2 = (props) => {
-  const { image, children, data, history, type, imgTestid } = props;
+  const { image, children, data, type, imgTestid } = props;
+  const history = useHistory();
   return (
     <div className="comp_card2">
       <button type="button" onClick={() => btn(history, type, data)}>
@@ -26,7 +28,6 @@ Card2.propTypes = {
   image: propTypes.string.isRequired,
   children: propTypes.element.isRequired,
   type: propTypes.string.isRequired,
-  history: propTypes.instanceOf(Object).isRequired,
   data: propTypes.instanceOf(Object).isRequired,
   imgTestid: propTypes.string.isRequired,
 };
