@@ -9,7 +9,7 @@ const btnShare = (setShow) => {
 };
 
 const Share = (props) => {
-  const { setShow, index } = props;
+  const { setShow } = props;
   return (
     <button
       type="button"

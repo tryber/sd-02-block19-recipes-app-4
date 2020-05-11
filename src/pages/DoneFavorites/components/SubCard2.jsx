@@ -11,13 +11,13 @@ const btnSubCard2 = (history, type, { id }) => {
   history.push(`/receitas/${type}/${id}`);
 };
 
-const render = (data, setShow, doneDate, type, history, id) => {
+function render(data, setShow, doneDate, type, history) {
   return (
     <Card2 image={data.strThumb} key={data.id} data={data} history={history} type={type} >
       <React.Fragment>
         <div className="header">
           <p className="subtitle">{data.strCategory}</p>
-          <Share setShow={setShow} index={id}/>
+          <Share setShow={setShow} />
         </div>
         <button type="button" className="title" onClick={() => btnSubCard2(history, type, data)}>
           {data.strFood}
@@ -49,7 +49,7 @@ const SubCard2 = (props) => {
 
   return (
     <div className="comp_subcard2">
-      {(data) ? render(data, setShow, doneDate, type, history, id) : <div />}
+      {(data) ? render(data, setShow, doneDate, type, history) : <div />}
     </div>
   );
 };
